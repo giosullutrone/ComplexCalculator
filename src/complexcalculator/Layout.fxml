@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="240.0" style="-fx-background-color: #282A36;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="complexcalculator.LayoutController">
+   <children>
+      <VBox layoutX="87.0" layoutY="62.0" prefWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="60.0" prefWidth="240.0" style="-fx-background-color: #282A36;">
+               <children>
+                  <TextField fx:id="textField" prefHeight="25.0" prefWidth="145.0" style="-fx-background-color: #44475A; -fx-text-fill: #F8F8F2;">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="20.0" top="20.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button mnemonicParsing="false" onAction="#enterPressed" prefHeight="25.0" prefWidth="55.0" style="-fx-background-color: #BD93F9;" text="ENTER" textFill="#f8f8f2">
+                     <HBox.margin>
+                        <Insets bottom="5.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefWidth="240.0" style="-fx-background-color: #282A36;">
+               <children>
+                  <TableView fx:id="tableView" prefWidth="200.0" stylesheets="@Style.css">
+					<placeholder>
+						<Label text="" />
+					</placeholder>
+                    <columns>
+                      <TableColumn editable="false" prefWidth="200.0" resizable="false" sortable="false" text="STACK" />
+                    </columns>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets top="-1.0" />
+                     </padding>
+                  </TableView>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

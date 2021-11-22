@@ -23,3 +23,5 @@
 hs_err_pid*
 /ComplexCalculator/nbproject/private/
 /nbproject/private/
+/dist/
+/build/
