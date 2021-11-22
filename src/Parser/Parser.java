@@ -18,7 +18,6 @@ public class Parser {
         private double img=0;
         
         private Splitter() {
-            this.separator=null;
         }
 
         public void setSeparator(String separator) {
@@ -31,9 +30,18 @@ public class Parser {
         }
         
         private void split(String toSplit){
-            String[] parts = toSplit.split(this.separator);
-            parts[1] = separator+parts[1].replace("j", "");
-            this.setParts(parts[0], parts[1]);
+            String[] parts;
+            if(this.separator.equals("+"))
+                parts = toSplit.trim().split("\\+");
+            else
+                parts = toSplit.trim().split(this.separator);
+            
+            
+            if(parts[0].contains("j")){
+                this.setParts(this.separator + parts[1], parts[0].trim().split("j")[0]);
+            }else{
+                this.setParts(parts[0], this.separator + parts[1].trim().split("j")[0]);
+            }
         }
         
 
@@ -54,16 +62,11 @@ public class Parser {
     
     public void parse(List<String> ss) {
         ss.forEach(string -> {
-            try {
-                parse(string);
-            } catch (IOException ex) {
-                Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            parse(string);
         });
     }
     
-    public void parse(String s) throws IOException {
-        s = s.trim();
+    public void parse(String s) {
         s = s.toLowerCase();
       
         if(s.compareTo("+")==0){
@@ -87,19 +90,21 @@ public class Parser {
             return;
         }
         
-        for(String separator : separators){
-            if(s.contains(separator)){
-                splitter.setSeparator(separator);
-                splitter.split(s);
-                this.stackOperator.execute(new Complex(splitter.real, splitter.img));
-                return;
+        if(s.contains(separators.get(0)) || s.contains(separators.get(1))){
+            if((s.contains(separators.get(0)) && !s.contains(separators.get(1))))
+                splitter.setSeparator(separators.get(0));
+            if(!s.contains(separators.get(0)) && s.contains(separators.get(1)))
+                splitter.setSeparator(separators.get(1));
+            if(s.contains(separators.get(0)) && s.contains(separators.get(1))){
+                if(s.indexOf(separators.get(0)) > s.indexOf(separators.get(1)))
+                    splitter.setSeparator(separators.get(0));
+                if(s.indexOf(separators.get(0)) < s.indexOf(separators.get(1)))
+                    splitter.setSeparator(separators.get(1));
             }
-            
+            splitter.split(s);
+            this.stackOperator.execute(new Complex(splitter.real, splitter.img));
         }
-        
-        throw new IOException();
-            
-        
-        
+    
+  
     }
 }

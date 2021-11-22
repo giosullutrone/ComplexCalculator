@@ -22,8 +22,11 @@ public class Complex {
     //    return new Complex(Double.parseDouble(str), 0.0);
     //}
 
-    @Override
+    @Overrides
     public String toString() {
-        return "" + real + "+" + img;
+        if(Double.toString(img).contains("-"))
+            return "" + real + img + "j";
+        else
+            return "" + real + "+" +img + "j";
     }
 }
