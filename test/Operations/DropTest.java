@@ -6,7 +6,7 @@ import complexcalculator.StackOperator;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class ClearTest {
+public class DropTest {
     /**
      * Test of execute method, of class Clear.
      */
@@ -15,12 +15,12 @@ public class ClearTest {
         // Feedback
         System.out.println("Testing: execute");
         // Var initialization
-        Clear instance;
+        Drop instance;
         StackNumber stackNumber;
         StackOperator stackOperator;
         
-        // Case: Stack with 2 elements
-        instance = new Clear();
+        // Case: Stack with 2 elements -> 1 element
+        instance = new Drop();
         stackNumber = new StackNumber();
         stackOperator = new StackOperator(stackNumber);
         stackOperator.execute(new Complex(10, 10));
@@ -28,8 +28,8 @@ public class ClearTest {
         stackOperator.execute(instance);
         assertEquals(0, stackNumber.size());
         
-        // Case: Stack with 0 elements
-        instance = new Clear();
+        // Case: Stack with 0 elements -> 0 element
+        instance = new Drop();
         stackNumber = new StackNumber();
         stackOperator = new StackOperator(stackNumber);
         stackOperator.execute(instance);
