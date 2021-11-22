@@ -91,7 +91,7 @@ public class Parser {
         }
         
         if(s.contains(separators.get(0)) || s.contains(separators.get(1))){
-            if((s.contains(separators.get(0)) && !s.contains(separators.get(1))))
+            if(s.contains(separators.get(0)) && !s.contains(separators.get(1)))
                 splitter.setSeparator(separators.get(0));
             if(!s.contains(separators.get(0)) && s.contains(separators.get(1)))
                 splitter.setSeparator(separators.get(1));
