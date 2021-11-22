@@ -18,9 +18,9 @@ public class Complex {
         return img;
     }
     
-    public static Complex parser(String str) {
-        return new Complex(Double.parseDouble(str), 0.0);
-    }
+    //public static Complex parser(String str) {
+    //    return new Complex(Double.parseDouble(str), 0.0);
+    //}
 
     @Override
     public String toString() {

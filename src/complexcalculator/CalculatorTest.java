@@ -12,18 +12,18 @@ public class CalculatorTest {
         
         int n_elements_to_show = 10;
         
-        m.executeOperation(new Complex(10, 5));
+        m.execute(new Complex(10, 5));
         System.out.println(s.getStack(n_elements_to_show));
         
-        m.executeOperation(new Complex(-2, -2));
+        m.execute(new Complex(-2, -2));
         System.out.println(s.getStack(n_elements_to_show));
         
-        m.executeOperation(new Add());
+        m.execute(new Add());
         System.out.println(s.getStack(n_elements_to_show));
         
-        m.executeOperation(new Sqrt());
+        m.execute(new Sqrt());
         System.out.println(s.getStack(n_elements_to_show));
         
-        m.executeOperation(new Clear());
+        m.execute(new Clear());
     }
 }
