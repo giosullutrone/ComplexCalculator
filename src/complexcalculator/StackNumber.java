@@ -1,4 +1,4 @@
-package calculatortest;
+package complexcalculator;
 
 import Complex.Complex;
 import java.util.LinkedList;

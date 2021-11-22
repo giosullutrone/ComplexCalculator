@@ -1,7 +1,7 @@
 package Operations;
 
 import Complex.Complex;
-import calculatortest.StackNumber;
+import complexcalculator.StackNumber;
 
 public class Dup implements Operation0{
     @Override
