@@ -24,6 +24,6 @@ public class Complex {
 
     @Override
     public String toString() {
-        return "" + real + ((img > 0.0) ? "+": "-") + img + "j";
+        return "" + real + ((img > 0.0) ? "+": "") + img + "j";
     }
 }
