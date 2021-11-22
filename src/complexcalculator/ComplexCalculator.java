@@ -24,7 +24,7 @@ public class ComplexCalculator extends Application {
         stage.setTitle("Complex Calculator");
         stage.getIcons().add(
             new Image(
-                ComplexCalculator.class.getResourceAsStream( "../../res/512Logo.png" ))); 
+                ComplexCalculator.class.getResourceAsStream( "512Logo.png" ))); 
         stage.setScene(scene);
         stage.show();
     }
