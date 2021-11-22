@@ -5,11 +5,11 @@ import complexcalculator.StackNumber;
 
 public class Swap implements Operation0{
     @Override
-    public void execute(StackNumber s) {
-        Complex cFirst = s.pop();
-        Complex cSecond = s.pop();
+    public void execute(StackNumber stackNumber) {
+        Complex cFirst = stackNumber.pop();
+        Complex cSecond = stackNumber.pop();
         
-        s.push(cSecond);
-        s.push(cFirst);
+        stackNumber.push(cSecond);
+        stackNumber.push(cFirst);
     }
 }
