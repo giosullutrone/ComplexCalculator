@@ -5,8 +5,8 @@ import complexcalculator.StackNumber;
 
 public class Over implements Operation0{
     @Override
-    public void execute(StackNumber s) {
-        Complex cSecond = s.get(1);
-        s.push(cSecond);
+    public void execute(StackNumber stackNumber) {
+        Complex cSecond = stackNumber.get(1);
+        stackNumber.push(cSecond);
     }
 }

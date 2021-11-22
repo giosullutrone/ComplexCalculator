@@ -12,7 +12,6 @@ public class StackOperator {
         this.stackNumber = stackNumber;
     }
     
-    // TODO: Is this necessary?
     public void execute(Complex c) {
         this.stackNumber.push(c);
     }
