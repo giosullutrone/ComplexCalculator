@@ -1,6 +1,6 @@
 package Operations;
 
-import calculatortest.StackNumber;
+import complexcalculator.StackNumber;
 
 public class Clear implements Operation0{
     @Override
