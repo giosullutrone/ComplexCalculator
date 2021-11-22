@@ -1,23 +1,92 @@
 package Parser;
 
-import complexcalculator.StackNumber;
+import Complex.*;
 import complexcalculator.StackOperator;
+import Operations.*;
+import java.util.Arrays;
 import java.util.List;
 
 public class Parser {
-    private class Splitter {}
     
-    private final StackNumber stackNumber;
+    private class Splitter {
+        
+        private String separator;
+        private double real=0;
+        private double img=0;
+        
+        private Splitter() {
+            this.separator=null;
+        }
+
+        public void setSeparator(String separator) {
+            this.separator = separator;
+        }
+        
+        private void setParts(String real, String img){
+            this.real=Double.parseDouble(real);
+            this.img=Double.parseDouble(img);
+        }
+        
+        private void split(String toSplit){
+            String[] parts = toSplit.split(this.separator);
+            parts[1] = separator+parts[1].replace("j", "");
+            this.setParts(parts[0], parts[1]);
+        }
+        
+
+        
+        
+
+    
+    }
     private final StackOperator stackOperator;
-    private final Splitter splitter;
+    private Splitter splitter = new Splitter();
     
-    public Parser(StackNumber s) {
-        this.stackNumber = s;
-        this.stackOperator = new StackOperator(stackNumber);
+    private List<String> separators = Arrays.asList("+", "-");
+    
+    public Parser(StackOperator s) {
+        this.stackOperator = s;
         this.splitter = new Splitter();
     }
     
-    public void parse(List<String> ss) {}
+    public void parse(List<String> ss) {
+        ss.forEach(string -> {
+            parse(string);
+        });
+    }
     
-    public void parse(String s) {}
+    public void parse(String s) {
+        s = s.trim();
+        s = s.toLowerCase();
+        if(s.compareTo("+")==0){
+            this.stackOperator.execute(new Add());
+            return;
+        }
+        if(s.compareTo("-")==0){
+            //this.stackOperator.execute();
+            return;
+        }
+        if(s.compareTo("*")==0){
+            //this.stackOperator.execute();
+            return;
+        }
+        if(s.compareTo("/")==0){
+            //this.stackOperator.execute();
+            return;
+        }
+
+        
+        for(String separator : separators){
+            if(s.contains(separator)){
+                splitter.setSeparator(separator);
+                splitter.split(s);
+                this.stackOperator.execute(new Complex(splitter.real, splitter.img));
+                return;
+            }
+            
+        }
+            
+        
+        
+    }
 }
