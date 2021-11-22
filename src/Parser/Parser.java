@@ -3,8 +3,11 @@ package Parser;
 import Complex.*;
 import complexcalculator.StackOperator;
 import Operations.*;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Parser {
     
@@ -51,13 +54,18 @@ public class Parser {
     
     public void parse(List<String> ss) {
         ss.forEach(string -> {
-            parse(string);
+            try {
+                parse(string);
+            } catch (IOException ex) {
+                Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
     }
     
-    public void parse(String s) {
+    public void parse(String s) throws IOException {
         s = s.trim();
         s = s.toLowerCase();
+      
         if(s.compareTo("+")==0){
             this.stackOperator.execute(new Add());
             return;
@@ -74,7 +82,10 @@ public class Parser {
             //this.stackOperator.execute();
             return;
         }
-
+        if(s.compareTo("clear")==0){
+            //this.stackOperator.clear();
+            return;
+        }
         
         for(String separator : separators){
             if(s.contains(separator)){
@@ -85,6 +96,8 @@ public class Parser {
             }
             
         }
+        
+        throw new IOException();
             
         
         
