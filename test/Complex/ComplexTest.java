@@ -10,7 +10,7 @@ public class ComplexTest {
     @Test
     public void testToString() {
         // Feedback
-        System.out.println("Testing: toString");
+        System.out.println("Testing: Complex.toString");
         // Var initialization
         Complex instance;
         String result, expResult;
