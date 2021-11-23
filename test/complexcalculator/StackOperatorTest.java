@@ -6,7 +6,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class StackOperatorTest {
-
     /**
      * Test of execute method, of class StackOperator.
      */
@@ -25,7 +24,7 @@ public class StackOperatorTest {
         assertEquals(1, stackNumber.size());
         assertEquals(stackNumber.peekFirst(), new Complex(10, 10));
         
-        // Case: Stack with 1 elements -> 2 element
+        // Case: Stack with 0 elements -> 2 element
         stackNumber = new StackNumber();
         instance = new StackOperator(stackNumber);
         instance.execute(new Complex(10, 10));
