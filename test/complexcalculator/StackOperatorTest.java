@@ -62,7 +62,7 @@ public class StackOperatorTest {
     @Test
     public void testExecute_Operation1() {
         // Feedback
-        System.out.println("Testing: StackOperator.execute of Operation0");
+        System.out.println("Testing: StackOperator.execute of Operation1");
         // Var initialization
         StackNumber stackNumber;
         StackOperator instance;
@@ -86,7 +86,7 @@ public class StackOperatorTest {
     @Test
     public void testExecute_Operation2() {
         // Feedback
-        System.out.println("Testing: StackOperator.execute of Operation0");
+        System.out.println("Testing: StackOperator.execute of Operation2");
         // Var initialization
         StackNumber stackNumber;
         StackOperator instance;
