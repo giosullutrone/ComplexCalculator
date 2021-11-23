@@ -6,34 +6,44 @@ import complexcalculator.StackOperator;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class DropTest {
+public class SwapTest {
     /**
-     * Test of execute method, of class Clear.
+     * Test of execute method, of class Swap.
      */
     @Test
     public void testExecute() {
         // Feedback
-        System.out.println("Testing: Drop.execute");
+        System.out.println("Testing: Swap.execute");
         // Var initialization
-        Drop instance;
+        Swap instance;
         StackNumber stackNumber;
         StackOperator stackOperator;
         
-        // Case: Stack with 2 elements -> 1 element
-        instance = new Drop();
+        // Case: Stack with 2 elements -> 2 element
+        instance = new Swap();
         stackNumber = new StackNumber();
         stackOperator = new StackOperator(stackNumber);
         stackOperator.execute(new Complex(10, 10));
         stackOperator.execute(new Complex(10, -10));
         stackOperator.execute(instance);
-        assertEquals(1, stackNumber.size());
-        assertEquals(stackNumber.peekFirst(), new Complex(10, 10));
+        assertEquals(2, stackNumber.size());
+        assertEquals(stackNumber.get(0), new Complex(10, 10));
+        assertEquals(stackNumber.get(1), new Complex(10, -10));
 
+        // Case: Stack with 1 elements -> 1 element
+        instance = new Swap();
+        stackNumber = new StackNumber();
+        stackOperator = new StackOperator(stackNumber);
+        stackOperator.execute(new Complex(10, 10));
+        stackOperator.execute(instance);
+        assertEquals(1, stackNumber.size());
+        assertEquals(stackNumber.get(0), new Complex(10, 10));
+        
         // Case: Stack with 0 elements -> 0 element
-        instance = new Drop();
+        instance = new Swap();
         stackNumber = new StackNumber();
         stackOperator = new StackOperator(stackNumber);
         stackOperator.execute(instance);
         assertEquals(0, stackNumber.size());
-    }
+    }    
 }
