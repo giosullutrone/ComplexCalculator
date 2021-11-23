@@ -38,7 +38,7 @@
 						<Label text="" />
 					</placeholder>
                     <columns>
-                      <TableColumn editable="false" prefWidth="200.0" resizable="false" sortable="false" text="STACK" />
+                      <TableColumn id="stackColumn" editable="false" prefWidth="200.0" resizable="false" sortable="false" text="STACK" />
                     </columns>
                      <HBox.margin>
                         <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
