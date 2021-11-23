@@ -21,9 +21,13 @@ public class Complex {
     public static Complex parser(String str) {
         return new Complex(Double.parseDouble(str), 0.0);
     }
+    
+    public Complex conj() {
+        return new Complex(real,-img);
+    }
 
     @Override
     public String toString() {
-        return "" + real + "+" + img;
+        return "" + real + img;
     }
 }
