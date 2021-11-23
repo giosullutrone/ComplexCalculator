@@ -1,7 +1,9 @@
 package complexcalculator;
 
 import Complex.Complex;
+import Operations.Add;
 import Operations.Clear;
+import Operations.Sqrt;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -59,8 +61,23 @@ public class StackOperatorTest {
      */
     @Test
     public void testExecute_Operation1() {
-        // To implement
-        assertEquals(0, 1);
+        // Feedback
+        System.out.println("Testing: StackOperator.execute of Operation0");
+        // Var initialization
+        StackNumber stackNumber;
+        StackOperator instance;
+        Complex a;
+        Complex resultExpected;
+        
+        // Case using Add: Stack with 1 elements -> 1 element
+        stackNumber = new StackNumber();
+        instance = new StackOperator(stackNumber);
+        a = new Complex(10, 10);
+        resultExpected = new Sqrt().execute(a);
+        instance.execute(a);
+        instance.execute(new Sqrt());
+        assertEquals(1, stackNumber.size());
+        assertEquals(resultExpected, stackNumber.peekFirst());
     }
 
     /**
@@ -68,8 +85,25 @@ public class StackOperatorTest {
      */
     @Test
     public void testExecute_Operation2() {
-        // To implement
-        assertEquals(0, 1);
-    }
-    
+        // Feedback
+        System.out.println("Testing: StackOperator.execute of Operation0");
+        // Var initialization
+        StackNumber stackNumber;
+        StackOperator instance;
+        Complex a;
+        Complex b;
+        Complex resultExpected;
+        
+        // Case using Add: Stack with 2 elements -> 1 element
+        stackNumber = new StackNumber();
+        instance = new StackOperator(stackNumber);
+        a = new Complex(10, 10);
+        b = new Complex(10, -10);
+        resultExpected = new Add().execute(a, b);
+        instance.execute(a);
+        instance.execute(b);
+        instance.execute(new Add());
+        assertEquals(1, stackNumber.size());
+        assertEquals(resultExpected, stackNumber.peekFirst());
+    }    
 }
