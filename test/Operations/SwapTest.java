@@ -13,7 +13,7 @@ public class SwapTest {
     @Test
     public void testExecute() {
         // Feedback
-        System.out.println("Testing: Over.execute");
+        System.out.println("Testing: Swap.execute");
         // Var initialization
         Swap instance;
         StackNumber stackNumber;
