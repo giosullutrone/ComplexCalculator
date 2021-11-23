@@ -3,12 +3,8 @@ package Parser;
 import Complex.*;
 import complexcalculator.StackOperator;
 import Operations.*;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class Parser {
     
     private class Splitter {
@@ -17,9 +13,6 @@ public class Parser {
         private double real=0;
         private double img=0;
         
-        private Splitter() {
-        }
-
         public void setSeparator(String separator) {
             this.separator = separator;
         }
@@ -30,23 +23,38 @@ public class Parser {
         }
         
         private void split(String toSplit){
+            //Array that contains real and img part
             String[] parts;
-            if(this.separator.equals("+"))
-                parts = toSplit.trim().split("\\+");
-            else
-                parts = toSplit.trim().split(this.separator);
+            if(this.separator.equals("+")){
+                //Change argument of split function to "\\+" to avoid Java meta
+                parts = toSplit.split("\\+");
+                
+                //Return in order Real and Img part
+                if(parts[0].contains("j")){
+                    this.setParts(parts[1], parts[0].trim().split("j")[0]);
+                }else{
+                    this.setParts(parts[0], parts[1].trim().split("j")[0]);
+                }
+                return;
+            }
             
-            
-            if(parts[0].contains("j")){
-                this.setParts(this.separator + parts[1], parts[0].trim().split("j")[0]);
-            }else{
-                this.setParts(parts[0], this.separator + parts[1].trim().split("j")[0]);
+            //Handle the case of "-" operator twice
+            if(toSplit.indexOf("-")==0 && this.separator.equals("-")){
+                parts = toSplit.substring(1).split(this.separator);
+                if(parts[0].contains("j")){
+                    this.setParts(this.separator + parts[1], this.separator + parts[0].trim().split("j")[0]);
+                }else{
+                    this.setParts(this.separator + parts[0], this.separator + parts[1].trim().split("j")[0]);}
+            }
+            else if(this.separator.equals("-")){
+                parts = toSplit.split(this.separator);
+                if(parts[0].contains("j")){
+                    this.setParts(this.separator + parts[1], parts[0].trim().split("j")[0]);
+                }else{
+                    this.setParts(parts[0], this.separator + parts[1].trim().split("j")[0]);
+                }
             }
         }
-        
-
-        
-        
 
     
     }
@@ -68,7 +76,8 @@ public class Parser {
     
     public void parse(String s) {
         s = s.toLowerCase();
-      
+        s = s.trim();
+        
         if(s.compareTo("+")==0){
             this.stackOperator.execute(new Add());
             return;
@@ -90,14 +99,30 @@ public class Parser {
             return;
         }
         
+        
+        //if there is al least one operator
         if(s.contains(separators.get(0)) || s.contains(separators.get(1))){
-            if(s.contains(separators.get(0)) && !s.contains(separators.get(1)))
+            System.out.println(s);
+            //if there is only first operator
+            if(s.contains(separators.get(0)) && !s.contains(separators.get(1))){
+                //if there is first operator twice
+                System.out.println(s);
+                if (s.chars().filter(ch -> ch == '+').count() == 2)
+                    s=s.substring(1);
+                System.out.println(s);
                 splitter.setSeparator(separators.get(0));
-            if(!s.contains(separators.get(0)) && s.contains(separators.get(1)))
-                splitter.setSeparator(separators.get(1));
+            }
+            //if there is only second operator
+            //splitter class will control if there are two second operators or only one
+            if(!s.contains(separators.get(0)) && s.contains(separators.get(1))){
+                    splitter.setSeparator(separators.get(1));
+            }
+            //if there are both the operators
             if(s.contains(separators.get(0)) && s.contains(separators.get(1))){
+                //if first come before second
                 if(s.indexOf(separators.get(0)) > s.indexOf(separators.get(1)))
                     splitter.setSeparator(separators.get(0));
+                //if second come before first
                 if(s.indexOf(separators.get(0)) < s.indexOf(separators.get(1)))
                     splitter.setSeparator(separators.get(1));
             }
