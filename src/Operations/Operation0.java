@@ -8,5 +8,9 @@ import complexcalculator.StackNumber;
  * The Operation0 interface provides one method to execute the associated operation
  */
 public interface Operation0{
+    /**
+     * Method used to execute a specific operation on the provided stack.
+     * @param stackNumber: StackNumber object to work with.
+     */
     public void execute(StackNumber stackNumber);
 }
