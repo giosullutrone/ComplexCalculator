@@ -13,7 +13,7 @@ public class ClearTest {
     @Test
     public void testExecute() {
         // Feedback
-        System.out.println("Testing: execute");
+        System.out.println("Testing: Clear.execute");
         // Var initialization
         Clear instance;
         StackNumber stackNumber;
