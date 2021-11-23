@@ -1,29 +1,32 @@
 package complexcalculator;
 
 import Complex.Complex;
-import Operations.Add;
 import Operations.Sqrt;
 import Operations.Clear;
+import Parser.Parser;
 
 public class CalculatorTest {
     public static void main(String[] args) {
         StackNumber s = new StackNumber();
         StackOperator m = new StackOperator(s);
+        Parser testing = new Parser(m);
+        //testing.parse("13+4j");
         
         int n_elements_to_show = 10;
         
-        m.executeOperation(new Complex(10, 5));
+        testing.parse("-10-5j");
+        //m.execute(new Complex(10, 5));
         System.out.println(s.getStack(n_elements_to_show));
         
-        m.executeOperation(new Complex(-2, -2));
+        m.execute(new Complex(-2, -2));
         System.out.println(s.getStack(n_elements_to_show));
         
-        m.executeOperation(new Add());
+        testing.parse("   +  ");
         System.out.println(s.getStack(n_elements_to_show));
         
-        m.executeOperation(new Sqrt());
+        m.execute(new Sqrt());
         System.out.println(s.getStack(n_elements_to_show));
         
-        m.executeOperation(new Clear());
+        m.execute(new Clear());
     }
 }

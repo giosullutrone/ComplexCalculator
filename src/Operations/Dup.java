@@ -5,8 +5,8 @@ import complexcalculator.StackNumber;
 
 public class Dup implements Operation0{
     @Override
-    public void execute(StackNumber s) {
-        Complex c = s.peekFirst();
-        s.push(c);
+    public void execute(StackNumber stackNumber) {
+        Complex c = stackNumber.peekFirst();
+        stackNumber.push(c);
     }
 }

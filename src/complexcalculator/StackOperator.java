@@ -12,21 +12,20 @@ public class StackOperator {
         this.stackNumber = stackNumber;
     }
     
-    // TODO: Is this necessary?
-    public void executeOperation(Complex c) {
+    public void execute(Complex c) {
         this.stackNumber.push(c);
     }
     
-    public void executeOperation(Operation0 op) {
+    public void execute(Operation0 op) {
         op.execute(this.stackNumber);
     }
     
-    public void executeOperation(Operation1 op) {
+    public void execute(Operation1 op) {
         Complex result = op.execute(this.stackNumber.pop());
         this.stackNumber.push(result);
     }
     
-    public void executeOperation(Operation2 op) {
+    public void execute(Operation2 op) {
         Complex result = op.execute(this.stackNumber.pop(),
                                     this.stackNumber.pop());
         this.stackNumber.push(result);
