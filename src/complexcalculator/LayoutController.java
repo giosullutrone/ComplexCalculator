@@ -6,6 +6,7 @@ import complexcalculator.StackNumber;
 import complexcalculator.StackOperator;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,7 +50,11 @@ public class LayoutController implements Initializable {
         
         //Deleting the current rows and replacing with the new
         listView.getItems().clear();
-        //listView.getItems().addAll(stackNum.getStack());
+        //List<String> l =stackNum.getStack(12);
+        //for (String x : l){
+        //    System.out.println(x);
+        //}
+        listView.getItems().addAll(stackNum.getStack(12));
         
         
     }    
