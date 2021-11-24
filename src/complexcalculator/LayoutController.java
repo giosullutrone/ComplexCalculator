@@ -32,8 +32,8 @@ public class LayoutController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Initialize the two stacks
-        StackNumber stackNum = new StackNumber();
-        StackOperator stackOp = new StackOperator(stackNum);
+        stackNum = new StackNumber();
+        stackOp = new StackOperator(stackNum);
         
         //Initialize the Parser
         par= new Parser(stackOp);
@@ -50,10 +50,8 @@ public class LayoutController implements Initializable {
         
         //Deleting the current rows and replacing with the new
         listView.getItems().clear();
-        //List<String> l =stackNum.getStack(12);
-        //for (String x : l){
-        //    System.out.println(x);
-        //}
+        
+            
         listView.getItems().addAll(stackNum.getStack(12));
         
         
