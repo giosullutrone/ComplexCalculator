@@ -1,32 +1,32 @@
 package complexcalculator;
 
+import Complex.Complex;
 import Parser.Parser;
+import complexcalculator.StackNumber;
+import complexcalculator.StackOperator;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class LayoutController implements Initializable {
     @FXML
     private TextField textField;
-    @FXML
-    private TableView<String> tableView;
-    @FXML
-    private TableColumn<String, String> stackColumn;
-    
-    private ObservableList<String> stackList;
     
     StackNumber stackNum;
             
     StackOperator stackOp;
     
     Parser par;
+    @FXML
+    private ListView<String> listView;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -35,24 +35,22 @@ public class LayoutController implements Initializable {
         StackOperator stackOp = new StackOperator(stackNum);
         
         //Initialize the Parser
-        //par= new Parser();
-        
-        //Initialize the tableview 
-        tableView = new TableView<>();
-        
-        //Initialize the ObservableList
-        stackList= FXCollections.observableArrayList();       
-        
-        //Initialize the column of the stack
-        stackColumn = new TableColumn<>();
+        par= new Parser(stackOp);
+   
     }
 
     @FXML
     private void enterPressed(ActionEvent event) {
         //Parse the content of the string
-        //par.parse(textField.getText());
-        
+        par.parse(textField.getText());
+          
         //resest the textFileld
         textField.setText(""); 
+        
+        //Deleting the current rows and replacing with the new
+        listView.getItems().clear();
+        //listView.getItems().addAll(stackNum.getStack());
+        
+        
     }    
 }
