@@ -5,5 +5,5 @@ import static org.junit.Assert.*;
 
 public class StackNumberTest {
     @Test
-    public void testGetStack() {}    
+    public void testGetStack() {}
 }
