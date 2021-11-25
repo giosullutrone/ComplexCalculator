@@ -29,6 +29,15 @@ public class LayoutController implements Initializable {
     @FXML
     private ListView<String> listView;
     
+
+    /**
+    * Method called on the start of the interface and initaliaze the stack of number,
+    * the stack of operator and the parser
+    *
+    * @param URL
+    * @param ResourceBundle
+    *
+    */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Initialize the two stacks
@@ -37,9 +46,15 @@ public class LayoutController implements Initializable {
         
         //Initialize the Parser
         par= new Parser(stackOp);
-   
     }
-
+    /**
+    * Method called by the user interface on the press of the enter button
+    * take the string in the text field and gives it to the parser, resets the 
+    * text field and updates the list view
+    *
+    * @param ActionEvent
+    *
+    */
     @FXML
     private void enterPressed(ActionEvent event) {
         //Parse the content of the string
@@ -49,9 +64,7 @@ public class LayoutController implements Initializable {
         textField.setText(""); 
         
         //Deleting the current rows and replacing with the new
-        listView.getItems().clear();
-        
-            
+        listView.getItems().clear();   
         listView.getItems().addAll(stackNum.getStack(12));
         
         
