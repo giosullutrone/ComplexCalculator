@@ -10,6 +10,7 @@ public class Div implements Operation2{
      * Method used to divide two complex number 
      * @param a: Complex number 
      * @param b: Complex number 
+     * @return Complex number that contains the result after the operation has been executed
      */
     @Override
     public Complex execute(Complex a, Complex b) {
