@@ -6,7 +6,11 @@ import javafx.scene.control.Alert;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Div implements Operation2{
-   
+   /**
+     * Method used to divide two complex number 
+     * @param a: Complex number 
+     * @param b: Complex number 
+     */
     @Override
     public Complex execute(Complex a, Complex b) {
         //TODO: not insert 0+0j after alert

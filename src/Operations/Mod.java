@@ -3,7 +3,10 @@ package Operations;
 import Complex.Complex;
 
 public class Mod implements Operation1{
-    
+    /**
+     * Method used to do the module of a complex number 
+     * @param a: Complex number 
+     */
     @Override
     public Complex execute(Complex a) {
         if (a.getReal()!=0 || a.getImg()!=0) {
