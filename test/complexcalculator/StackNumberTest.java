@@ -30,7 +30,7 @@ public class StackNumberTest {
         assertEquals(lString.get(0), new Complex(10, -10).toString());
         assertEquals(lString.get(1), new Complex(10, 10).toString());
         
-        // Case: Stack with 20 elements -> 12 element shown
+        // Case: Stack with 20 elements -> top 12 element shown
         instance = new StackNumber();
         stackOperator = new StackOperator(instance);
         for (int i=0; i<20; i++) {

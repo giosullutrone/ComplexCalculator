@@ -1,6 +1,8 @@
 package Complex;
 
-// TODO: change parse
+/**
+ * Implementation of a complex number in Java.
+ */
 public class Complex {
     private final double real;
     private final double img;
@@ -18,7 +20,7 @@ public class Complex {
         return img;
     }
     
-    //public static Complex parser(String str) {
+    //public static Complex parserComplex(String str) {
     //    return new Complex(Double.parseDouble(str), 0.0);
     //}
 
@@ -55,6 +57,11 @@ public class Complex {
         return true;
     }
     
+    /**
+     * Method to get the string associated with the complex number.
+     * Ex. (real=10, img=-10) -> 10-10j; (real=10, img=0) -> 10+0j
+     * @return String representation of the complex number.
+     */
     @Override
     public String toString() {
         return "" + real + ((img >= 0.0) ? "+": "") + img + "j";
