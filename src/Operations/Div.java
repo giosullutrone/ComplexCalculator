@@ -1,24 +1,21 @@
 package Operations;
 
+import AlertMessage.AlertMessage;
 import Complex.Complex;
 import javafx.scene.control.Alert;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Div implements Operation2{
-
+   
     @Override
     public Complex execute(Complex a, Complex b) {
-        
+        //TODO: not insert 0+0j after alert
         if(b.getReal() == 0 && b.getImg() == 0){
-            //Alert alert = new Alert(Alert.AlertType.ERROR);
-            //alert.setTitle("Error Dialog");
-            //alert.setHeaderText(null);
-            //alert.setContentText("WRONG OPERATION");
-            //alert.showAndWait();
+            new AlertMessage("WRONG OPERATION");
           //showMessageDialog(null, "WRONG DIVISION");
           //throw new Exception("WRONG DIVISION");
         }
-        double den=Math.pow(new Mod().execute(a).getReal(),2);
+        double den=Math.pow(new Mod().execute(b).getReal(),2);
         return new Complex((a.getReal()*b.getReal()+a.getImg()*b.getImg())/den,(a.getImg()*b.getReal()-a.getReal()*b.getImg())/den);
     }
     

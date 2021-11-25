@@ -31,10 +31,6 @@ public class Complex {
         hash = 23 * hash + (int) (Double.doubleToLongBits(this.img) ^ (Double.doubleToLongBits(this.img) >>> 32));
         return hash;
     }
-    
-    public Complex conj() {
-        return new Complex(real,-img);
-    }
 
     @Override
     public boolean equals(Object obj) {
@@ -65,6 +61,7 @@ public class Complex {
      */
     @Override
     public String toString() {
-        return "" + real + ((img >= 0.0) ? "+": "") + img + "j";
+        //return "" + real + ((img >= 0.0) ? "+": "") + img + "j";
+        return "" + Math.round(real*100.0)/100.0 + ((img >= 0.0) ? "+": "") + Math.round(img*100.0)/100.0 + "j";
     }
 }
