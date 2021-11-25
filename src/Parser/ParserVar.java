@@ -9,7 +9,7 @@ public class ParserVar implements ParserInterface {
     private final StackNumber stackNumber;
     private final ParserInterface nextParser;
     private final VarDict varDict;
-    
+
     public ParserVar(StackNumber stackNumber, VarDict varDict, ParserInterface nextParser) {
         this.stackNumber = stackNumber;
         this.varDict = varDict;
