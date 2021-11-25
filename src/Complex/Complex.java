@@ -1,16 +1,19 @@
 package Complex;
 
+import AlertMessage.AlertMessage;
+
 /**
  * Implementation of a complex number in Java.
  */
 public class Complex {
-    private final double real;
-    private final double img;
+    private double real;
+    private double img;
     
     public Complex(double real, double img) {
         this.real = real;
         this.img = img;
     }
+    
 
     public double getReal() {
         return real;
@@ -20,9 +23,7 @@ public class Complex {
         return img;
     }
     
-    //public static Complex parserComplex(String str) {
-    //    return new Complex(Double.parseDouble(str), 0.0);
-    //}
+    
 
     @Override
     public int hashCode() {
