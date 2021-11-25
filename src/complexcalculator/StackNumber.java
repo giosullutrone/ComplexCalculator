@@ -4,7 +4,18 @@ import Complex.Complex;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Class that extends a LinkedList of Complex with the addition of problem specific
+ * functions.
+ */
 public class StackNumber extends LinkedList<Complex> {
+    /**
+     * Returns a list of strings containing the top user's specified elements from
+     * the top of the stack, without removing them.
+     * @param nElements: int that defines the number of elements to get from the
+     * top of the stack
+     * @return List of String containing the top nElements converted to string
+     */
     public List<String> getStack(int nElements) {
         List<String> listString = new LinkedList<>();
         
