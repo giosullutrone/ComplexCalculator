@@ -27,4 +27,20 @@ public class StackNumber extends LinkedList<Complex> {
         }
         return listString;
     }
+    
+    /**
+     * Returns a list of strings containing all elements from the top of the 
+     * stack, without removing them.
+     * @return List of String containing the elements converted to string
+     */
+    public List<String> getStack() {
+        List<String> listString = new LinkedList<>();
+        
+        if (this.isEmpty()) return listString;
+        
+        for (Complex c: this) {
+            listString.add(c.toString());
+        }
+        return listString;
+    }
 }

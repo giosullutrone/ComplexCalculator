@@ -57,6 +57,7 @@ public class Complex {
         return true;
     }
     
+    // TODO: precision string
     /**
      * Method to get the string associated with the complex number.
      * Ex. (real=10, img=-10) -> 10-10j; (real=10, img=0) -> 10+0j
