@@ -1,31 +1,22 @@
 package complexcalculator;
 
-import Complex.Complex;
+import Parser.Parser;
 import Parser.ParserFactory;
-import complexcalculator.StackNumber;
-import complexcalculator.StackOperator;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 public class LayoutController implements Initializable {
     @FXML
     private TextField textField;
     
     StackNumber stackNum;
-            
-    StackOperator stackOp;
     
-    ParserFactory par;
+    Parser parser_chained;
     @FXML
     private ListView<String> listView;
     
@@ -40,12 +31,14 @@ public class LayoutController implements Initializable {
     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //Initialize the two stacks
+        //Initialize the stack
         stackNum = new StackNumber();
-        stackOp = new StackOperator(stackNum);
+
         
         //Initialize the ParserFactory
-        par= new ParserFactory(stackOp);
+        ParserFactory par= new ParserFactory(stackNum);
+        parser_chained = par.Chain();
+        
     }
     /**
     * Method called by the user interface on the press of the enter button
@@ -58,7 +51,7 @@ public class LayoutController implements Initializable {
     @FXML
     private void enterPressed(ActionEvent event) {
         //Parse the content of the string
-        par.parse(textField.getText());
+        parser_chained.parse(textField.getText());
           
         //resest the textFileld
         textField.setText(""); 
