@@ -34,7 +34,6 @@ public class LayoutController implements Initializable {
         //Initialize the stack
         stackNum = new StackNumber();
 
-        
         //Initialize the ParserFactory
         ParserFactory par= new ParserFactory(stackNum);
         parser_chained = par.Chain();
