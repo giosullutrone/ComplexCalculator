@@ -22,7 +22,7 @@ public class LayoutController implements Initializable {
     
 
     /**
-    * Method called on the start of the interface and initaliaze the stack of number,
+    * Method called on the start of the interface and initialize the stack of number,
     * the stack of operator and the parser
     *
     * @param URL
@@ -57,7 +57,7 @@ public class LayoutController implements Initializable {
         
         //Deleting the current rows and replacing with the new
         listView.getItems().clear();   
-        listView.getItems().addAll(stackNum.getStack(12));
+        listView.getItems().addAll(stackNum.getStack());
         
         
     }    
