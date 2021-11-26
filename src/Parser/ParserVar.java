@@ -22,6 +22,7 @@ public class ParserVar implements Parser {
         
         if (s.contains("[0-9]")) {
             nextParser.parse(s);
+            return;
         }
         
         // pattern: both one of [<>+-] and a letter from a to z [a-z]
