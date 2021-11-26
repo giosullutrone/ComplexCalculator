@@ -20,7 +20,11 @@ public class ParserVar implements Parser {
     public void parse(String s) {
         s = s.trim().toLowerCase();
         
-        if (s.contains("[0-9]")) {
+        // If it finds a digit, pass it to the next parser.
+        // Pattern: a digit
+        Pattern pattern = Pattern.compile("[0-9]");
+        Matcher matcher = pattern.matcher(s);
+        if (matcher.find()) {
             nextParser.parse(s);
             return;
         }
@@ -28,8 +32,8 @@ public class ParserVar implements Parser {
         // pattern: both one of [<>+-] and a letter from a to z [a-z]
         String p = "([<>+-][a-z])";
         
-        Pattern pattern = Pattern.compile(p);
-        Matcher matcher = pattern.matcher(s);
+        pattern = Pattern.compile(p);
+        matcher = pattern.matcher(s);
 
         if (matcher.find()) {
             String match = matcher.group();
