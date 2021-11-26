@@ -1,5 +1,6 @@
 package Parser;
 
+import Operations.Clear;
 import complexcalculator.StackOperator;
 
 public class ParserStackOperation implements ParserInterface{
@@ -16,10 +17,9 @@ public class ParserStackOperation implements ParserInterface{
         s = s.trim().toLowerCase();
         
         switch(s) {
-            case "save":
-                return;
-            case "restore":
-                return;
+            case "clear":
+            this.stackOperator.execute(new Clear());
+            return;
         }
         
         nextParser.parse(s);

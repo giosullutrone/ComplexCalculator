@@ -1,7 +1,7 @@
 package complexcalculator;
 
 import Complex.Complex;
-import Parser.Parser;
+import Parser.ParserFactory;
 import complexcalculator.StackNumber;
 import complexcalculator.StackOperator;
 import java.net.URL;
@@ -25,7 +25,7 @@ public class LayoutController implements Initializable {
             
     StackOperator stackOp;
     
-    Parser par;
+    ParserFactory par;
     @FXML
     private ListView<String> listView;
     
@@ -44,8 +44,8 @@ public class LayoutController implements Initializable {
         stackNum = new StackNumber();
         stackOp = new StackOperator(stackNum);
         
-        //Initialize the Parser
-        par= new Parser(stackOp);
+        //Initialize the ParserFactory
+        par= new ParserFactory(stackOp);
     }
     /**
     * Method called by the user interface on the press of the enter button

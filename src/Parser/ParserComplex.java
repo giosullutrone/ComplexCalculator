@@ -1,28 +1,18 @@
 package Parser;
 
 import AlertMessage.AlertMessage;
-import Complex.*;
+import Complex.Complex;
 import complexcalculator.StackOperator;
-import Operations.*;
-import java.util.List;
-public class Parser {
-    
-    
+
+public class ParserComplex implements ParserInterface{
     private final StackOperator stackOperator;
     private final String stringRegex = "(?=[+-])";
     private final String wrongInputAlert="Wrong Input!!!";
 
-    
-    public Parser(StackOperator s) {
-        this.stackOperator = s;
+    public ParserComplex(StackOperator stackOperator) {
+        this.stackOperator = stackOperator;
     }
-    
-    public void parse(List<String> ss) {
-        ss.forEach(string -> {
-            parse(string);
-        });
-    }
-    
+
     public void parse(String real, String img) {
         try{
             Double realDouble = Double.parseDouble(real);
@@ -34,32 +24,9 @@ public class Parser {
     }
     
     
+    @Override
     public void parse(String s) {
         s = s.trim().toLowerCase();
-        //OPERATIONS BLOCK
-        if(s.compareTo("+")==0){
-            this.stackOperator.execute(new Add());
-            return;
-        }
-        if(s.compareTo("-")==0){
-            this.stackOperator.execute(new Sub());
-            return;
-        }
-        if(s.compareTo("*")==0){
-            this.stackOperator.execute(new Mul());
-            return;
-        }
-        if(s.compareTo("/")==0){
-            this.stackOperator.execute(new Div());
-            return;
-        }
-        // TMP CLEAR PARSER
-        if(s.compareTo("clear")==0){
-            this.stackOperator.execute(new Clear());
-            return;
-        }
-        
-        //COMPLEX BLOCK
         
         String[] parts= s.split(stringRegex);
         for(String remove : parts){

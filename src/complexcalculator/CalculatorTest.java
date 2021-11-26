@@ -3,13 +3,13 @@ package complexcalculator;
 import Complex.Complex;
 import Operations.Sqrt;
 import Operations.Clear;
-import Parser.Parser;
+import Parser.ParserFactory;
 
 public class CalculatorTest {
     public static void main(String[] args) {
         StackNumber s = new StackNumber();
         StackOperator m = new StackOperator(s);
-        Parser testing = new Parser(m);
+        ParserFactory testing = new ParserFactory(m);
         //testing.parse("13+4j");
         
         int n_elements_to_show = 10;
