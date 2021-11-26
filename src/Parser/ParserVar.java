@@ -20,6 +20,11 @@ public class ParserVar implements Parser {
     public void parse(String s) {
         s = s.trim().toLowerCase();
         
+        if (s.contains("[0-9]")) {
+            nextParser.parse(s);
+            return;
+        }
+        
         // pattern: both one of [<>+-] and a letter from a to z [a-z]
         String p = "([<>+-][a-z])";
         
