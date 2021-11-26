@@ -5,12 +5,12 @@ import complexcalculator.StackNumber;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ParserVar implements ParserInterface {
+public class ParserVar implements Parser {
     private final StackNumber stackNumber;
-    private final ParserInterface nextParser;
+    private final Parser nextParser;
     private final VarDict varDict;
 
-    public ParserVar(StackNumber stackNumber, VarDict varDict, ParserInterface nextParser) {
+    public ParserVar(StackNumber stackNumber, VarDict varDict, Parser nextParser) {
         this.stackNumber = stackNumber;
         this.varDict = varDict;
         this.nextParser = nextParser;

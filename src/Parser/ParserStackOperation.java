@@ -7,11 +7,11 @@ import Operations.Over;
 import Operations.Swap;
 import complexcalculator.StackOperator;
 
-public class ParserStackOperation implements ParserInterface{
+public class ParserStackOperation implements Parser{
     private final StackOperator stackOperator;
-    private final ParserInterface nextParser;
+    private final Parser nextParser;
 
-    public ParserStackOperation(StackOperator stackOperator, ParserInterface nextParser) {
+    public ParserStackOperation(StackOperator stackOperator, Parser nextParser) {
         this.stackOperator = stackOperator;
         this.nextParser = nextParser;
     }

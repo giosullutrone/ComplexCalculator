@@ -1,5 +1,5 @@
 package Parser;
 
-public interface ParserInterface {
+public interface Parser {
     public void parse(String s);
 }

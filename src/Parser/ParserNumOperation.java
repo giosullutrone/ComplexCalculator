@@ -3,11 +3,11 @@ package Parser;
 import Operations.*;
 import complexcalculator.StackOperator;
 
-public class ParserNumOperation implements ParserInterface{
+public class ParserNumOperation implements Parser{
     private final StackOperator stackOperator;
-    private final ParserInterface nextParser;
+    private final Parser nextParser;
 
-    public ParserNumOperation(StackOperator stackOperator, ParserInterface nextParser) {
+    public ParserNumOperation(StackOperator stackOperator, Parser nextParser) {
         this.stackOperator = stackOperator;
         this.nextParser = nextParser;
     }

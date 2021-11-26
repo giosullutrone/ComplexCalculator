@@ -4,7 +4,7 @@ import AlertMessage.AlertMessage;
 import Complex.Complex;
 import complexcalculator.StackOperator;
 
-public class ParserComplex implements ParserInterface{
+public class ParserComplex implements Parser{
     private final StackOperator stackOperator;
     private final String stringRegex = "(?=[+-])";
     private final String wrongInputAlert="Wrong Input!!!";
