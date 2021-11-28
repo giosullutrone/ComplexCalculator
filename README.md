@@ -6,7 +6,7 @@
 
 * [Presentation Pre-Game](https://docs.google.com/presentation/d/1chPARgOzxAGeG8Q2Y5gJ9yREDmWtwPyi/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
 * [Initial Product Backlog](https://docs.google.com/document/d/17yhdsrSqcb1PXq8fn5KbtN7mxemo-67A/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
-* [First Sprint Planning and Backlog](https://docs.google.com/document/d/19LJE1Jd2e5JLm-YOmRVfBmDKwUaClsXb/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
+* [1st Sprint Planning and Backlog](https://docs.google.com/document/d/19LJE1Jd2e5JLm-YOmRVfBmDKwUaClsXb/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
 * [Architecture](https://docs.google.com/document/d/1DKkFdYTtGL8mH3Sqncl1SMpMzEJ7387P/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
 
 ## Authors
