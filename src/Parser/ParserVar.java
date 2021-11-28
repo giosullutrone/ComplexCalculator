@@ -8,9 +8,9 @@ import java.util.regex.Pattern;
 public class ParserVar implements Parser {
     private final StackNumber stackNumber;
     private final Parser nextParser;
-    private final VarDict varDict;
+    private final DictVar varDict;
 
-    public ParserVar(StackNumber stackNumber, VarDict varDict, Parser nextParser) {
+    public ParserVar(StackNumber stackNumber, DictVar varDict, Parser nextParser) {
         this.stackNumber = stackNumber;
         this.varDict = varDict;
         this.nextParser = nextParser;
@@ -37,6 +37,11 @@ public class ParserVar implements Parser {
 
         if (matcher.find()) {
             String match = matcher.group();
+            
+            if (s.length() > 2) {
+                new AlertMessage("Could not do operation on the variable, more than two letters provided");
+                return;
+            }
 
             String operation = match.substring(0, 1);
             String letter = match.substring(1, 2);

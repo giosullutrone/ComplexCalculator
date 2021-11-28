@@ -9,10 +9,10 @@ public class ParserFactory {
     
     private final StackOperator stackOperator;
     private final StackNumber stackNumber;
-    private final VarDict dict;
+    private final DictVar dict;
             
     public ParserFactory(StackNumber s) {
-        this.dict = new VarDict();
+        this.dict = new DictVar();
         this.stackNumber = s;
         this.stackOperator = new StackOperator(s);
     }

@@ -5,11 +5,11 @@ import Operations.Add;
 import Operations.Sub;
 import java.util.HashMap;
 
-public class VarDict {
+public class DictVar {
     private final HashMap<String, Complex> dict;
     private final HashMap<String, Complex> dictCopy;
     
-    public VarDict() {
+    public DictVar() {
         this.dict = new HashMap<>();
         
         for (int i=0; i<26; i++) {
