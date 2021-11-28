@@ -1,9 +1,9 @@
 package complexcalculator;
 
 import Complex.Complex;
-import Operations.Add;
-import Operations.Clear;
-import Operations.Sqrt;
+import Operations.NumOperations.Add;
+import Operations.StackOperations.Clear;
+import Operations.NumOperations.Sqrt;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

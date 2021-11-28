@@ -9,10 +9,20 @@ public class ParserComplex implements Parser{
     private final String stringRegex = "(?=[+-])";
     private final String wrongInputAlert="Wrong Input!!!";
 
+    /**
+     * Constructor of ParserComplex class
+     * @param stackOperator StackOperator on the calculator's stack
+     */
     public ParserComplex(StackOperator stackOperator) {
         this.stackOperator = stackOperator;
     }
 
+    /**
+     * Method used to parse two string in a Complex object
+     * @param real String to parse to real part of Complex
+     * @param img String to parse to img part of Complex
+     */
+    
     public void parse(String real, String img) {
         try{
             Double realDouble = Double.parseDouble(real);
@@ -23,7 +33,10 @@ public class ParserComplex implements Parser{
         }
     }
     
-    
+    /**
+     * Method used to parse a string in a Complex object
+     * @param s string to parse
+     */
     @Override
     public void parse(String s) {
         s = s.trim().toLowerCase();

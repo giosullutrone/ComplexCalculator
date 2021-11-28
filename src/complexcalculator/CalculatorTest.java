@@ -1,8 +1,8 @@
 package complexcalculator;
 
 import Complex.Complex;
-import Operations.Sqrt;
-import Operations.Clear;
+import Operations.NumOperations.Sqrt;
+import Operations.StackOperations.Clear;
 import Parser.ParserFactory;
 
 public class CalculatorTest {
