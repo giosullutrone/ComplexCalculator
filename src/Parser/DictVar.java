@@ -13,6 +13,9 @@ public class DictVar {
     private final HashMap<String, Complex> dict;
     private final HashMap<String, Complex> dictCopy;
     
+    /**
+     * Constructor of DictVar class
+     */
     public DictVar() {
         this.dict = new HashMap<>();
         
@@ -23,27 +26,55 @@ public class DictVar {
         this.dictCopy = new HashMap<>(this.dict);
     }
     
+    /**
+     * Method used to insert a value into the specified key.
+     * @param key
+     * @param value
+     */
     public void put(String key, Complex value) {
         this.dict.put(key, value);
     }
     
+    /**
+     * Method used to get a value from the specified key.
+     * @param key
+     * @return Complex value associated with the key.
+     */
     public Complex get(String key) {
         return this.dict.get(key);
     }
     
+    /**
+     * Method used to insert the result of the addition between value and the old
+     * value associated with the key inside the same key.
+     * @param key
+     * @param value
+     */
     public void add(String key, Complex value) {
         this.dict.put(key, new Add().execute(this.dict.get(key), value));
     }
     
+    /**
+     * Method used to insert the result of the difference between value and the old
+     * value associated with the key inside the same key.
+     * @param key
+     * @param value
+     */
     public void sub(String key, Complex value) {
         this.dict.put(key, new Sub().execute(this.dict.get(key), value));
     }
     
+    /**
+     * Method used to save the current variables dict.
+     */
     public void save() {
         this.dictCopy.clear();
         this.dictCopy.putAll(this.dict);
     }
     
+    /**
+     * Method used to restore the saved variables dict.
+     */
     public void restore() {
         this.dict.clear();
         this.dict.putAll(this.dictCopy);
