@@ -5,17 +5,31 @@ import complexcalculator.StackNumber;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Class that converts user's input into methods used to execute specific operations 
+ * on a provided variable and to save and restore a set of variables.
+ */
 public class ParserVar implements Parser {
     private final StackNumber stackNumber;
     private final Parser nextParser;
     private final DictVar varDict;
 
+    /**
+     * Constructor of ParserVar class
+     * @param stackNumber StackNumber object to do its operations on.
+     * @param varDict DictVar object to do its operations on.
+     */
     public ParserVar(StackNumber stackNumber, DictVar varDict, Parser nextParser) {
         this.stackNumber = stackNumber;
         this.varDict = varDict;
         this.nextParser = nextParser;
     }
 
+    /**
+     * Method used to parse a string into a complex or into an operation for the
+     * DictVar
+     * @param s string to parse
+     */
     @Override
     public void parse(String s) {
         s = s.trim().toLowerCase();

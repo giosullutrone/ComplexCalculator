@@ -5,6 +5,10 @@ import Operations.NumOperations.Add;
 import Operations.NumOperations.Sub;
 import java.util.HashMap;
 
+/**
+ * Class that provides methods used to execute specific operations on a provided 
+ * variable and to save and restore a set of variables.
+ */
 public class DictVar {
     private final HashMap<String, Complex> dict;
     private final HashMap<String, Complex> dictCopy;
