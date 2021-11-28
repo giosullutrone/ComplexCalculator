@@ -33,7 +33,7 @@ public class ParserOperationsTest {
     */ 
     public void test(Object operationObj, String operationString) {
         // Feedback
-        System.out.println("Testing: Parser("+ operationObj.getClass().getSimpleName() +")\n");
+        System.out.println("Testing: Parser("+ operationObj.getClass().getSimpleName() +")");
         
         // Var initialization
         StackNumber stackNumber = new StackNumber(), parseStackNumber = new StackNumber();
