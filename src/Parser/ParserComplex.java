@@ -4,6 +4,9 @@ import AlertMessage.AlertMessage;
 import Complex.Complex;
 import complexcalculator.StackOperator;
 
+/**
+ * Class that converts user's input into a Complex object
+ */
 public class ParserComplex implements Parser{
     private final StackOperator stackOperator;
     private final String stringRegex = "(?=[+-])";

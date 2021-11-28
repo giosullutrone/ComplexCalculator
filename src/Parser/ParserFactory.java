@@ -4,6 +4,9 @@ package Parser;
 import complexcalculator.StackNumber;
 import complexcalculator.StackOperator;
 
+/**
+ * Class that create a Chain of Parser
+ */
 public class ParserFactory {
     
     private final StackOperator stackOperator;
