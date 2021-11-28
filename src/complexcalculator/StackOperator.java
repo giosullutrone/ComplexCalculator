@@ -42,7 +42,11 @@ public class StackOperator {
      * @param op: Operation1 object of whom to call the method
      */
     public void execute(Operation1 op) {
-        if (stackNumber.size() < 1) new AlertMessage("Operation takes 1 element, less than 1 were given.");
+        if (stackNumber.size() < 1) {
+            new AlertMessage("Operation takes 2 elements, less than 2 were given.");
+            return;
+        }
+        
         Complex result = op.execute(this.stackNumber.pop());
         this.stackNumber.push(result);
     }
@@ -53,7 +57,11 @@ public class StackOperator {
      * @param op: Operation2 object of whom to call the method
      */
     public void execute(Operation2 op) {
-        if (stackNumber.size() < 2) new AlertMessage("Operation takes 2 elements, less than 2 were given.");
+        if (stackNumber.size() < 2) {
+            new AlertMessage("Operation takes 2 elements, less than 2 were given.");
+            return;
+        }
+        
         Complex result = op.execute(this.stackNumber.pop(),
                                     this.stackNumber.pop());
         this.stackNumber.push(result);
