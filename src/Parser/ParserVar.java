@@ -18,6 +18,7 @@ public class ParserVar implements Parser {
      * Constructor of ParserVar class
      * @param stackNumber StackNumber object to do its operations on.
      * @param varDict DictVar object to do its operations on.
+     * @param nextParser next Parser of the chain
      */
     public ParserVar(StackNumber stackNumber, DictVar varDict, Parser nextParser) {
         this.stackNumber = stackNumber;

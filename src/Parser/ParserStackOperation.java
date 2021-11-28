@@ -1,19 +1,19 @@
 package Parser;
 
-import Operations.StackOperations.Clear;
-import Operations.StackOperations.Drop;
-import Operations.StackOperations.Dup;
-import Operations.StackOperations.Over;
-import Operations.StackOperations.Swap;
+import Operations.StackOperations.*;
 import complexcalculator.StackOperator;
 
+/**
+ * Class that converts user's input into methods used to execute specific operations 
+ * on the stack.
+ */
 public class ParserStackOperation implements Parser{
     private final StackOperator stackOperator;
     private final Parser nextParser;
 
     /**
      * Constructor of ParserComplex class
-     * @param stackOperator StackOperator on the calculator's stack
+     * @param stackOperator StackOperator object to do its operations on
      * @param nextParser next Parser of the chain
      */
     public ParserStackOperation(StackOperator stackOperator, Parser nextParser) {

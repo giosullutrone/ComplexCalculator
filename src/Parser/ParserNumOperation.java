@@ -1,14 +1,12 @@
 package Parser;
 
-import Operations.NumOperations.Arg;
-import Operations.NumOperations.Mod;
-import Operations.NumOperations.Invert;
-import Operations.NumOperations.Sqrt;
-import Operations.NumOperations.Div;
-import Operations.NumOperations.Mul;
-import Operations.NumOperations.Sub;
-import Operations.NumOperations.Add;
+import Operations.NumOperations.*;
 import complexcalculator.StackOperator;
+
+/**
+ * Class that converts user's input into methods used to execute specific operations 
+ * on the numbers of stack.
+ */
 
 public class ParserNumOperation implements Parser{
     private final StackOperator stackOperator;
