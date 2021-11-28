@@ -5,6 +5,7 @@
  */
 package Operations;
 
+import Operations.NumOperations.Invert;
 import Complex.Complex;
 import complexcalculator.StackNumber;
 import complexcalculator.StackOperator;

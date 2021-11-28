@@ -1,8 +1,8 @@
 package Parser;
 
 import Complex.Complex;
-import Operations.Add;
-import Operations.Sub;
+import Operations.NumOperations.Add;
+import Operations.NumOperations.Sub;
 import java.util.HashMap;
 
 public class VarDict {

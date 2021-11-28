@@ -5,16 +5,14 @@
  */
 package Operations;
 
+import Operations.NumOperations.Add;
 import Complex.Complex;
 import complexcalculator.StackNumber;
 import complexcalculator.StackOperator;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author francesca
- */
+
 public class AddTest {
 
     /**

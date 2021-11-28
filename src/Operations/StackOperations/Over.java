@@ -1,4 +1,4 @@
-package Operations;
+package Operations.StackOperations;
 
 import Complex.Complex;
 import complexcalculator.StackNumber;

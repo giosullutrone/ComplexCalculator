@@ -1,4 +1,4 @@
-package Operations;
+package Operations.NumOperations;
 
 import Complex.Complex;
 

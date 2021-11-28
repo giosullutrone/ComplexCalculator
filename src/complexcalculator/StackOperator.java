@@ -2,9 +2,9 @@ package complexcalculator;
 
 import AlertMessage.AlertMessage;
 import Complex.Complex;
-import Operations.Operation2;
-import Operations.Operation1;
-import Operations.Operation0;
+import Operations.NumOperations.Operation2;
+import Operations.NumOperations.Operation1;
+import Operations.StackOperations.Operation0;
 
 /**
  * Class that provides methods used to execute specific operations on a provided 

@@ -1,5 +1,6 @@
 package Operations;
 
+import Operations.StackOperations.Swap;
 import Complex.Complex;
 import complexcalculator.StackNumber;
 import complexcalculator.StackOperator;
