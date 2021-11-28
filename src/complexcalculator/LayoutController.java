@@ -58,7 +58,7 @@ public class LayoutController implements Initializable {
     * the keyboard while maniplating the textfield, check if the last
     * key pressed is an enter and calls the enterHandler function to perform operation
     *
-    * @param ActionEvent
+    * @param KeyEvent
     *
     */
     @FXML
@@ -72,8 +72,6 @@ public class LayoutController implements Initializable {
     * Method for handeling the usage of the enter button and the enter key.
     * Take the string in the text field and gives it to the parser, resets the 
     * text field and updates the list view
-    *
-    * @param ActionEvent
     *
     */
     private void enterHandler(){
