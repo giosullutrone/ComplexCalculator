@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 public class LayoutController implements Initializable {
     @FXML
@@ -39,16 +40,43 @@ public class LayoutController implements Initializable {
         parser_chained = par.Chain();
         
     }
+    
     /**
     * Method called by the user interface on the press of the enter button
-    * take the string in the text field and gives it to the parser, resets the 
-    * text field and updates the list view
+    * calls the enterHandler function to perform operation
     *
     * @param ActionEvent
     *
     */
     @FXML
     private void enterPressed(ActionEvent event) {
+        enterHandler(); 
+    }  
+    
+    /**
+    * Method called by the user interface on the press of any key on
+    * the keyboard while maniplating the textfield, check if the last
+    * key pressed is an enter and calls the enterHandler function to perform operation
+    *
+    * @param ActionEvent
+    *
+    */
+    @FXML
+    private void textEnterPressed(KeyEvent event) {
+        if(event.getText().contains("\r")){
+            enterHandler(); 
+        }
+    }
+    
+    /**
+    * Method for handeling the usage of the enter button and the enter key.
+    * Take the string in the text field and gives it to the parser, resets the 
+    * text field and updates the list view
+    *
+    * @param ActionEvent
+    *
+    */
+    private void enterHandler(){
         //Parse the content of the string
         parser_chained.parse(textField.getText());
           
@@ -59,6 +87,5 @@ public class LayoutController implements Initializable {
         listView.getItems().clear();   
         listView.getItems().addAll(stackNum.getStack());
         
-        
-    }    
+    }
 }
