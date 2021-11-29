@@ -2,7 +2,7 @@
 
 <ClassDiagram name="ComplexCalculator">
   <ClassDiagramComponents>
-    <Class name="LayoutController" package="complexcalculator" visibility="public" xPosition="210.0" yPosition="657.0">
+    <Class name="LayoutController" package="complexcalculator" visibility="public" xPosition="100.0" yPosition="552.0">
       <Fields>
         <Field name="textField" type="TextField" visibility="private"/>
         <Field name="stackNum" type="StackNumber" visibility="package"/>
@@ -24,7 +24,7 @@
         <Method name="enterHandler" returnType="void" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="StackNumber" package="complexcalculator" visibility="public" xPosition="728.0" yPosition="657.0">
+    <Class name="StackNumber" package="complexcalculator" visibility="public" xPosition="709.0" yPosition="609.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -34,7 +34,7 @@
         <Method name="getStack" returnType="List&lt;String&gt;" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="StackOperator" package="complexcalculator" visibility="public" xPosition="1462.0" yPosition="1040.0">
+    <Class name="StackOperator" package="complexcalculator" visibility="public" xPosition="1214.0" yPosition="533.0">
       <Fields>
         <Field name="stackNumber" type="StackNumber" visibility="private" isFinal="true"/>
       </Fields>
@@ -84,7 +84,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ParserComplex" package="Parser" visibility="public" xPosition="2076.0" yPosition="1460.0">
+    <Class name="ParserComplex" package="Parser" visibility="public" xPosition="2204.0" yPosition="1450.0">
       <Fields>
         <Field name="stackOperator" type="StackOperator" visibility="private" isFinal="true"/>
         <Field name="stringRegex" type="String" visibility="private" isFinal="true"/>
@@ -105,7 +105,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ParserFactory" package="Parser" visibility="public" xPosition="242.0" yPosition="1111.0">
+    <Class name="ParserFactory" package="Parser" visibility="public" xPosition="175.0" yPosition="1058.0">
       <Fields>
         <Field name="stackOperator" type="StackOperator" visibility="private" isFinal="true"/>
         <Field name="stackNumber" type="StackNumber" visibility="private" isFinal="true"/>
@@ -120,7 +120,7 @@
         <Method name="Chain" returnType="Parser" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="ParserNumOperation" package="Parser" visibility="public" xPosition="1067.0" yPosition="1469.0">
+    <Class name="ParserNumOperation" package="Parser" visibility="public" xPosition="1128.0" yPosition="1450.0">
       <Fields>
         <Field name="stackOperator" type="StackOperator" visibility="private" isFinal="true"/>
         <Field name="nextParser" type="Parser" visibility="private" isFinal="true"/>
@@ -137,7 +137,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ParserStackOperation" package="Parser" visibility="public" xPosition="1580.0" yPosition="1469.0">
+    <Class name="ParserStackOperation" package="Parser" visibility="public" xPosition="1684.0" yPosition="1450.0">
       <Fields>
         <Field name="stackOperator" type="StackOperator" visibility="private" isFinal="true"/>
         <Field name="nextParser" type="Parser" visibility="private" isFinal="true"/>
@@ -154,7 +154,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ParserVar" package="Parser" visibility="public" xPosition="565.0" yPosition="1469.0">
+    <Class name="ParserVar" package="Parser" visibility="public" xPosition="557.0" yPosition="1450.0">
       <Fields>
         <Field name="stackNumber" type="StackNumber" visibility="private" isFinal="true"/>
         <Field name="nextParser" type="Parser" visibility="private" isFinal="true"/>
@@ -173,14 +173,14 @@
         </Method>
       </Methods>
     </Class>
-    <Interface name="Operation1" package="Operations.NumOperations" visibility="public" xPosition="2184.0" yPosition="801.0">
+    <Interface name="Operation1" package="Operations.NumOperations" visibility="public" xPosition="1128.0" yPosition="224.0">
       <Methods>
         <Method name="execute" returnType="Complex" visibility="public">
           <Argument type="Complex" name="a"/>
         </Method>
       </Methods>
     </Interface>
-    <Interface name="Operation2" package="Operations.NumOperations" visibility="public" xPosition="1835.0" yPosition="801.0">
+    <Interface name="Operation2" package="Operations.NumOperations" visibility="public" xPosition="1462.0" yPosition="224.0">
       <Methods>
         <Method name="execute" returnType="Complex" visibility="public">
           <Argument type="Complex" name="a"/>
@@ -188,28 +188,44 @@
         </Method>
       </Methods>
     </Interface>
-    <Interface name="Operation0" package="Operations.StackOperations" visibility="public" xPosition="1462.0" yPosition="801.0">
+    <Interface name="Operation0" package="Operations.StackOperations" visibility="public" xPosition="709.0" yPosition="224.0">
       <Methods>
         <Method name="execute" returnType="void" visibility="public">
           <Argument type="StackNumber" name="stackNumber"/>
         </Method>
       </Methods>
     </Interface>
+    <Interface name="Parser" package="Parser" visibility="public" xPosition="1146.0" yPosition="1102.0">
+      <Methods>
+        <Method name="parse" returnType="void" visibility="public">
+          <Argument type="String" name="s"/>
+        </Method>
+      </Methods>
+    </Interface>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation source="complexcalculator.StackOperator" target="Operations.NumOperations.Operation2" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="complexcalculator.StackOperator" target="Operations.NumOperations.Operation1" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="complexcalculator.StackOperator" target="Operations.StackOperations.Operation0" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="Operations.StackOperations.Operation0" target="complexcalculator.StackNumber" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="dict" source="Parser.ParserFactory" target="Parser.DictVar" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="varDict" source="Parser.ParserVar" target="Parser.DictVar" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation name="Use" source="complexcalculator.LayoutController" target="Parser.ParserFactory" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="stackOperator" source="Parser.ParserFactory" target="complexcalculator.StackOperator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="nextParser" source="Parser.ParserStackOperation" target="Parser.Parser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Parser.ParserStackOperation" target="Parser.Parser"/>
+    <HasRelation name="stackNumber" source="complexcalculator.StackOperator" target="complexcalculator.StackNumber" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Parser.ParserVar" target="Parser.Parser"/>
+    <HasRelation name="stackOperator" source="Parser.ParserComplex" target="complexcalculator.StackOperator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="stackNum" source="complexcalculator.LayoutController" target="complexcalculator.StackNumber" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Parser.ParserNumOperation" target="Parser.Parser"/>
     <HasRelation name="stackOperator" source="Parser.ParserStackOperation" target="complexcalculator.StackOperator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="stackNumber" source="Parser.ParserFactory" target="complexcalculator.StackNumber" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="stackOperator" source="Parser.ParserComplex" target="complexcalculator.StackOperator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="stackNumber" source="complexcalculator.StackOperator" target="complexcalculator.StackNumber" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="complexcalculator.StackOperator" target="Operations.StackOperations.Operation0" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="stackNum" source="complexcalculator.LayoutController" target="complexcalculator.StackNumber" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dict" source="Parser.ParserFactory" target="Parser.DictVar" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="stackOperator" source="Parser.ParserNumOperation" target="complexcalculator.StackOperator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="complexcalculator.StackOperator" target="Operations.NumOperations.Operation1" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="parser_chained" source="complexcalculator.LayoutController" target="Parser.Parser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Parser.ParserComplex" target="Parser.Parser"/>
+    <UseRelation source="Parser.ParserFactory" target="Parser.Parser" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="varDict" source="Parser.ParserVar" target="Parser.DictVar" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="complexcalculator.StackOperator" target="Operations.NumOperations.Operation2" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="nextParser" source="Parser.ParserNumOperation" target="Parser.Parser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="stackNumber" source="Parser.ParserVar" target="complexcalculator.StackNumber" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="nextParser" source="Parser.ParserVar" target="Parser.Parser" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
