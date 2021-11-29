@@ -17,6 +17,16 @@ import Operations.NumOperations.Mul;
 import Operations.NumOperations.Sub;
 import Operations.NumOperations.Add;
 import Complex.Complex;
+import Operations.NumOperations.Acos;
+import Operations.NumOperations.Asin;
+import Operations.NumOperations.Atan;
+import Operations.NumOperations.Conj;
+import Operations.NumOperations.Cos;
+import Operations.NumOperations.Exp;
+import Operations.NumOperations.Log;
+import Operations.NumOperations.Pow;
+import Operations.NumOperations.Sin;
+import Operations.NumOperations.Tan;
 import complexcalculator.StackNumber;
 import complexcalculator.StackOperator;
 import org.junit.Test;
@@ -91,7 +101,27 @@ public class ParserOperationsTest {
         
         test(new Mod(), "mod");
         
-        test(new Arg(), "arg");     
+        test(new Arg(), "arg"); 
+        
+        test(new Exp(), "exp");
+        
+        test(new Log(), "log");
+        
+        test(new Sin(), "sin");
+        
+        test(new Cos(), "cos");
+        
+        test(new Tan(), "tan");
+        
+        test(new Asin(), "asin");
+        
+        test(new Acos(), "acos");
+        
+        test(new Atan(), "atan");
+        
+        test(new Conj(), "conj");
+        
+        test(new Pow(), "pow");
         
     }
     

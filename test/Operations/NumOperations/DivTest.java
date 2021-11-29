@@ -3,39 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Operations;
+package Operations.NumOperations;
 
-import Operations.NumOperations.Add;
+import Operations.NumOperations.Div;
 import Complex.Complex;
 import complexcalculator.StackNumber;
 import complexcalculator.StackOperator;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-
-public class AddTest {
+public class DivTest {
 
     /**
-     * Test of execute method, of class Add.
+     * Test of execute method, of class Div.
      */
     @Test
     public void testExecute() {
         // Feedback
-        System.out.println("Testing: Add.execute");
+        System.out.println("Testing: Div.execute");
         // Var initialization
-        Add instance;
+        Div instance;
         StackNumber stackNumber;
         StackOperator stackOperator;
         
         // Case: Stack with 2 elements
-        instance = new Add();
+        instance = new Div();
         stackNumber = new StackNumber();
         stackOperator = new StackOperator(stackNumber);
         stackOperator.execute(new Complex(10, 10));
-        stackOperator.execute(new Complex(10, -10));
+        stackOperator.execute(new Complex(10, -5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(20, 0), stackNumber.peekFirst());
+        assertEquals(new Complex(0.24999999999999997, -0.7499999999999999), stackNumber.peekFirst());
     }
     
 }
