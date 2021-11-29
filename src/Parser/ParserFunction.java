@@ -1,7 +1,7 @@
 package Parser;
 
-import Operations.StackOperations.*;
-import complexcalculator.StackOperator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Class that converts user's input into methods used to execute specific operations 
@@ -13,7 +13,7 @@ public class ParserFunction implements Parser{
 
     /**
      * Constructor of ParserComplex class
-     * @param stackOperator StackOperator object to do its operations on
+     * @param dictFunction DictFuntion object to do its operations on.
      * @param nextParser next Parser of the chain
      */
     public ParserFunction(DictFunction dictFunction, Parser nextParser) {
@@ -22,17 +22,31 @@ public class ParserFunction implements Parser{
     }
 
     /**
-     * Method used to parse a string to a StackOperation 
+     * Method used to parse a string to a single string of multiple StackOperations
+     * Ex. possible output = "dup over 10+10j"
      * @param s String to parse
      */
     @Override
     public void parse(String s) {
         s = s.trim().toLowerCase();
         
-        switch(s) {
-            case "clear":
-                return;
+        boolean replaced = true;
+        
+        while (replaced) {
+            replaced = false;
+            
+            for (String key : this.dictFunction.keySet()) {
+                String p = "\\b" + key + "\\b";
+
+                Pattern pattern = Pattern.compile(p);
+                Matcher matcher = pattern.matcher(s);
+
+                if (matcher.find()) replaced = true;
+
+                s = matcher.replaceAll(this.dictFunction.get(key));
             }
+        }
+        
         nextParser.parse(s);
     }
 }

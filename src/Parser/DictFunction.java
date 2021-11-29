@@ -1,20 +1,16 @@
 package Parser;
 
-import Complex.Complex;
-import Operations.NumOperations.Add;
-import Operations.NumOperations.Sub;
 import java.util.HashMap;
 
-//TODO: change javadoc
 /**
  * Class that provides methods used to execute specific operations on a provided 
- * variable and to save and restore a set of variables.
+ * function.
  */
 public class DictFunction {
     private final HashMap<String, String> dict;
     
     /**
-     * Constructor of DictVar class
+     * Constructor of DictFunction class
      */
     public DictFunction() {
         this.dict = new HashMap<>();
@@ -22,8 +18,8 @@ public class DictFunction {
     
     /**
      * Method used to insert a value into the specified key.
-     * @param key
-     * @param value
+     * @param key name of the function.
+     * @param value single string of multiple operations associated with the key.
      */
     public void put(String key, String value) {
         this.dict.put(key, value);
@@ -31,10 +27,18 @@ public class DictFunction {
     
     /**
      * Method used to get a value from the specified key.
-     * @param key
-     * @return Complex value associated with the key.
+     * @param key name of the function.
+     * @return String value associated with the key.
      */
     public String get(String key) {
         return this.dict.get(key);
+    }
+    
+    /**
+     * Method used to get a set of all keys.
+     * @return iterable of all keys.
+     */
+    public Iterable<String> keySet() {
+        return this.dict.keySet();
     }
 }
