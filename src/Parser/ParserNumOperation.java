@@ -49,6 +49,9 @@ public class ParserNumOperation implements Parser{
             case "+-":
                 this.stackOperator.execute(new Invert());
                 return;
+            case "conj":
+                this.stackOperator.execute(new Conj());
+                return;
                 
             //Trascental  Functions
             case "mod":
@@ -56,6 +59,33 @@ public class ParserNumOperation implements Parser{
                 return;
             case "arg":
                 this.stackOperator.execute(new Arg());
+                return;
+            case "exp":
+                this.stackOperator.execute(new Exp());
+                return;
+            case "log":
+                this.stackOperator.execute(new Log());
+                return;
+            case "pow":
+                this.stackOperator.execute(new Pow());
+                return;
+            case "sin":
+                this.stackOperator.execute(new Sin());
+                return;
+            case "cos":
+                this.stackOperator.execute(new Cos());
+                return;
+            case "tan":
+                this.stackOperator.execute(new Tan());
+                return;
+            case "asin":
+                this.stackOperator.execute(new Asin());
+                return;
+            case "acos":
+                this.stackOperator.execute(new Acos());
+                return;
+            case "atan":
+                this.stackOperator.execute(new Atan());
                 return;
         }
         

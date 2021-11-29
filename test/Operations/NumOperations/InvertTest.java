@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Operations;
+package Operations.NumOperations;
 
 import Operations.NumOperations.Invert;
 import Complex.Complex;
@@ -12,10 +12,6 @@ import complexcalculator.StackOperator;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author francesca
- */
 public class InvertTest {
 
     /**

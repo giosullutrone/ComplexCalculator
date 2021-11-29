@@ -3,42 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Operations;
+package Operations.NumOperations;
 
-import Operations.NumOperations.Mod;
+import Operations.NumOperations.Arg;
 import Complex.Complex;
 import complexcalculator.StackNumber;
 import complexcalculator.StackOperator;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author francesca
- */
-public class ModTest {
-    
-
+public class ArgTest {
     /**
-     * Test of execute method, of class Mod.
+     * Test of execute method, of class Arg.
      */
     @Test
     public void testExecute() {
         // Feedback
-        System.out.println("Testing: Mod.execute");
+        System.out.println("Testing: Arg.execute");
         // Var initialization
-        Mod instance;
+        Arg instance;
         StackNumber stackNumber;
         StackOperator stackOperator;
         
         // Case: Stack with 1 elements
-        instance = new Mod();
+        instance = new Arg();
         stackNumber = new StackNumber();
         stackOperator = new StackOperator(stackNumber);
         stackOperator.execute(new Complex(9, 5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(10.295630140987, 0), stackNumber.peekFirst());
+        assertEquals(new Complex(0.5070985043923369, 0), stackNumber.peekFirst());
     }
     
 }
