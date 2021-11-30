@@ -1,5 +1,6 @@
 package Parser;
 
+import AlertMessage.SyntaxException;
 import Complex.Complex;
 import complexcalculator.StackNumber;
 import complexcalculator.StackOperator;
@@ -62,7 +63,7 @@ public class ParserVarTest {
             instance.parse(">aa");
             assertEquals(dictVar.get("aa"), null);
             assertTrue(false);
-        } catch (ExceptionInInitializerError e) {}
+        } catch (SyntaxException e) {}
         
         // Case: >>[a-z]
         stackNumber = new StackNumber();
@@ -74,7 +75,7 @@ public class ParserVarTest {
         try {
             instance.parse(">>a");
             assertTrue(false);
-        } catch (NoClassDefFoundError e) {}
+        } catch (SyntaxException e) {}
         
         // Case: <[a-z]
         stackNumber = new StackNumber();
@@ -109,7 +110,7 @@ public class ParserVarTest {
             instance.parse(">aa");
             instance.parse("<aa");
             assertTrue(false);
-        } catch (NoClassDefFoundError e) {}
+        } catch (SyntaxException e) {}
         
         // Case: Save - Restore
         stackNumber = new StackNumber();

@@ -1,6 +1,7 @@
 package complexcalculator;
 
 import AlertMessage.AlertMessage;
+import AlertMessage.OperationException;
 import Complex.Complex;
 import Operations.NumOperations.Operation2;
 import Operations.NumOperations.Operation1;
@@ -43,8 +44,7 @@ public class StackOperator {
      */
     public void execute(Operation1 op) {
         if (stackNumber.size() < 1) {
-            new AlertMessage("Operation takes 2 elements, less than 2 were given.");
-            return;
+            throw new OperationException("Operation takes 1 elements, less than 1 were given.");
         }
         
         Complex result = op.execute(this.stackNumber.pop());
@@ -58,8 +58,7 @@ public class StackOperator {
      */
     public void execute(Operation2 op) {
         if (stackNumber.size() < 2) {
-            new AlertMessage("Operation takes 2 elements, less than 2 were given.");
-            return;
+            throw new OperationException("Operation takes 2 elements, less than 2 were given.");
         }
         
         Complex result = op.execute(this.stackNumber.pop(),

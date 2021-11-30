@@ -1,5 +1,6 @@
 package Parser;
 
+import AlertMessage.OperationException;
 import Complex.Complex;
 import Operations.NumOperations.Add;
 import Operations.NumOperations.Sub;
@@ -20,7 +21,7 @@ public class DictVar {
         this.dict = new HashMap<>();
         
         for (int i=0; i<26; i++) {
-            this.dict.put(String.valueOf((char) ('a' + 1)), new Complex(0, 0));
+            this.dict.put(String.valueOf((char) ('a' + i)), null);
         }
         
         this.dictCopy = new HashMap<>(this.dict);
@@ -32,6 +33,7 @@ public class DictVar {
      * @param value
      */
     public void put(String key, Complex value) {
+        if (!this.dict.containsKey(key)) throw new OperationException("Could not save variable, variable not in the accepted range");
         this.dict.put(key, value);
     }
     
@@ -41,6 +43,8 @@ public class DictVar {
      * @return Complex value associated with the key.
      */
     public Complex get(String key) {
+        if (!this.dict.containsKey(key)) throw new OperationException("Could not load variable, variable not in the accepted range");
+        if (this.dict.get(key)==null) throw new OperationException("Could not load variable, no value has been assigned to the variable");
         return this.dict.get(key);
     }
     
@@ -51,6 +55,7 @@ public class DictVar {
      * @param value
      */
     public void add(String key, Complex value) {
+        if (this.dict.get(key)==null) throw new OperationException("Could not update variable, no value has been assigned to the variable");
         this.dict.put(key, new Add().execute(this.dict.get(key), value));
     }
     
@@ -61,6 +66,7 @@ public class DictVar {
      * @param value
      */
     public void sub(String key, Complex value) {
+        if (this.dict.get(key)==null) throw new OperationException("Could not update variable, no value has been assigned to the variable");
         this.dict.put(key, new Sub().execute(this.dict.get(key), value));
     }
     

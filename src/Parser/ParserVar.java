@@ -67,15 +67,15 @@ public class ParserVar implements Parser {
                     this.nextParser.parse(this.varDict.get(letter).toString());
                     return;
                 case ">":
-                    if (this.stackNumber.isEmpty()) throw new OperationException("Stack is empty.");
+                    if (this.stackNumber.isEmpty()) throw new OperationException("Could not save the variable, stack is empty.");
                     this.varDict.put(letter, this.stackNumber.pop());
                     return;
                 case "+":
-                    if (this.stackNumber.isEmpty()) throw new OperationException("Stack is empty.");
+                    if (this.stackNumber.isEmpty()) throw new OperationException("Could not update the variable, stack is empty.");
                     this.varDict.add(letter, this.stackNumber.pop());
                     return;
                 case "-":
-                    if (this.stackNumber.isEmpty()) throw new OperationException("Stack is empty.");
+                    if (this.stackNumber.isEmpty()) throw new OperationException("Could not update the variable, stack is empty.");
                     this.varDict.sub(letter, this.stackNumber.pop());
                     return;
             }
