@@ -36,7 +36,7 @@ public class PowTest {
         stackOperator.execute(new Complex(9, 5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(-3.5829868267339164, 22.87453212858963), stackNumber.peekFirst());
+        assertEquals(new Complex(-3.58, 22.87).toString(), stackNumber.peekFirst().toString());
     }
     
 }

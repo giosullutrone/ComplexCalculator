@@ -54,7 +54,6 @@ public class Complex {
         return true;
     }
     
-    // TODO: precision string
     /**
      * Method to get the string associated with the complex number.
      * Ex. (real=10, img=-10) -> 10-10j; (real=10, img=0) -> 10+0j
@@ -62,7 +61,6 @@ public class Complex {
      */
     @Override
     public String toString() {
-        //return "" + real + ((img >= 0.0) ? "+": "") + img + "j";
         return "" + Math.round(real*100.0)/100.0 + ((img >= 0.0) ? "+": "") + Math.round(img*100.0)/100.0 + "j";
     }
 }

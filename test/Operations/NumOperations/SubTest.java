@@ -35,7 +35,7 @@ public class SubTest {
         stackOperator.execute(new Complex(10, -10));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(0, -20), stackNumber.peekFirst());
+        assertEquals(new Complex(0, -20).toString(), stackNumber.peekFirst().toString());
     }
     
 }

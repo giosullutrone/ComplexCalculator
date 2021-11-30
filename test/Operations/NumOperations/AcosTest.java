@@ -35,7 +35,7 @@ public class AcosTest {
         stackOperator.execute(new Complex(9, 5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(0.5091084857734445, -3.023624462486275), stackNumber.peekFirst());
+        assertEquals(new Complex(0.51, -3.02).toString(), stackNumber.peekFirst().toString());
     }
     
 }

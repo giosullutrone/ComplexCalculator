@@ -35,7 +35,7 @@ public class ExpTest {
         stackOperator.execute(new Complex(9, 5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(2298.5384958879763,-7770.24387778476), stackNumber.peekFirst());
+        assertEquals(new Complex(2298.54,-7770.24).toString(), stackNumber.peekFirst().toString());
     }
     
 }

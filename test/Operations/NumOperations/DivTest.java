@@ -34,7 +34,7 @@ public class DivTest {
         stackOperator.execute(new Complex(10, -5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(0.24999999999999997, -0.7499999999999999), stackNumber.peekFirst());
+        assertEquals(new Complex(0.25, -0.75).toString(), stackNumber.peekFirst().toString());
     }
     
 }

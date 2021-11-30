@@ -32,7 +32,7 @@ public class ArgTest {
         stackOperator.execute(new Complex(9, 5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(0.5070985043923369, 0), stackNumber.peekFirst());
+        assertEquals(new Complex(0.51, 0).toString(), stackNumber.peekFirst().toString());
     }
     
 }

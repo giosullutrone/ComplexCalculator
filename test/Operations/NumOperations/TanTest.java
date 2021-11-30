@@ -35,7 +35,7 @@ public class TanTest {
         stackOperator.execute(new Complex(9, 5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(-6.818544819942735E-5,0.9999400428082992), stackNumber.peekFirst());
+        assertEquals(new Complex(0.0,1.0).toString(), stackNumber.peekFirst().toString());
     }
     
 }

@@ -35,7 +35,7 @@ public class AsinTest {
         stackOperator.execute(new Complex(9, 5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(1.0616878410214885, 3.023624462486282), stackNumber.peekFirst());
+        assertEquals(new Complex(1.061, 3.02).toString(), stackNumber.peekFirst().toString());
     }
     
 }

@@ -34,7 +34,7 @@ public class ModTest {
         stackOperator.execute(new Complex(9, 5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(10.295630140987, 0), stackNumber.peekFirst());
+        assertEquals(new Complex(10.3, 0).toString(), stackNumber.peekFirst().toString());
     }
     
 }
