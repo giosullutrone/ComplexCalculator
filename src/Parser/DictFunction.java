@@ -41,4 +41,12 @@ public class DictFunction {
     public Iterable<String> keySet() {
         return this.dict.keySet();
     }
+    
+    /**
+     * Method used to check if a .
+     * @return boolean indicating if a function is used inside another function.
+     */
+    public boolean isUsed() {
+        return false;
+    }
 }
