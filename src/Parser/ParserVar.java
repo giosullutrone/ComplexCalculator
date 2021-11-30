@@ -1,6 +1,7 @@
 package Parser;
 
 import AlertMessage.AlertMessage;
+import AlertMessage.SyntaxException;
 import complexcalculator.StackNumber;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -54,8 +55,7 @@ public class ParserVar implements Parser {
             String match = matcher.group();
             
             if (s.length() > 2) {
-                new AlertMessage("Could not do operation on the variable, more than two letters provided");
-                return;
+                throw new SyntaxException("");
             }
 
             String operation = match.substring(0, 1);
