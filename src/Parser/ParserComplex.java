@@ -1,6 +1,7 @@
 package Parser;
 
 import AlertMessage.AlertMessage;
+import AlertMessage.SyntaxException;
 import Complex.Complex;
 import complexcalculator.StackOperator;
 
@@ -32,7 +33,7 @@ public class ParserComplex implements Parser{
             Double imgDouble = Double.parseDouble(img);
             this.stackOperator.execute(new Complex(realDouble, imgDouble));
         } catch(NumberFormatException e){
-            new AlertMessage("", wrongInputAlert);
+            throw new SyntaxException(wrongInputAlert);
         }
     }
     
@@ -61,11 +62,11 @@ public class ParserComplex implements Parser{
                 else if(parts[1].contains("j"))
                     parse(parts[0], parts[1].replace("j", ""));
                 else
-                    new AlertMessage("", wrongInputAlert);
+                    throw new SyntaxException(wrongInputAlert);
                 break;
             default:
-                new AlertMessage("", wrongInputAlert);
-                break;
+                throw new SyntaxException(wrongInputAlert);
+                //break;
         }
         
     }
