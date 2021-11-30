@@ -24,7 +24,7 @@ public class ParserFunctionTest {
         //                  s = "custom1"
         stackNumber = new StackNumber();
         stackNumberParser = new StackNumber();
-        chain = new ParserFactory(stackNumberParser).Chain();
+        chain = new ParserFactory(stackNumberParser).chain();
         dictFunction = new DictFunction();
         instance = new ParserFunction(dictFunction, chain);
         s = "custom1";
@@ -38,7 +38,7 @@ public class ParserFunctionTest {
         //                  s = "custom1"
         stackNumber = new StackNumber();
         stackNumberParser = new StackNumber();
-        chain = new ParserFactory(stackNumberParser).Chain();
+        chain = new ParserFactory(stackNumberParser).chain();
         dictFunction = new DictFunction();
         instance = new ParserFunction(dictFunction, chain);
         s = "custom1";
@@ -53,7 +53,7 @@ public class ParserFunctionTest {
         //                  s = "custom1"
         stackNumber = new StackNumber();
         stackNumberParser = new StackNumber();
-        chain = new ParserFactory(stackNumberParser).Chain();
+        chain = new ParserFactory(stackNumberParser).chain();
         dictFunction = new DictFunction();
         instance = new ParserFunction(dictFunction, chain);
         s = "custom1";

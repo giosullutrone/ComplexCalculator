@@ -49,7 +49,7 @@ public class ParserOperationsTest {
         StackNumber stackNumber = new StackNumber(), parseStackNumber = new StackNumber();
         ParserFactory factoryIstance = new ParserFactory(parseStackNumber); 
         StackOperator stackOperator= new StackOperator(stackNumber);
-        Parser parser = factoryIstance.Chain();
+        Parser parser = factoryIstance.chain();
         Operation0 op0;
         Operation1 op1;
         Operation2 op2;

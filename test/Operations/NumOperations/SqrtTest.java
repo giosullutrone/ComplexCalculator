@@ -34,7 +34,7 @@ public class SqrtTest {
         stackOperator.execute(new Complex(9, 5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(3.106093216645872, 0.8048695984403312), stackNumber.peekFirst());
+        assertEquals(new Complex(3.11, 0.80).toString(), stackNumber.peekFirst().toString());
     }
     
 }

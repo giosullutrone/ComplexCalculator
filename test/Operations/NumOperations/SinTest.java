@@ -5,6 +5,9 @@
  */
 package Operations.NumOperations;
 
+import Complex.Complex;
+import complexcalculator.StackNumber;
+import complexcalculator.StackOperator;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,6 +21,21 @@ public class SinTest {
      */
     @Test
     public void testExecute() {
+        // Feedback
+        System.out.println("Testing: Sin.execute");
+        // Var initialization
+        Sin instance;
+        StackNumber stackNumber;
+        StackOperator stackOperator;
+        
+        // Case: Stack with 1 elements
+        instance = new Sin();
+        stackNumber = new StackNumber();
+        stackOperator = new StackOperator(stackNumber);
+        stackOperator.execute(new Complex(9, 5));
+        stackOperator.execute(instance);
+        assertEquals(1, stackNumber.size());
+        assertEquals(new Complex(30.58, -67.61).toString(), stackNumber.peekFirst().toString());
     }
     
 }

@@ -35,7 +35,7 @@ public class ConjTest {
         stackOperator.execute(new Complex(9, 5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(9, -5), stackNumber.peekFirst());
+        assertEquals(new Complex(9, -5).toString(), stackNumber.peekFirst().toString());
     }
     
 }
