@@ -22,11 +22,19 @@
                         <Insets bottom="5.0" left="20.0" top="20.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" onAction="#enterPressed" prefHeight="25.0" prefWidth="55.0" style="-fx-background-color: #BD93F9;" text="ENTER" textFill="#f8f8f2">
+                  <Pane prefHeight="42.0" prefWidth="68.0">
                      <HBox.margin>
-                        <Insets bottom="5.0" top="20.0" />
+                        <Insets bottom="5.0" top="10.0" />
                      </HBox.margin>
-                  </Button>
+                     <children>
+                        <Button layoutY="10.0" mnemonicParsing="false" onAction="#enterPressed" prefHeight="25.0" prefWidth="55.0" style="-fx-background-color: #BD93F9;" text="ENTER" textFill="#f8f8f2" />
+                        <Button layoutX="46.0" layoutY="1.0" mnemonicParsing="false" onAction="#helpRequest" style="-fx-background-radius: 15; -fx-background-color: #ffb86c;" text="?">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" />
@@ -48,11 +56,11 @@
                   </Pane>
                </children>
             </HBox>
-            <HBox maxHeight="1.7976931348623157E308" prefHeight="280.0" prefWidth="240.0" style="-fx-background-color: #282A36;">
+            <HBox maxHeight="1.7976931348623157E308" prefHeight="291.0" prefWidth="240.0" style="-fx-background-color: #282A36;">
                <children>
                   <ListView fx:id="listView" prefHeight="167.0" prefWidth="200.0" stylesheets="@Style.css">
                      <HBox.margin>
-                        <Insets left="20.0" right="20.0" />
+                        <Insets left="20.0" />
                      </HBox.margin>
                   </ListView>
                </children>
