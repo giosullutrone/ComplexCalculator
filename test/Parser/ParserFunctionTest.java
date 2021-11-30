@@ -52,16 +52,14 @@ public class ParserFunctionTest {
         // Case: dictFunction = {}
         //                  s = "custom1"
         stackNumber = new StackNumber();
-        stackNumberParser = new StackNumber();
-        chain = new ParserFactory(stackNumberParser).chain();
         dictFunction = new DictFunction();
-        instance = new ParserFunction(dictFunction, chain);
+        instance = new ParserFunction(dictFunction, null);
         s = "custom1";
         
         try {
             stackNumber.add(new Complex(10, 10));
             instance.parse(s);
             assertTrue(false);
-        } catch (ExceptionInInitializerError e) {}
+        } catch (NullPointerException e) {}
     }
 }
