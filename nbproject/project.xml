@@ -25,6 +25,7 @@
             <word>boolean</word>
             <word>img</word>
             <word>iterable</word>
+            <word>textfield</word>
         </spellchecker-wordlist>
     </configuration>
 </project>

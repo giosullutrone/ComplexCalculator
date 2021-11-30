@@ -1,5 +1,8 @@
 package complexcalculator;
 
+import AlertMessage.AlertFactory;
+import AlertMessage.OperationException;
+import AlertMessage.SyntaxException;
 import Parser.Parser;
 import Parser.ParserFactory;
 import java.net.URL;
@@ -26,8 +29,8 @@ public class LayoutController implements Initializable {
     * Method called on the start of the interface and initialize the stack of number,
     * the stack of operator and the parser
     *
-    * @param URL
-    * @param ResourceBundle
+    * @param url
+    * @param rb
     *
     */
     @Override
@@ -45,7 +48,7 @@ public class LayoutController implements Initializable {
     * Method called by the user interface on the press of the enter button
     * calls the enterHandler function to perform operation
     *
-    * @param ActionEvent
+    * @param event
     *
     */
     @FXML
@@ -55,7 +58,7 @@ public class LayoutController implements Initializable {
     
     /**
     * Method called by the user interface on the press of any key on
-    * the keyboard while maniplating the textfield, check if the last
+    * the keyboard while manipulating the textfield, check if the last
     * key pressed is an enter and calls the enterHandler function to perform operation
     *
     * @param KeyEvent
@@ -69,15 +72,21 @@ public class LayoutController implements Initializable {
     }
     
     /**
-    * Method for handeling the usage of the enter button and the enter key.
+    * Method for handling the usage of the enter button and the enter key.
     * Take the string in the text field and gives it to the parser, resets the 
     * text field and updates the list view
     *
     */
     private void enterHandler(){
         //Parse the content of the string
-        parser_chained.parse(textField.getText());
-          
+        try {
+            parser_chained.parse(textField.getText());
+        } catch(SyntaxException e) {
+            AlertFactory.handle(e);
+        } catch (OperationException e) {
+            AlertFactory.handle(e);
+        }
+        
         //resest the textFileld
         textField.setText(""); 
         
