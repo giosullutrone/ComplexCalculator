@@ -5,6 +5,9 @@
  */
 package Operations.NumOperations;
 
+import Complex.Complex;
+import complexcalculator.StackNumber;
+import complexcalculator.StackOperator;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,6 +21,21 @@ public class AsinTest {
      */
     @Test
     public void testExecute() {
+        // Feedback
+        System.out.println("Testing: Asin.execute");
+        // Var initialization
+        Asin instance;
+        StackNumber stackNumber;
+        StackOperator stackOperator;
+        
+        // Case: Stack with 1 elements
+        instance = new Asin();
+        stackNumber = new StackNumber();
+        stackOperator = new StackOperator(stackNumber);
+        stackOperator.execute(new Complex(9, 5));
+        stackOperator.execute(instance);
+        assertEquals(1, stackNumber.size());
+        assertEquals(new Complex(1.0616878410214885, 3.023624462486282), stackNumber.peekFirst());
     }
     
 }

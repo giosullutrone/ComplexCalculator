@@ -5,6 +5,9 @@
  */
 package Operations.NumOperations;
 
+import Complex.Complex;
+import complexcalculator.StackNumber;
+import complexcalculator.StackOperator;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,6 +21,21 @@ public class AtanTest {
      */
     @Test
     public void testExecute() {
+        // Feedback
+        System.out.println("Testing: Atan.execute");
+        // Var initialization
+        Atan instance;
+        StackNumber stackNumber;
+        StackOperator stackOperator;
+        
+        // Case: Stack with 1 elements
+        instance = new Atan();
+        stackNumber = new StackNumber();
+        stackOperator = new StackOperator(stackNumber);
+        stackOperator.execute(new Complex(9, 5));
+        stackOperator.execute(instance);
+        assertEquals(1, stackNumber.size());
+        assertEquals(new Complex(1.4859071898107274, 0.04686573907359337), stackNumber.peekFirst());
     }
     
 }
