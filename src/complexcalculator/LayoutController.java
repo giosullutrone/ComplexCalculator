@@ -78,7 +78,8 @@ public class LayoutController implements Initializable {
     *
     */
     private void enterHandler(){
-        //Parse the content of the string
+        //Parse the content of the string while catching and 
+        //handling possible RuntimeExceptions through the AlertFactory class.
         try {
             parser_chained.parse(textField.getText());
         } catch(SyntaxException e) {
