@@ -1,6 +1,7 @@
 package Parser;
 
 import AlertMessage.AlertMessage;
+import AlertMessage.OperationException;
 import AlertMessage.SyntaxException;
 import complexcalculator.StackNumber;
 import java.util.regex.Matcher;
@@ -66,15 +67,15 @@ public class ParserVar implements Parser {
                     this.nextParser.parse(this.varDict.get(letter).toString());
                     return;
                 case ">":
-                    if (this.stackNumber.isEmpty()) new AlertMessage("Could not add value to dict, stack is empty");
+                    if (this.stackNumber.isEmpty()) throw new OperationException("Stack is empty.");
                     this.varDict.put(letter, this.stackNumber.pop());
                     return;
                 case "+":
-                    if (this.stackNumber.isEmpty()) new AlertMessage("Could not add value to dict, stack is empty");
+                    if (this.stackNumber.isEmpty()) throw new OperationException("Stack is empty.");
                     this.varDict.add(letter, this.stackNumber.pop());
                     return;
                 case "-":
-                    if (this.stackNumber.isEmpty()) new AlertMessage("Could not add value to dict, stack is empty");
+                    if (this.stackNumber.isEmpty()) throw new OperationException("Stack is empty.");
                     this.varDict.sub(letter, this.stackNumber.pop());
                     return;
             }
