@@ -63,5 +63,5 @@ public class ParserFunctionTest {
             instance.parse(s);
             assertTrue(false);
         } catch (ExceptionInInitializerError e) {}
-    }    
+    }
 }
