@@ -63,4 +63,20 @@ public class DictVar {
     public void sub(String key, Complex value) {
         this.dict.put(key, new Sub().execute(this.dict.get(key), value));
     }
+    
+    /**
+     * Method used to save the current variable dict.
+     */
+    public void save() {
+        this.dictCopy.clear();
+        this.dictCopy.putAll(this.dict);
+    }
+    
+    /**
+     * Method used to restore the previously saved variable dict.
+     */
+    public void restore() {
+        this.dict.clear();
+        this.dict.putAll(this.dictCopy);
+    }
 }

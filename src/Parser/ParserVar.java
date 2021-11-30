@@ -80,6 +80,15 @@ public class ParserVar implements Parser {
             }
         }
         
+        switch(s) {
+            case "save":
+                this.varDict.save();
+                return;
+            case "restore":
+                this.varDict.restore();
+                return;
+        }
+        
         nextParser.parse(s);
     }
 }

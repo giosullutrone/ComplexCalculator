@@ -110,5 +110,21 @@ public class ParserVarTest {
             instance.parse("<aa");
             assertTrue(false);
         } catch (NoClassDefFoundError e) {}
+        
+        // Case: Save - Restore
+        stackNumber = new StackNumber();
+        dictVar = new DictVar();
+        instance = new ParserVar(stackNumber, dictVar, null);
+        stackOperator = new StackOperator(stackNumber);
+        num = new Complex(10, 10);
+        Complex numOverwrite = new Complex(10, -10);
+        stackOperator.execute(num);
+        instance.parse(">a");
+        instance.parse("save");
+        stackOperator.execute(numOverwrite);
+        instance.parse(">a");
+        assertEquals(dictVar.get("a"), numOverwrite);
+        instance.parse("restore");
+        assertEquals(dictVar.get("a"), num);
     }
 }
