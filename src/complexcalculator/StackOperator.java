@@ -1,6 +1,5 @@
 package complexcalculator;
 
-import AlertMessage.AlertMessage;
 import AlertMessage.OperationException;
 import Complex.Complex;
 import Operations.NumOperations.Operation2;
