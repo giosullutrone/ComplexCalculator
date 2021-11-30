@@ -5,14 +5,25 @@ import AlertMessage.OperationException;
 import AlertMessage.SyntaxException;
 import Parser.Parser;
 import Parser.ParserFactory;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
+import javafx.stage.PopupWindow;
+import javafx.stage.Stage;
 
 public class LayoutController implements Initializable {
     @FXML
@@ -94,6 +105,31 @@ public class LayoutController implements Initializable {
         //Deleting the current rows and replacing with the new
         listView.getItems().clear();   
         listView.getItems().addAll(stackNum.getStack());
+        
+    }
+
+    /**
+     * Method to make the help pop-up appear
+     * 
+     * @param event 
+     */
+    @FXML
+    private void helpRequest(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("help.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            stage.setTitle("Help Page");
+            stage.getIcons().add(
+                    new Image( 
+                            ComplexCalculator.class.getResourceAsStream( "512Logo.png" )));
+        } catch (IOException ex) {
+            Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+        
         
     }
 }
