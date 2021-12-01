@@ -33,6 +33,7 @@ public class DictFunction {
     /**
      * Method used to get a value from the specified key.
      * @param key name of the function.
+     * @throw OperationException if dict does not contain the key. 
      * @return String value associated with the key.
      */
     public String get(String key) {
@@ -51,6 +52,7 @@ public class DictFunction {
     /**
      * Method used to rename a function while handling all cascading changes.
      * @param key function to rename.
+     * @throw OperationException if dict does not contain the key.
      * @param keyRenamed function's new name.
      */
     public void renameCascade(String key, String keyRenamed) {
@@ -75,6 +77,7 @@ public class DictFunction {
     
     /**
      * Method used to remove a function while handling all cascading changes.
+     * @throw OperationException if dict does not contain the key.
      * @param key function to remove.
      */
     public void removeCascade(String key) {

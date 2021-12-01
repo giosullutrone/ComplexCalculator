@@ -1,6 +1,5 @@
 package Parser;
 
-import AlertMessage.AlertMessage;
 import AlertMessage.OperationException;
 import AlertMessage.SyntaxException;
 import complexcalculator.StackNumber;
@@ -32,6 +31,8 @@ public class ParserVar implements Parser {
      * Method used to parse a string into a complex or into an operation for the
      * DictVar
      * @param s string to parse
+     * @throw SyntaxException if the parser string matches a dict operation but it contains more than two chars.
+     * @throw OperationException if when passing ">+-" operations the stack is empty.
      */
     @Override
     public void parse(String s) {

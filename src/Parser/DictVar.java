@@ -30,6 +30,7 @@ public class DictVar {
     /**
      * Method used to insert a value into the specified key.
      * @param key
+     * @throw OperationException if key is outside the accepted range of [a-z].
      * @param value
      */
     public void put(String key, Complex value) {
@@ -40,6 +41,8 @@ public class DictVar {
     /**
      * Method used to get a value from the specified key.
      * @param key
+     * @throw OperationException if key is outside the accepted range of [a-z].
+     * @throw OperationException if key has not been previously written to.
      * @return Complex value associated with the key.
      */
     public Complex get(String key) {
@@ -53,6 +56,7 @@ public class DictVar {
      * value associated with the key inside the same key.
      * @param key
      * @param value
+     * @throw OperationException if key has not been previously written to.
      */
     public void add(String key, Complex value) {
         if (this.dict.get(key)==null) throw new OperationException("Could not update variable, no value has been assigned to the variable");
@@ -64,6 +68,7 @@ public class DictVar {
      * value associated with the key inside the same key.
      * @param key
      * @param value
+     * @throw OperationException if key has not been previously written to.
      */
     public void sub(String key, Complex value) {
         if (this.dict.get(key)==null) throw new OperationException("Could not update variable, no value has been assigned to the variable");

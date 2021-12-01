@@ -40,6 +40,7 @@ public class StackOperator {
     /**
      * Calls its input's execute method by passing the top of the stack to the former
      * @param op: Operation1 object of whom to call the method
+     * @throw OperationException if the operation takes more elements as input than the size of the stack.
      */
     public void execute(Operation1 op) {
         if (stackNumber.size() < 1) {
@@ -54,6 +55,7 @@ public class StackOperator {
      * Calls its input's execute method by passing the top two elements of the 
      * stack to the former
      * @param op: Operation2 object of whom to call the method
+     * @throw OperationException if the operation takes more elements as input than the size of the stack.
      */
     public void execute(Operation2 op) {
         if (stackNumber.size() < 2) {
