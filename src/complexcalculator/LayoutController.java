@@ -89,16 +89,26 @@ public class LayoutController implements Initializable {
     *
     */
     private void enterHandler(){
+        //parse new for the generation of a user definied operation
+        if("new".equals(textField.getText().toLowerCase())){
+            //--------------------------------------------------------
+            //to be modified when the dict is released
+            String updatedOperationDict;
+            updatedOperationDict = OperationManager.display("insert here operation dict");
+            System.out.println(updatedOperationDict);
+            //--------------------------------------------------------
+        }
+        else{
         //Parse the content of the string while catching and 
         //handling possible RuntimeExceptions through the AlertFactory class.
-        try {
-            parser_chained.parse(textField.getText());
-        } catch(SyntaxException e) {
-            AlertFactory.handle(e);
-        } catch (OperationException e) {
-            AlertFactory.handle(e);
+            try {
+                parser_chained.parse(textField.getText());
+            } catch(SyntaxException e) {
+                AlertFactory.handle(e);
+            } catch (OperationException e) {
+                AlertFactory.handle(e);
+            }
         }
-        
         //resest the textFileld
         textField.setText(""); 
         
