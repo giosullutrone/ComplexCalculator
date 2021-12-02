@@ -3,6 +3,7 @@ package complexcalculator;
 import AlertMessage.AlertFactory;
 import AlertMessage.OperationException;
 import AlertMessage.SyntaxException;
+import Parser.DictFunction;
 import Parser.Parser;
 import Parser.ParserFactory;
 import java.io.IOException;
@@ -35,6 +36,8 @@ public class LayoutController implements Initializable {
     @FXML
     private ListView<String> listView;
     
+    private DictFunction dictFun;
+    
 
     /**
     * Method called on the start of the interface and initialize the stack of number,
@@ -49,6 +52,9 @@ public class LayoutController implements Initializable {
         //Initialize the stack
         stackNum = new StackNumber();
 
+        //Initialize the dictionary of function
+        dictFun= new DictFunction();
+                
         //Initialize the ParserFactory
         ParserFactory par= new ParserFactory(stackNum);
         parser_chained = par.chain();
@@ -93,9 +99,7 @@ public class LayoutController implements Initializable {
         if("new".equals(textField.getText().toLowerCase())){
             //--------------------------------------------------------
             //to be modified when the dict is released
-            String updatedOperationDict;
-            updatedOperationDict = OperationManager.display("insert here operation dict");
-            System.out.println(updatedOperationDict);
+            dictFun = OperationManager.display(dictFun);
             //--------------------------------------------------------
         }
         else{
