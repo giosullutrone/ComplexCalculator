@@ -18,4 +18,13 @@ public class AlertFactory {
     public static AlertMessage handle(SyntaxException e){
         return new AlertMessage("Wrong Syntax", e.getMessage());
     }
+    
+    /**
+     * The method is used to handle the Alert to confirm the action
+     * @param message the action to be confirmed
+     * @return an AlertConfirmation object that generates an Alert containing the message as a description
+     */
+    public static AlertConfirmation handle(String message){
+        return new AlertConfirmation("Look, a Confirmation Dialog", message);
+    }
 } 
