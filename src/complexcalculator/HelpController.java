@@ -67,31 +67,31 @@ public class HelpController implements Initializable {
                     //operation
                     case "Operation | Addition":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "+" + "\n" + "\n"+ 
-                                         "Description:" + "\t" + "function that do the addition of a complex number");
+                                         "Description:" + "\t" + "function that does the addition of a complex number");
                         break;
                     case "Operation | Subtraction":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "-" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the subtraction of a complex number");
+                                         "Description:" + "\t" +"function that does the subtraction of a complex number");
                         break;
                     case "Operation | Multiplication":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "*" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the multiplication of a complex number");
+                                         "Description:" + "\t" +"function that does the multiplication of a complex number");
                         break;
                     case "Operation | Division":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "/" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the division of a complex number");
+                                         "Description:" + "\t" +"function that does the division of a complex number");
                         break;
                     case "Operation | Invert Sign":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "+-" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the invert sign of a complex number");
+                                         "Description:" + "\t" +"function that does the invert sign of a complex number");
                         break;
                     case "Operation | Square Root":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "sqrt" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the square root of a complex number");
+                                         "Description:" + "\t" +"function that does the square root of a complex number");
                         break;
                     case "Operation | Conjugate":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "conj" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the conjugate of a complex number");
+                                         "Description:" + "\t" +"function that does the conjugate of a complex number");
                         break;
                         
                     //stack
@@ -147,47 +147,47 @@ public class HelpController implements Initializable {
                     //trascendental function
                     case "Trascendental Functions | Modulus/Magnitude":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "mod" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the modulus/magnitude of a complex number");
+                                         "Description:" + "\t" +"function that does the modulus/magnitude of a complex number");
                         break;
                     case "Trascendental Functions | Argument/Phase":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "arg" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the argument/phase of a complex number");
+                                         "Description:" + "\t" +"function that does the argument/phase of a complex number");
                         break;
                     case "Trascendental Functions | Natural Logarithm":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "log" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the natural logarithm of a complex number");
+                                         "Description:" + "\t" +"function that does the natural logarithm of a complex number");
                         break;
                     case "Trascendental Functions | Power":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "pow" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the power of a complex number");
+                                         "Description:" + "\t" +"function that does the power of a complex number");
                         break;
                     case "Trascendental Functions | Sine":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "sin" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the sine of a complex number");
+                                         "Description:" + "\t" +"function that does the sine of a complex number");
                         break;
                     case "Trascendental Functions | Cosine":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "cos" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the cosine of a complex number");
+                                         "Description:" + "\t" +"function that does the cosine of a complex number");
                         break;
                     case "Trascendental Functions | Tangent":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "tan" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the tangent of a complex number");
+                                         "Description:" + "\t" +"function that does the tangent of a complex number");
                         break;
                     case "Trascendental Functions | Arc sine":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "asin" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the arc sine of a complex number");
+                                         "Description:" + "\t" +"function that does the arc sine of a complex number");
                         break;
                     case "Trascendental Functions | Arc cosine":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "acos" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the arc cosine of a complex number");
+                                         "Description:" + "\t" +"function that does the arc cosine of a complex number");
                         break;
                     case "Trascendental Functions | Arc tangent":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "atan" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the arc tangent of a complex number");
+                                         "Description:" + "\t" +"function that does the arc tangent of a complex number");
                         break;
                     case "Trascendental Functions | Exponential":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "exp" + "\n" + "\n"+ 
-                                         "Description:" + "\t" +"function that do the exponential of a complex number");
+                                         "Description:" + "\t" +"function that does the exponential of a complex number");
                         break;
                     default:
                         textArea.setText("");
