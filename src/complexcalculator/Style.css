@@ -1,18 +1,23 @@
 .list-view {
-	-fx-background-color: #44475A;
+        -fx-background-color: #44475A;
 	-fx-background-radius: 10;
 	-fx-text-fill: #F8F8F2;
 }
 
 .list-view .list-cell:filled{
-	-fx-background-color: #44475A;
+        -fx-background-color: #44475A;
         -fx-background-radius: 10;
         -fx-text-fill: #F8F8F2;
 }
 
 .list-view .list-cell:empty {
-	-fx-background-color: #44475A;
+        -fx-background-color: #44475A;
         -fx-background-radius: 10;
+}
+
+.list-view .list-cell:selected {
+        -fx-background-color:  #ffb86c;
+        -fx-text-fill: black;
 }
 
 .text-area {

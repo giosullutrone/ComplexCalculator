@@ -49,6 +49,10 @@ public class LayoutController implements Initializable {
     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //Making items in the list non seltionable
+        listView.setMouseTransparent( true );
+        listView.setFocusTraversable( false );
+
         //Initialize the stack
         stackNum = new StackNumber();
 
