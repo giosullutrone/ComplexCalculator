@@ -25,8 +25,13 @@ public class HelpController implements Initializable {
     private TextArea textArea;
 
     /**
-     * Initializes the controller class.
-     */
+    * Method called on the start of the interface and initialize the operationList,
+    * setting to each of them a syntax and a description. The manual is thus created
+    *
+    * @param url
+    * @param rb
+    *
+    */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         operationList.getItems().addAll(
@@ -38,6 +43,14 @@ public class HelpController implements Initializable {
                 "Trascendental Functions | Modulus/Magnitude", "Trascendental Functions | Argument/Phase", "Trascendental Functions | Natural Logarithm", "Trascendental Functions | Exponential", "Trascendental Functions | Power", "Trascendental Functions | Sine", "Trascendental Functions | Cosine", "Trascendental Functions | Tangent", "Trascendental Functions | Arc sine", "Trascendental Functions | Arc cosine", "Trascendental Functions | Arc tangent");
         
         operationList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            /**
+             * Method that is called if the value of an ObservableValue changes. 
+             * So, depending on the selected operation, a different description is assigned
+
+             * @param ov The ObservableValue which value changed
+             * @param old_val The old value
+             * @param new_val The new value
+             */
             @Override
             public void changed(ObservableValue<? extends String> ov, String old_val, String new_val) {
                 String selectedItem = operationList.getSelectionModel().getSelectedItem();
