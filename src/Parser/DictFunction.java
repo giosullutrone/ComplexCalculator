@@ -1,6 +1,12 @@
 package Parser;
 
 import AlertMessage.OperationException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,7 +18,7 @@ import java.util.regex.Pattern;
  * function.
  */
 public class DictFunction {
-    private final HashMap<String, String> dict;
+    private HashMap<String, String> dict;
     
     /**
      * Constructor of DictFunction class
@@ -119,5 +125,19 @@ public class DictFunction {
             if (matcher.find()) return true;
         }
         return false;
+    }
+    
+    public void toFile(String filePath) throws IOException {
+        FileOutputStream file = new FileOutputStream(filePath);
+        try (ObjectOutputStream output = new ObjectOutputStream(file)) {
+            output.writeObject(this.dict);
+        }
+    }
+    
+    public void fromFile(String filePath) throws IOException, ClassNotFoundException {
+        FileInputStream fileStream = new FileInputStream("file.txt");
+        ObjectInputStream input = new ObjectInputStream(fileStream);
+        
+        this.dict = (HashMap<String, String>) input.readObject();
     }
 }
