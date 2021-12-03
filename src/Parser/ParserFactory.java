@@ -27,7 +27,7 @@ public class ParserFactory {
      * Method used to generate a parser chain
      * @return first chain's parser
      */
-    public Parser chain(){
+    public ParserVar chain(){
         ParserComplex complex = new ParserComplex(stackOperator);
         ParserNumOperation numOperation = new ParserNumOperation(stackOperator, complex);
         ParserStackOperation stackOperation = new ParserStackOperation(stackOperator, numOperation);

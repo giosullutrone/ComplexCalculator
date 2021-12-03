@@ -11,7 +11,7 @@ public class Splitter {
      * @param function string to split
      * @return list of strings
      */
-    public LinkedList<String> split(String function){
+    public static LinkedList<String> split(String function){
         LinkedList<String> operationList = new LinkedList<>();
         StringTokenizer iterator = new StringTokenizer(function);
         while (iterator.hasMoreTokens())

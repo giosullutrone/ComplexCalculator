@@ -9,14 +9,14 @@ import java.util.regex.Pattern;
  */
 public class ParserFunction implements Parser{
     private final DictFunction dictFunction;
-    private final Parser nextParser;
+    private final ParserList nextParser;
 
     /**
      * Constructor of ParserComplex class
      * @param dictFunction DictFuntion object to do its operations on.
      * @param nextParser next Parser of the chain
      */
-    public ParserFunction(DictFunction dictFunction, Parser nextParser) {
+    public ParserFunction(DictFunction dictFunction, ParserList nextParser) {
         this.dictFunction = dictFunction;
         this.nextParser = nextParser;
     }
@@ -47,6 +47,6 @@ public class ParserFunction implements Parser{
             }
         }
         
-        nextParser.parse(s);
+        nextParser.parse(Splitter.split(s));
     }
 }

@@ -9,9 +9,9 @@ import java.util.List;
  * variable and to save and restore a set of variables.
  */
 public class DictToken {
-    private final List<String> numDict = Arrays.asList("+", "-", "*", "/", "sqrt", "+-", "conj");
-    private final List<String> trasDict = Arrays.asList("mod", "arg", "exp", "log", "pow", "sin", "cos", "tan", "asin", "acos", "atan");
-    private final List<String> stackDict = Arrays.asList("clear", "drop", "dup", "over", "swap");
+    private static final List<String> numDict = Arrays.asList("+", "-", "*", "/", "sqrt", "+-", "conj");
+    private static final List<String> trasDict = Arrays.asList("mod", "arg", "exp", "log", "pow", "sin", "cos", "tan", "asin", "acos", "atan");
+    private static final List<String> stackDict = Arrays.asList("clear", "drop", "dup", "over", "swap");
     private LinkedList<String> dict = new LinkedList<>();
     private DictFunction dictFunction; 
     
@@ -31,7 +31,7 @@ public class DictToken {
      */
     public void clear(){
      dict.clear();
-     this.dict = new DictToken(null).dict;
+     this.dict = new DictToken(null).getDict();
     }
     
     /**

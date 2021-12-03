@@ -6,8 +6,8 @@ import java.util.LinkedList;
  * @author geral
  */
 public class Validator {
-    private Splitter splitter = new Splitter();
     private DictToken dict;
+    
     public Validator(DictFunction dictFunction) {
         this.dict = new DictToken(dictFunction);
     }
@@ -19,7 +19,7 @@ public class Validator {
      * @return true if function is valid, false if it doesn't
      */
     private boolean validate(String function){
-        LinkedList<String> operations = splitter.split(function);
+        LinkedList<String> operations = Splitter.split(function);
         return operations.stream().noneMatch(operation -> (!dict.contains(operation)));
     }
     

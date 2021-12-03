@@ -17,7 +17,7 @@ public class ParserFunctionTest {
         StackNumber stackNumber, stackNumberParser;
         DictFunction dictFunction;
         ParserFunction instance;
-        Parser chain;
+        ParserList chain;
         String s;
         
         // Case: dictFunction = {"custom1": "10+10j"}

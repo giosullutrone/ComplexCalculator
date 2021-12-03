@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  * Class that converts user's input into methods used to execute specific operations 
  * on a provided variable and to save and restore a set of variables.
  */
-public class ParserVar implements Parser {
+public class ParserVar implements Parser, ParserList{
     private final StackNumber stackNumber;
     private final Parser nextParser;
     private final DictVar varDict;
