@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -23,11 +24,15 @@
       </Button>
       <AnchorPane layoutX="20.0" layoutY="76.0" prefHeight="19.0" prefWidth="200.0" style="-fx-background-color: #6272A4; -fx-background-radius: 10;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="76.0">
          <children>
-            <Text boundsType="VISUAL" fill="WHITE" layoutX="71.0" layoutY="15.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STACK" AnchorPane.bottomAnchor="3.7802734375" AnchorPane.topAnchor="2.185546875">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Text>
+            <StackPane prefHeight="25.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Text boundsType="VISUAL" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="STACK">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </StackPane>
          </children>
       </AnchorPane>
    </children>

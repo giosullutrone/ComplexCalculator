@@ -129,7 +129,9 @@ public class OperationManager {
         public void handle(ActionEvent e)
             {
                 opArea.setEditable(false);
+                
                 //LOGIC BEHIND THE SAVE
+                
                 saveOp.setDisable(true);
                 
             }
