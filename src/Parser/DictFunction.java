@@ -135,7 +135,7 @@ public class DictFunction {
     }
     
     public void fromFile(String filePath) throws IOException, ClassNotFoundException {
-        FileInputStream fileStream = new FileInputStream("file.txt");
+        FileInputStream fileStream = new FileInputStream(filePath);
         ObjectInputStream input = new ObjectInputStream(fileStream);
         
         this.dict = (HashMap<String, String>) input.readObject();
