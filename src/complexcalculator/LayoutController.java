@@ -6,6 +6,9 @@ import AlertMessage.SyntaxException;
 import Parser.DictFunction;
 import Parser.Parser;
 import Parser.ParserFactory;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,9 +59,25 @@ public class LayoutController implements Initializable {
         //Initialize the stack
         stackNum = new StackNumber();
 
-        //Initialize the dictionary of function
+        //Initialize the dictionary of function relaoading from the file the operations
         dictFun= new DictFunction();
-                
+        try {
+            dictFun.fromFile("UserDefined.txt");
+        }catch (FileNotFoundException ex) {
+            File file = new File("UserDefined.txt");
+            try {
+                file.createNewFile();
+            } catch (IOException ex1) {
+                Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        } catch (EOFException ex) {
+            
+        } catch (IOException ex) {
+            Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         //Initialize the ParserFactory
         ParserFactory par= new ParserFactory(stackNum);
         parser_chained = par.chain();
@@ -101,10 +120,7 @@ public class LayoutController implements Initializable {
     private void enterHandler(){
         //parse new for the generation of a user definied operation
         if("new".equals(textField.getText().toLowerCase())){
-            //--------------------------------------------------------
-            //to be modified when the dict is released
             dictFun = OperationManager.display(dictFun);
-            //--------------------------------------------------------
         }
         else{
         //Parse the content of the string while catching and 
