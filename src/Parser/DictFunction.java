@@ -32,6 +32,7 @@ public class DictFunction {
      * @param value single string of multiple operations associated with the key.
      */
     public void put(String key, String value) {
+        
         this.dict.put(key, value);
     }
     
@@ -124,6 +125,10 @@ public class DictFunction {
             if (matcher.find()) return true;
         }
         return false;
+    }
+    
+    public void clear() {
+        this.dict.clear();
     }
     
     public void toFile(String filePath) throws IOException {

@@ -6,7 +6,11 @@
 package complexcalculator;
 
 
+import AlertMessage.AlertConfirmation;
 import Parser.DictFunction;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -15,6 +19,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
@@ -49,8 +54,7 @@ public class OperationManager {
         for (String key :operations.keySet()){
             opList.getItems().add(key);
         }
-                
-        
+                 
         //creating the text interfaces
         TextArea opArea= new TextArea();
         TextArea newOpArea = new TextArea();
@@ -73,14 +77,15 @@ public class OperationManager {
         //Creating the menu Items for the context menu
         MenuItem saveMenu = new MenuItem("SAVE");
         MenuItem realoadMenu = new MenuItem("RELOAD");
-        contextMenu.getItems().addAll(saveMenu, realoadMenu);
+        MenuItem clearMenu = new MenuItem("CLEAR");
+        contextMenu.getItems().addAll(saveMenu, realoadMenu,clearMenu);
         
         opArea.setWrapText(true);
         newOpArea.setWrapText(true);
         
         //Setting hint text
         nameOpField.setPromptText("Name");
-        newOpArea.setPromptText("Insert here the list of operation of the new custom operation");
+        newOpArea.setPromptText("Insert here the list of operation of the new custom operation usong space as separator");
         opArea.setPromptText("Select an existing user defined operation to see the corresponding list of operations");
         
         //Styling 
@@ -104,9 +109,15 @@ public class OperationManager {
         deleteOp.setOnAction(new EventHandler<ActionEvent>(){
          public void handle(ActionEvent e)
             {
+                opArea.setEditable(false);
+                saveOp.setDisable(true);
                 String selectedItem = opList.getSelectionModel().getSelectedItem();
-                operations.removeCascade(selectedItem);
-                
+                //allet cancellazzione sei sicuro?
+                AlertConfirmation alert = new AlertConfirmation("Delete Confirm","Do you want to delete "+ selectedItem + "?");
+                if(alert.state()== ButtonType.OK){  
+                    operations.removeCascade(selectedItem);
+                    opArea.setText("");
+                }
                 //Update the list deleting the operations
                 opList.getItems().clear();
                 for (String key :operations.keySet()){
@@ -131,34 +142,74 @@ public class OperationManager {
                 opArea.setEditable(false);
                 
                 //LOGIC BEHIND THE SAVE
-                
+                operations.put(opList.getSelectionModel().getSelectedItem(),opArea.getText());
+                opList.getItems().clear();
+                    for (String key :operations.keySet()){
+                opList.getItems().add(key);
+                }
+                opArea.setText("");
                 saveOp.setDisable(true);
                 
             }
          });
         
+        //Add a new operation
         addOp.setOnAction(new EventHandler<ActionEvent>(){
         public void handle(ActionEvent e)
             {
-                nameOpField.getText();  // <-- new key
-                newOpArea.getText();    // <-- new value
                 //LOGIC BEHIND THE ADD
+                operations.put(nameOpField.getText(), newOpArea.getText());
+                opList.getItems().clear();
+                    for (String key :operations.keySet()){
+                opList.getItems().add(key);
+                newOpArea.setText("");
+                nameOpField.setText("");
+        }
             }
          });
         
+        //Save on a file the operation list
         saveMenu.setOnAction(new EventHandler<ActionEvent>(){
         public void handle(ActionEvent e)
             {
+            try {
                 //LOGIC BEHIND THE SAVE ON FILE
+                operations.toFile("UserDefined.txt");
+            } catch (IOException ex) {
+                Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
             }
          });
         
+        //Reload form a file the operation list
         realoadMenu.setOnAction(new EventHandler<ActionEvent>(){
         public void handle(ActionEvent e)
             {
+            try {
                 //LOGIC BEHIND THE RELOAD FROM FILE
+                operations.fromFile("UserDefined.txt");
+                opList.getItems().clear();
+                    for (String key :operations.keySet()){
+                opList.getItems().add(key);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
             }
          });
+        
+        //Clear the dict
+        clearMenu.setOnAction(new EventHandler<ActionEvent>(){
+        public void handle(ActionEvent e)
+            {
+                //LOGIC BEHIND THE DICT CLEAR
+                operations.clear();
+                opList.getItems().clear();
+            }
+        });
         
         //window managment
         
