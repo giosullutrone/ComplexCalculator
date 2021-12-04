@@ -15,9 +15,7 @@ public class Validator {
      */
     public static boolean isValid(String function, List<String> dictFunction){
         LinkedList<String> operations = Splitter.split(function);
-        
-        return ((operations.stream().noneMatch(operation -> (!DictToken.contains(operation)))) 
-                || (operations.stream().noneMatch(operation -> (!dictFunction.contains(function)))));
+        return !(operations.stream().noneMatch(operation -> (!DictToken.contains(operation))) && operations.stream().noneMatch(operation -> (!dictFunction.contains(function))));
     }
     
 }
