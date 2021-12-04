@@ -1,6 +1,7 @@
 package Parser;
 
 import AlertMessage.OperationException;
+import AlertMessage.SyntaxException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -18,7 +19,8 @@ import java.util.regex.Pattern;
  */
 public class DictFunction {
     private HashMap<String, String> dict;
-    
+    private DictToken tokens = new DictToken();
+    private final String wrongInputAlert="Invalid set of operations";
     /**
      * Constructor of DictFunction class
      */
@@ -32,8 +34,10 @@ public class DictFunction {
      * @param value single string of multiple operations associated with the key.
      */
     public void put(String key, String value) {
-        
+        value = value.replaceAll(" +", " ");
+        if(!Validator.isValid(value, tokens)) throw new SyntaxException(wrongInputAlert);
         this.dict.put(key, value);
+        this.tokens.update(this);
     }
     
     /**

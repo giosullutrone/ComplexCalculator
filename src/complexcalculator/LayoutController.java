@@ -24,9 +24,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Modality;
-import javafx.stage.Popup;
-import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
 
 public class LayoutController implements Initializable {
@@ -77,7 +74,6 @@ public class LayoutController implements Initializable {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         //Initialize the ParserFactory
         ParserFactory par= new ParserFactory(stackNum);
         parser_chained = par.chain();

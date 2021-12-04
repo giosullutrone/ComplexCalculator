@@ -1,34 +1,10 @@
 package Parser;
 
-import Operations.NumOperations.Operation2;
-import Operations.NumOperations.Operation1;
-import Operations.StackOperations.Operation0;
-import Operations.StackOperations.Swap;
-import Operations.StackOperations.Over;
-import Operations.StackOperations.Dup;
-import Operations.StackOperations.Drop;
-import Operations.StackOperations.Clear;
-import Operations.NumOperations.Arg;
-import Operations.NumOperations.Mod;
-import Operations.NumOperations.Invert;
-import Operations.NumOperations.Sqrt;
-import Operations.NumOperations.Div;
-import Operations.NumOperations.Mul;
-import Operations.NumOperations.Sub;
-import Operations.NumOperations.Add;
+import Operations.NumOperations.*;
+import Operations.StackOperations.*;
 import Complex.Complex;
-import Operations.NumOperations.Acos;
-import Operations.NumOperations.Asin;
-import Operations.NumOperations.Atan;
-import Operations.NumOperations.Conj;
-import Operations.NumOperations.Cos;
-import Operations.NumOperations.Exp;
-import Operations.NumOperations.Log;
-import Operations.NumOperations.Pow;
-import Operations.NumOperations.Sin;
-import Operations.NumOperations.Tan;
-import complexcalculator.StackNumber;
-import complexcalculator.StackOperator;
+import complexcalculator.*;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 

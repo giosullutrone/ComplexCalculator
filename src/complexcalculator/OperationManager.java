@@ -7,6 +7,8 @@ package complexcalculator;
 
 
 import AlertMessage.AlertConfirmation;
+import AlertMessage.AlertFactory;
+import AlertMessage.SyntaxException;
 import Parser.DictFunction;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -140,9 +142,12 @@ public class OperationManager {
         public void handle(ActionEvent e)
             {
                 opArea.setEditable(false);
-                
                 //LOGIC BEHIND THE SAVE
-                operations.put(opList.getSelectionModel().getSelectedItem(),opArea.getText());
+                try {
+                    operations.put(opList.getSelectionModel().getSelectedItem(),opArea.getText());
+                } catch(SyntaxException putException) {
+                    AlertFactory.handle(putException);
+                }
                 opList.getItems().clear();
                     for (String key :operations.keySet()){
                 opList.getItems().add(key);
@@ -158,7 +163,11 @@ public class OperationManager {
         public void handle(ActionEvent e)
             {
                 //LOGIC BEHIND THE ADD
+                try {
                 operations.put(nameOpField.getText(), newOpArea.getText());
+                } catch(SyntaxException putException) {
+                    AlertFactory.handle(putException);
+                }
                 opList.getItems().clear();
                     for (String key :operations.keySet()){
                 opList.getItems().add(key);

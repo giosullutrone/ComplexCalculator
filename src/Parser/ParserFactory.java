@@ -31,7 +31,6 @@ public class ParserFactory {
         ParserComplex complex = new ParserComplex(stackOperator);
         ParserNumOperation numOperation = new ParserNumOperation(stackOperator, complex);
         ParserStackOperation stackOperation = new ParserStackOperation(stackOperator, numOperation);
-        ParserVar var = new ParserVar(stackNumber, dict, stackOperation);
-        return var;
+        return new ParserVar(stackNumber, dict, stackOperation);
     }
 }

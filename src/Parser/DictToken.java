@@ -1,8 +1,8 @@
 package Parser;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.LinkedList;
 
 /**
  * Class that provides methods used to execute specific operations on a provided 
@@ -13,17 +13,14 @@ public class DictToken {
     private static final List<String> trasDict = Arrays.asList("mod", "arg", "exp", "log", "pow", "sin", "cos", "tan", "asin", "acos", "atan");
     private static final List<String> stackDict = Arrays.asList("clear", "drop", "dup", "over", "swap");
     private LinkedList<String> dict = new LinkedList<>();
-    private DictFunction dictFunction; 
     
     /**
      * Constructor of DictToken class
-     * @param dictFunction dictionary of User defined operations
      */
-    public DictToken(DictFunction dictFunction) {
+    public DictToken() {
         dict.addAll(numDict);
         dict.addAll(trasDict);
         dict.addAll(stackDict);
-        this.dictFunction = dictFunction;
     }
     
     /**
@@ -31,15 +28,15 @@ public class DictToken {
      */
     public void clear(){
      dict.clear();
-     this.dict = new DictToken(null).getDict();
+     this.dict = new DictToken().getDict();
     }
     
     /**
      * Method used to update User defined operations from the dictFunction
      */
-    public void update(){
+    public void update(DictFunction functions){
         this.clear();
-        for (String function : dictFunction.keySet())
+        for (String function : functions.keySet())
             dict.add(function);
     }
     
