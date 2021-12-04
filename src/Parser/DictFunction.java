@@ -34,7 +34,7 @@ public class DictFunction {
      * @param value single string of multiple operations associated with the key.
      */
     public void put(String key, String value) {
-        value = value.replaceAll(" +", " ");
+        value = value.trim().replaceAll(" +", " ");
         if(!Validator.isValid(value, tokens)) throw new SyntaxException(wrongInputAlert);
         this.dict.put(key, value);
         this.tokens.update(this);

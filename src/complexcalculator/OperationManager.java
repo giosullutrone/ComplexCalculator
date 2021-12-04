@@ -8,6 +8,7 @@ package complexcalculator;
 
 import AlertMessage.AlertConfirmation;
 import AlertMessage.AlertFactory;
+import AlertMessage.OperationException;
 import AlertMessage.SyntaxException;
 import Parser.DictFunction;
 import java.io.IOException;
@@ -103,7 +104,11 @@ public class OperationManager {
             @Override
             public void changed(ObservableValue<? extends String> ov, String old_val, String new_val) {
                 String selectedItem = opList.getSelectionModel().getSelectedItem();
-                opArea.setText(operations.get(selectedItem));
+                try{
+                    opArea.setText(operations.get(selectedItem));
+                } catch (OperationException e) {
+                    
+                }
             }
         });
         
