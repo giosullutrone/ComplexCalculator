@@ -3,7 +3,6 @@ package Parser;
 import AlertMessage.OperationException;
 import AlertMessage.SyntaxException;
 import complexcalculator.StackNumber;
-import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,7 +10,7 @@ import java.util.regex.Pattern;
  * Class that converts user's input into methods used to execute specific operations 
  * on a provided variable and to save and restore a set of variables.
  */
-public class ParserVar implements Parser, ParserList{
+public class ParserVar implements Parser{
     private final StackNumber stackNumber;
     private final Parser nextParser;
     private final DictVar varDict;
@@ -28,16 +27,7 @@ public class ParserVar implements Parser, ParserList{
         this.nextParser = nextParser;
     }
     
-    /**
-     * Method used to parse a list of String into Strings and pass them to 
-     * parse(String s) method.
-     * @param operations list of String to parse in implemented operations
-     */
-    public void parse(LinkedList<String> operations){
-        operations.forEach(operation -> {
-            parse(operation); 
-        });
-    }
+    
     /**
      * Method used to parse a string into a complex or into an operation for the
      * DictVar

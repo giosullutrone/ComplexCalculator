@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 /**
  * Class that provides a method used to split a string in a list of single string
  */
-public class Splitter {
+public class Splitter{
     /**
      * Method used to split the string in a list of single strings
      * @param function string to split
@@ -18,9 +18,6 @@ public class Splitter {
             operationList.add(iterator.nextToken());
         return operationList;
     }
-    
-    
-    
     
     
 }

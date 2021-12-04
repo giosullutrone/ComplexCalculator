@@ -1,52 +1,35 @@
+
 package Parser;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.LinkedList;
 
-/**
- * Class that converts user's input into methods used to execute specific operations 
- * on the stack.
- */
-public class ParserFunction implements Parser{
-    private final DictFunction dictFunction;
-    private final ParserList nextParser;
+public class ParserFunction implements Parser, ParserList{
+    Parser nextParser;
+    DictFunction dict;
 
-    /**
-     * Constructor of ParserComplex class
-     * @param dictFunction DictFuntion object to do its operations on.
-     * @param nextParser next Parser of the chain
-     */
-    public ParserFunction(DictFunction dictFunction, ParserList nextParser) {
-        this.dictFunction = dictFunction;
+    public ParserFunction(Parser nextParser, DictFunction dict) {
+        this.dict = dict;
         this.nextParser = nextParser;
     }
-
-    /**
-     * Method used to parse a string to a single string of multiple StackOperations
-     * Ex. possible output = "dup over 10+10j"
-     * @param s String to parse
-     */
+    
     @Override
     public void parse(String s) {
-        s = s.trim().toLowerCase();
-        
-        boolean replaced = true;
-        
-        while (replaced) {
-            replaced = false;
-            
-            for (String key : this.dictFunction.keySet()) {
-                String p = "\\b" + key + "\\b";
-
-                Pattern pattern = Pattern.compile(p);
-                Matcher matcher = pattern.matcher(s);
-
-                if (matcher.find()) replaced = true;
-
-                s = matcher.replaceAll(this.dictFunction.get(key));
-            }
+        s = s.trim();
+        if(dict.keySet().contains(s))
+            parse(Splitter.split(dict.get(s)));
+        else{
+            nextParser.parse(s);
         }
-        
-        nextParser.parse(Splitter.split(s));
+    }
+    
+    /**
+     * Method used to parse a list of String into Strings and pass them to 
+     * parse(String s) method.
+     * @param operations list of String to parse in implemented operations
+     */
+    public void parse(LinkedList<String> operations){
+        operations.forEach(operation -> {
+            parse(operation); 
+        });
     }
 }

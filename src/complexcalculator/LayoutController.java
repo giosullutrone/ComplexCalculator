@@ -75,7 +75,7 @@ public class LayoutController implements Initializable {
             Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
         }
         //Initialize the ParserFactory
-        ParserFactory par= new ParserFactory(stackNum);
+        ParserFactory par= new ParserFactory(stackNum, dictFun);
         parser_chained = par.chain();
         
     }

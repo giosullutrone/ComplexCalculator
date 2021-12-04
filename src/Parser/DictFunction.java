@@ -19,7 +19,6 @@ import java.util.regex.Pattern;
  */
 public class DictFunction {
     private HashMap<String, String> dict;
-    private final DictToken tokens = new DictToken();
     private final String wrongInputAlert="Invalid set of operations";
     /**
      * Constructor of DictFunction class
@@ -35,9 +34,8 @@ public class DictFunction {
      */
     public void put(String key, String value) {
         value = value.trim().replaceAll(" +", " ");
-        if(!Validator.isValid(value, tokens) || value.contains(key)) throw new SyntaxException(wrongInputAlert);
+        if(!Validator.isValid(value, this.keySet()) || value.contains(key)) throw new SyntaxException(wrongInputAlert);
         this.dict.put(key, value);
-        updateTokens();
     }
     
     /**
@@ -53,10 +51,10 @@ public class DictFunction {
     
     /**
      * Method used to get a set of all keys.
-     * @return iterable of all keys.
+     * @return LinkedList of all keys.
      */
-    public Iterable<String> keySet() {
-        return this.dict.keySet();
+    public List<String> keySet() {
+        return new LinkedList<>(this.dict.keySet());
     }
     
     /**
@@ -83,7 +81,6 @@ public class DictFunction {
             
             this.dict.put(k, matcher.replaceAll(keyRenamed));
         }
-        updateTokens();
     }
     
     /**
@@ -113,7 +110,6 @@ public class DictFunction {
         for (String k: keysToRemove) {
             this.dict.remove(k);
         }
-        updateTokens();
     }
     
     /**
@@ -135,7 +131,6 @@ public class DictFunction {
     
     public void clear() {
         this.dict.clear();
-        this.tokens.clear();
     }
     
     public void toFile(String filePath) throws IOException {
@@ -152,10 +147,5 @@ public class DictFunction {
         }
     }
     
-    /**
-     * Method used to update the DictToken
-     */
-    public void updateTokens(){
-        this.tokens.update(this);
-    }
+    
 }

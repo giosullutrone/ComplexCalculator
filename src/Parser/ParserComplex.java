@@ -42,7 +42,7 @@ public class ParserComplex implements Parser{
      */
     @Override
     public void parse(String s) {
-        s = s.trim().toLowerCase();
+        s = s.trim().toLowerCase().replaceAll(" +", "");
         
         String[] parts= s.split(stringRegex);
         for(String remove : parts){
@@ -65,7 +65,6 @@ public class ParserComplex implements Parser{
                 break;
             default:
                 throw new SyntaxException(wrongInputAlert);
-                //break;
         }
         
     }
