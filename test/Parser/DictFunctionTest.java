@@ -5,7 +5,6 @@
 package Parser;
 
 import AlertMessage.OperationException;
-import complexcalculator.StackNumber;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

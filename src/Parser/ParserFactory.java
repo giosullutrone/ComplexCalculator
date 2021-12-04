@@ -17,7 +17,9 @@ public class ParserFactory {
     /**
      * Constructor of ParserFactory class
      * @param s StackNumber of elements inserted by the user
+     * @param dict Dictionary of user defined operations
      */
+    
     public ParserFactory(StackNumber s, DictFunction dict) {
         this.dictVar = new DictVar();
         this.dictFunction = dict;
