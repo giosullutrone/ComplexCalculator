@@ -17,7 +17,7 @@
 * [Project Burndown Chart](https://docs.google.com/document/d/16pXYH5PNdIeQFvBwuCyUXiA57tIjEIeu/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
 -----------
 * [Updated Product Backlog](https://docs.google.com/document/d/1XH5y3ruDmVTqY40q26d-nlylMoLSPdJd/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
-* [3rd Sprint Planning and Backlog]()
+* [3rd Sprint Planning and Backlog](https://docs.google.com/document/d/1voDJfYKZ0SY0VEG2MBP-Yw9EXn0fxuW0/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
 -----------
 * [Architecture](https://docs.google.com/document/d/1DKkFdYTtGL8mH3Sqncl1SMpMzEJ7387P/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
 
