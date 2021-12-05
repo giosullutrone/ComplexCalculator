@@ -22,8 +22,8 @@ public class DictFunctionTest {
         // Case: Rename custom2
         //       dictFunction = {"custom1": "custom2", "custom2": "10+10j"}
         instance = new DictFunction();
-        instance.put("custom1", "custom2");
         instance.put("custom2", "10+10j");
+        instance.put("custom1", "custom2");
         String oldValue = instance.get("custom2");
         instance.renameCascade("custom2", "custom2New");
         
@@ -36,8 +36,8 @@ public class DictFunctionTest {
         // Case: Remove custom3
         //       dictFunction = {"custom1": "custom2", "custom2": "10+10j"}
         instance = new DictFunction();
-        instance.put("custom1", "custom2");
         instance.put("custom2", "10+10j");
+        instance.put("custom1", "custom2");
         try {
             instance.renameCascade("custom3", "custom3New");
             assertTrue(false);
@@ -57,8 +57,8 @@ public class DictFunctionTest {
         // Case: Remove custom2
         //       dictFunction = {"custom1": "custom2", "custom2": "10+10j"}
         instance = new DictFunction();
-        instance.put("custom1", "custom2");
         instance.put("custom2", "10+10j");
+        instance.put("custom1", "custom2");
         instance.removeCascade("custom2");
         
         try {
@@ -73,8 +73,8 @@ public class DictFunctionTest {
         // Case: Remove custom3
         //       dictFunction = {"custom1": "custom2", "custom2": "10+10j"}
         instance = new DictFunction();
-        instance.put("custom1", "custom2");
         instance.put("custom2", "10+10j");
+        instance.put("custom1", "custom2");
         try {
             instance.removeCascade("custom3");
             assertTrue(false);
@@ -94,16 +94,16 @@ public class DictFunctionTest {
         // Case: isCalled custom2 -> true
         //       dictFunction = {"custom1": "custom2", "custom2": "10+10j"}
         instance = new DictFunction();
-        instance.put("custom1", "custom2");
         instance.put("custom2", "10+10j");
+        instance.put("custom1", "custom2");
         instance.isCalled("custom2");        
         assertTrue(instance.isCalled("custom2"));
 
         // Case: isCalled custom1 -> false
         //       dictFunction = {"custom1": "custom2", "custom2": "10+10j"}
         instance = new DictFunction();
-        instance.put("custom1", "custom2");
         instance.put("custom2", "10+10j");
+        instance.put("custom1", "custom2");
         assertTrue(!instance.isCalled("custom1"));
     }    
 }

@@ -42,8 +42,8 @@ public class ParserFunctionTest {
         chain = new ParserFactory(stackNumberParser, dictFunction).chain();
         instance = new ParserFunction(chain, dictFunction);
         s = "custom1";
-        dictFunction.put("custom1", "custom2");
         dictFunction.put("custom2", "10+10j");
+        dictFunction.put("custom1", "custom2");
         
         stackNumber.add(new Complex(10, 10));
         instance.parse(s);
