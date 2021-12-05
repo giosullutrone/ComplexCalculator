@@ -61,8 +61,9 @@ public class HelpController implements Initializable {
                     //user defined operation
                     case "User defined operation":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "new" + "\n" + "\n"+ 
-                                          "Description:" + "\t" +  "function used to view a pop up that allows you to define a new operation by specifying a name and a sequence of operations. The definition may contain other defined operations." +
-                                          "It is possible to delete an operation and modify the definition. \n" + "To save to a file the existing defined operations and reload them from a file, you can right mouse click on the operations list");
+                                          "Description:" + "\t" +  "function used to view a pop up that allows you to define a new operation by specifying a name and a sequence of operations. The definition may contain other defined operations. " +
+                                          "It is possible to delete an operation and modify the definition. \n" + 
+                                          "To SAVE to a file the existing defined operations and RELOAD them from a file, you can right mouse click on the operations list. With CLEAR, you can delete all operations list, without modifying file");
                         break;
                     //operation
                     case "Operation | Addition":

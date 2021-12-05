@@ -8,10 +8,6 @@ import AlertMessage.OperationException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Gio
- */
 public class DictFunctionTest {
     /**
      * Test of renameCascade method, of class DictFunction.
