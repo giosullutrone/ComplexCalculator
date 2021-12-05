@@ -5,6 +5,8 @@
 package Parser;
 
 import AlertMessage.OperationException;
+import java.io.File;
+import java.io.IOException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -106,4 +108,29 @@ public class DictFunctionTest {
         instance.put("custom1", "custom2");
         assertTrue(!instance.isCalled("custom1"));
     }    
+    
+    /**
+     * Test of toFile and fromFile methods, of class DictFunction.
+     */
+    @Test
+    public void testToFileFromFile() {
+        // Feedback
+        System.out.println("Testing: DictFunction.toFileFromFile");
+        // Var initialization
+        DictFunction instance, instanceFromFile;
+        
+        instance = new DictFunction();
+        instanceFromFile = new DictFunction();
+        instance.put("custom1", "10+10j");
+        
+        try {
+            instance.toFile("test.txt");
+            instanceFromFile.fromFile("test.txt");
+            assertEquals(instance.keySet(), instanceFromFile.keySet());
+        } catch(IOException | ClassNotFoundException e) {
+            assertTrue(false);
+        } finally {
+            new File("test.txt").delete(); 
+        }
+    }
 }
