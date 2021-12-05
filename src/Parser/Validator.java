@@ -8,14 +8,15 @@ import java.util.List;
 public class Validator {
     /**
      * Method used to check if all the operations in the input string are
-     * implemented in the calculator
+     * implemented in the calculator (as default or user defined operations)
      * @param function string of user defined operation
-     * @param dictFunction
+     * @param dictFunction Dictionary of all user defined operations
      * @return true if function is valid, false if it doesn't
      */
     public static boolean isValid(String function, List<String> dictFunction){
+        if(function.replaceAll(" +", "").isEmpty()) return false;
         LinkedList<String> operations = Splitter.split(function);
-        return !(operations.stream().noneMatch(operation -> (!DictToken.contains(operation))) && operations.stream().noneMatch(operation -> (!dictFunction.contains(function))));
+        return operations.stream().noneMatch(operation -> (!(dictFunction.contains(operation) || DictToken.contains(operation))));
     }
     
 }
