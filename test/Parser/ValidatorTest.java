@@ -16,7 +16,10 @@ public class ValidatorTest {
     LinkedList<TestNode> testList= new LinkedList<>(Arrays.asList(
         new TestNode(true, "+ + +"), new TestNode(false, "not an operation"), new TestNode(true, "Test + + +"), 
             new TestNode(false, ""), new TestNode(false," "),new TestNode(true, "   +      +     +-   clear"), 
-            new TestNode(false, "?"), new TestNode(false, "test +-"), new TestNode(true, "Test Test Test")
+            new TestNode(false, "?"), new TestNode(false, "test +-"), new TestNode(true, "Test Test Test"),
+            new TestNode(true, "10+10j"), new TestNode(true, "+10+10j"), new TestNode(true, "-10+10j"),
+            new TestNode(true, "-10-10j"), new TestNode(false, "10+10+10j"), new TestNode(false, "10+10j+10"),
+            new TestNode(true, "10.1+10j"),new TestNode(true, "10+10.1j"),new TestNode(false, "10.+10j")
     ));
 
     @Test
