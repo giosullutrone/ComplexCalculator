@@ -11,8 +11,8 @@ import java.util.Comparator;
 import javafx.scene.control.TextField;
 
 public class AutoCompleter {
-    private AutoCompletionBinding<String> stringAutoCompletionBinding;
-    private AutoCompletePopup<String> autoCompletionPopup;
+    private final AutoCompletionBinding<String> stringAutoCompletionBinding;
+    private final AutoCompletePopup<String> autoCompletionPopup;
     private LinkedList<String> completeDict;
     private DictFunction dictFun;
     private TextField textField;
@@ -34,9 +34,9 @@ public class AutoCompleter {
         autoCompletionPopup.setAutoFix(true);
         autoCompletionPopup.setStyle("");
         autoCompletionPopup.setStyle("-fx-control-inner-background:#44475A;"
-                + "-fx-accent: #ffb86c;"
+                + "-fx-accent: #44475A;"
                 + "-fx-selection-bar-non-focused:#ffb86c;"
-                + "-fx-font:12px 'Calibri'");
+                + "-fx-font:13px 'Calibri'");
     }
     
     public void update(){
@@ -46,7 +46,7 @@ public class AutoCompleter {
         completeDict.addAll(DictToken.getCompleteDict(dictFun));
     }
     
-    public void erase(){
+    public void clear(){
         completeDict.clear();
     }
     

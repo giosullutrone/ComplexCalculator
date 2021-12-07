@@ -97,7 +97,7 @@ public class LayoutController implements Initializable {
     private void textEnterPressed(KeyEvent event) {
         if(event.getText().contains("\r")){
             enterHandler();
-            autoCompleter.erase();
+            autoCompleter.clear();
         } else {
             autoCompleter.update();
         }
