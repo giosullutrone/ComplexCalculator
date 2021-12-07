@@ -49,6 +49,8 @@ public class LayoutController implements Initializable {
     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        textField.setPromptText("Insert operations or numbers here");
         //Making items in the list non seltionable
         listView.setMouseTransparent( true );
         listView.setFocusTraversable( false );
