@@ -129,10 +129,18 @@ public class DictFunction {
         return false;
     }
     
+    /**
+     * Method used to clear dict of all keys.
+     */
     public void clear() {
         this.dict.clear();
     }
     
+    /**
+     * Method used to save the dict to file.
+     * @param filePath
+     * @throws IOException 
+     */
     public void toFile(String filePath) throws IOException {
         FileOutputStream file = new FileOutputStream(filePath);
         try (ObjectOutputStream output = new ObjectOutputStream(file)) {
@@ -140,6 +148,12 @@ public class DictFunction {
         }
     }
     
+    /**
+     * Method used to load dict from file.
+     * @param filePath
+     * @throws IOException
+     * @throws ClassNotFoundException 
+     */
     public void fromFile(String filePath) throws IOException, ClassNotFoundException {
         FileInputStream fileStream = new FileInputStream(filePath);
         try (ObjectInputStream input = new ObjectInputStream(fileStream)) {
