@@ -2,7 +2,6 @@ package complexcalculator;
 
 import Parser.DictFunction;
 import java.io.EOFException;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -30,6 +29,7 @@ public class Configurator {
             return "UserDefined.txt";
         }
     }
+    
     /**
      * Update the configuration file inserting in it the filepath 
      * 
@@ -57,10 +57,8 @@ public class Configurator {
         try {
             String filePath = getReloaderFile();
             dictFun.fromFile(filePath);
-        } catch (EOFException ex) {    
-        } catch (IOException ex) {
-            Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        }catch (FileNotFoundException | EOFException ex ){  
+        }catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return dictFun;
