@@ -41,7 +41,7 @@ public class ParserComplex implements Parser{
      * @param s string to parse
      */
     @Override
-    public void parse(String s) {
+    public void parse(String s) {        
         s = s.trim().toLowerCase().replaceAll(" +", "");
         
         String[] parts= s.split(stringRegex);
