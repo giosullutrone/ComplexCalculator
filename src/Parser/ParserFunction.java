@@ -1,6 +1,7 @@
 
 package Parser;
 
+import AlertMessage.SyntaxException;
 import java.util.LinkedList;
 
 /**
@@ -28,11 +29,14 @@ public class ParserFunction implements Parser, ParserList{
     @Override
     public void parse(String s) {
         s = s.trim();
+        
         if(dict.keySet().contains(s))
             parse(Splitter.split(dict.get(s)));
-        else{
+        else if(s.contains(" ")){
+            if(!Validator.isValid(s, dict.keySet())) throw new SyntaxException("Ueueeeeeee");
+            parse(Splitter.split(s));}
+        else
             nextParser.parse(s);
-        }
     }
     
     /**

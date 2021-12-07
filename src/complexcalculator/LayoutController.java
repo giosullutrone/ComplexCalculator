@@ -4,16 +4,20 @@ import AlertMessage.AlertFactory;
 import AlertMessage.OperationException;
 import AlertMessage.SyntaxException;
 import Parser.DictFunction;
+import Parser.DictToken;
 import Parser.Parser;
 import Parser.ParserFactory;
+import impl.org.controlsfx.skin.AutoCompletePopup;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +29,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
+import org.controlsfx.control.textfield.TextFields;
+
 
 public class LayoutController implements Initializable {
     @FXML
@@ -37,8 +44,12 @@ public class LayoutController implements Initializable {
     private ListView<String> listView;
     
     private DictFunction dictFun;
+    private LinkedList<String> completeDict;
     
-
+    AutoCompletionBinding<String> stringAutoCompletionBinding;
+    AutoCompletePopup<String> autoCompletionPopup;
+    
+    
     /**
     * Method called on the start of the interface and initialize the stack of number,
     * the stack of operator and the parser
@@ -78,6 +89,24 @@ public class LayoutController implements Initializable {
         ParserFactory par= new ParserFactory(stackNum, dictFun);
         parser_chained = par.chain();
         
+        //Initialize the AutoComplete Function
+        completeDict = DictToken.getCompleteDict(dictFun);
+        stringAutoCompletionBinding = TextFields.bindAutoCompletion(textField, provider -> {
+            return completeDict.stream().filter(elem
+                    -> {
+                return elem.toLowerCase().startsWith(provider.getUserText().toLowerCase());
+            }).collect(Collectors.toList());
+        });
+        stringAutoCompletionBinding.setVisibleRowCount(2);
+        autoCompletionPopup = stringAutoCompletionBinding.getAutoCompletionPopup();
+        autoCompletionPopup.setAutoFix(true);
+        autoCompletionPopup.setStyle("");
+        autoCompletionPopup.setStyle("-fx-control-inner-background:#44475A;"
+                + "-fx-accent: #ffb86c;"
+                + "-fx-selection-bar-non-focused:#ffb86c;"
+                + "-fx-font:12px 'Calibri'");
+        
+
     }
     
     /**
@@ -102,6 +131,8 @@ public class LayoutController implements Initializable {
     */
     @FXML
     private void textEnterPressed(KeyEvent event) {
+        autoCompletionPopup.setMinWidth(textField.getWidth());
+        autoCompletionPopup.setMaxWidth(textField.getWidth());
         if(event.getText().contains("\r")){
             enterHandler(); 
         }
@@ -158,7 +189,7 @@ public class LayoutController implements Initializable {
             Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
+    
         
         
     }

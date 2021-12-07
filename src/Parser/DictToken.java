@@ -1,6 +1,7 @@
 package Parser;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -23,6 +24,15 @@ public class DictToken {
         return (dict.contains(check) || Pattern.compile("([<>+-][a-z])").matcher(check).find());
     }
 
-    
+    /**
+     * TODO
+     * @param dictFunction
+     * @return 
+     */
+    public static LinkedList<String> getCompleteDict(DictFunction dictFunction){
+        LinkedList<String> completeDict = new LinkedList<>(dict);
+        completeDict.addAll(dictFunction.keySet());
+        return completeDict;
+    }
     
 }
