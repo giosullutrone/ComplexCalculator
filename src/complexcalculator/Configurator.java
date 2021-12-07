@@ -57,10 +57,8 @@ public class Configurator {
         try {
             String filePath = getReloaderFile();
             dictFun.fromFile(filePath);
-        } catch (EOFException ex) {    
-        } catch (IOException ex) {
-            Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (EOFException | FileNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return dictFun;

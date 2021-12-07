@@ -32,6 +32,7 @@ public class DictToken {
     public static LinkedList<String> getCompleteDict(DictFunction dictFunction){
         LinkedList<String> completeDict = new LinkedList<>(dict);
         completeDict.addAll(dictFunction.keySet());
+        completeDict.add("new");
         return completeDict;
     }
     
