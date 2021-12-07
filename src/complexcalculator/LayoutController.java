@@ -7,6 +7,7 @@ import Parser.DictFunction;
 import Parser.DictToken;
 import Parser.Parser;
 import Parser.ParserFactory;
+import static complexcalculator.Configurator.startConfiguration;
 import impl.org.controlsfx.skin.AutoCompletePopup;
 import java.io.EOFException;
 import java.io.File;
@@ -70,23 +71,8 @@ public class LayoutController implements Initializable {
         stackNum = new StackNumber();
 
         //Initialize the dictionary of function relaoading from the file the operations
-        dictFun= new DictFunction();
-        try {
-            dictFun.fromFile("UserDefined.txt");
-        }catch (FileNotFoundException ex) {
-            File file = new File("UserDefined.txt");
-            try {
-                file.createNewFile();
-            } catch (IOException ex1) {
-                Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex1);
-            }
-        } catch (EOFException ex) {
-            
-        } catch (IOException ex) {
-            Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        dictFun= startConfiguration();
+                
         //Initialize the ParserFactory
         ParserFactory par= new ParserFactory(stackNum, dictFun);
         parser_chained = par.chain();
