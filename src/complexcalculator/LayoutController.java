@@ -4,21 +4,14 @@ import AlertMessage.AlertFactory;
 import AlertMessage.OperationException;
 import AlertMessage.SyntaxException;
 import Parser.DictFunction;
-import Parser.DictToken;
 import Parser.Parser;
 import Parser.ParserFactory;
 import static complexcalculator.Configurator.startConfiguration;
-import impl.org.controlsfx.skin.AutoCompletePopup;
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.LinkedList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,8 +23,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import org.controlsfx.control.textfield.AutoCompletionBinding;
-import org.controlsfx.control.textfield.TextFields;
 
 
 public class LayoutController implements Initializable {
@@ -45,10 +36,9 @@ public class LayoutController implements Initializable {
     private ListView<String> listView;
     
     private DictFunction dictFun;
-    private LinkedList<String> completeDict;
+    private AutoCompleter autoCompleter;
     
-    AutoCompletionBinding<String> stringAutoCompletionBinding;
-    AutoCompletePopup<String> autoCompletionPopup;
+
     
     
     /**
@@ -78,21 +68,7 @@ public class LayoutController implements Initializable {
         parser_chained = par.chain();
         
         //Initialize the AutoComplete Function
-        completeDict = DictToken.getCompleteDict(dictFun);
-        stringAutoCompletionBinding = TextFields.bindAutoCompletion(textField, provider -> {
-            return completeDict.stream().filter(elem
-                    -> {
-                return elem.toLowerCase().startsWith(provider.getUserText().toLowerCase());
-            }).collect(Collectors.toList());
-        });
-        stringAutoCompletionBinding.setVisibleRowCount(2);
-        autoCompletionPopup = stringAutoCompletionBinding.getAutoCompletionPopup();
-        autoCompletionPopup.setAutoFix(true);
-        autoCompletionPopup.setStyle("");
-        autoCompletionPopup.setStyle("-fx-control-inner-background:#44475A;"
-                + "-fx-accent: #ffb86c;"
-                + "-fx-selection-bar-non-focused:#ffb86c;"
-                + "-fx-font:12px 'Calibri'");
+        autoCompleter = new AutoCompleter(dictFun, textField);
         
 
     }
@@ -119,10 +95,11 @@ public class LayoutController implements Initializable {
     */
     @FXML
     private void textEnterPressed(KeyEvent event) {
-        autoCompletionPopup.setMinWidth(textField.getWidth());
-        autoCompletionPopup.setMaxWidth(textField.getWidth());
         if(event.getText().contains("\r")){
-            enterHandler(); 
+            enterHandler();
+            autoCompleter.clear();
+        } else {
+            autoCompleter.update();
         }
     }
     
