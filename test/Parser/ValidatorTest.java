@@ -19,7 +19,9 @@ public class ValidatorTest {
             new TestNode(false, "?"), new TestNode(false, "test +-"), new TestNode(true, "Test Test Test"),
             new TestNode(true, "10+10j"), new TestNode(true, "+10+10j"), new TestNode(true, "-10+10j"),
             new TestNode(true, "-10-10j"), new TestNode(false, "10+10+10j"), new TestNode(false, "10+10j+10"),
-            new TestNode(true, "10.1+10j"),new TestNode(true, "10+10.1j"),new TestNode(false, "10.+10j")
+            new TestNode(true, "10.1+10j"),new TestNode(true, "10+10.1j"),new TestNode(true, "10.+10j"),
+            new TestNode(true, "-j10"),new TestNode(true, "10j+10"), new TestNode(true, "-j10+10"),
+            new TestNode(true, "10+10j -j10+10"), new TestNode(true, "10 -j10+10")
     ));
 
     @Test

@@ -21,7 +21,7 @@ public class DictToken {
      * @return true if dict contains the operation, false if it doesn't
      */
     public static boolean contains(String check){
-        return (dict.contains(check) || Pattern.compile("([<>+-][a-z])").matcher(check).find());
+        return (dict.contains(check) || Pattern.compile("\\s+([<>+-][a-z])\\s+").matcher(check).find());
     }
 
     /**

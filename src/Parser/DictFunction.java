@@ -19,7 +19,6 @@ import java.util.regex.Pattern;
  */
 public class DictFunction {
     private HashMap<String, String> dict;
-    private final String wrongInputAlert="Invalid set of operations";
     /**
      * Constructor of DictFunction class
      */
@@ -33,8 +32,14 @@ public class DictFunction {
      * @param value single string of multiple operations associated with the key.
      */
     public void put(String key, String value) {
-        value = value.trim().replaceAll(" +", " ");
-        if(!Validator.isValid(value, this.keySet()) || value.contains(key)) throw new SyntaxException(wrongInputAlert);
+        value = value.trim().replaceAll("\\s+", " ");
+        if(!DictToken.getCompleteDict(this).contains(key)) throw new SyntaxException("Function already exists");
+        this.replace(key, value);
+    }
+    
+    public void replace(String key, String value) {
+        value = value.trim().replaceAll("\\s+", " ");
+        if(!Validator.isValid(value, this.keySet()) || value.contains(key)) throw new SyntaxException("Invalid set of operations");
         this.dict.put(key, value);
     }
     
@@ -66,7 +71,7 @@ public class DictFunction {
     public void renameCascade(String key, String keyRenamed) {
         // Check if key is inside dict
         if (!this.dict.containsKey(key)) throw new OperationException("Could not rename the given function, function does not exist."); 
-       
+        
         // Rename function
         String v = this.dict.get(key);
         this.dict.remove(key);

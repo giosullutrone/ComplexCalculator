@@ -10,7 +10,7 @@ import complexcalculator.StackOperator;
 public class ParserComplex implements Parser{
     private final StackOperator stackOperator;
     private final String stringRegex = "(?=[+-])";
-    private final String wrongInputAlert="Wrong Input!!!";
+    private final String wrongInputAlert="Invalid input.";
 
     /**
      * Constructor of ParserComplex class
@@ -31,7 +31,7 @@ public class ParserComplex implements Parser{
             Double realDouble = Double.parseDouble(real);
             Double imgDouble = Double.parseDouble(img);
             this.stackOperator.execute(new Complex(realDouble, imgDouble));
-        } catch(NumberFormatException e){
+        } catch(NumberFormatException e) {
             throw new SyntaxException(wrongInputAlert);
         }
     }
@@ -41,7 +41,7 @@ public class ParserComplex implements Parser{
      * @param s string to parse
      */
     @Override
-    public void parse(String s) {        
+    public void parse(String s) {
         s = s.trim().toLowerCase().replaceAll(" +", "");
         
         String[] parts= s.split(stringRegex);
@@ -50,18 +50,20 @@ public class ParserComplex implements Parser{
         }
         switch(parts.length){
             case 1:
-                if(parts[0].contains("j"))
+                if(parts[0].contains("j")) {
                     parse("0", parts[0].replace("j", ""));
-                else
+                } else {
                     parse(parts[0], "0");
+                }
                 break;
             case 2:
-                if(parts[0].contains("j"))
+                if(parts[0].contains("j")) {
                     parse(parts[1], parts[0].replace("j", ""));
-                else if(parts[1].contains("j"))
+                } else if(parts[1].contains("j")) {
                     parse(parts[0], parts[1].replace("j", ""));
-                else
+                }else {
                     throw new SyntaxException(wrongInputAlert);
+                }
                 break;
             default:
                 throw new SyntaxException(wrongInputAlert);
