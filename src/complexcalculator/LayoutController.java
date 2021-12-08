@@ -96,8 +96,9 @@ public class LayoutController implements Initializable {
     @FXML
     private void textEnterPressed(KeyEvent event) {
         if(event.getText().contains("\r")){
-            enterHandler();
             autoCompleter.clear();
+            enterHandler();
+            
         } else {
             autoCompleter.update();
         }
@@ -112,6 +113,8 @@ public class LayoutController implements Initializable {
     private void enterHandler(){
         //parse new for the generation of a user definied operation
         if("new".equals(textField.getText().toLowerCase())){
+            //resest the textFileld
+            textField.setText(""); 
             dictFun = OperationManager.display(dictFun);
         }
         else{
@@ -125,9 +128,9 @@ public class LayoutController implements Initializable {
                 AlertFactory.handle(e);
             }
         }
+       
         //resest the textFileld
         textField.setText(""); 
-        
         //Deleting the current rows and replacing with the new
         listView.getItems().clear();   
         listView.getItems().addAll(stackNum.getStack());

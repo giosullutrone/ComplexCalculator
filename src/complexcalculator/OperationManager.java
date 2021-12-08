@@ -176,7 +176,7 @@ public class OperationManager {
             {
             try {
                 //LOGIC BEHIND THE SAVE ON FILE
-                operations.toFile("UserDefined.txt");
+                operations.toFile(fileChooserManager());
             } catch (IOException ex) {
                 Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -189,7 +189,7 @@ public class OperationManager {
             {
             try {
                 //LOGIC BEHIND THE RELOAD FROM FILE
-                operations.fromFile("UserDefined.txt");
+                operations.fromFile(fileChooserManager());
                 opList.getItems().clear();
                 opList.getItems().addAll(operations.keySet());
                 
@@ -274,9 +274,9 @@ public class OperationManager {
     private static String fileChooserManager(){
         String filePath = "UserDefined.txt";
         FileChooser fc = new FileChooser();
-        fc.setInitialDirectory(new File(getReloaderFile()));
+        fc.setInitialFileName(getReloaderFile());
         File selectedFile = fc.showOpenDialog(null);
-        
-        return selectedFile.getAbsolutePath();
+        filePath = selectedFile.getAbsolutePath();  
+        return filePath;
         }
 }
