@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Configurator {
+    
     /**
      * Read from the configuration file the name of the name of the file to execute the reload
      * 
@@ -20,14 +21,17 @@ public class Configurator {
      * @throws IOException
      * @throws ClassNotFoundException 
      */
-    public static String getReloaderFile() throws IOException, ClassNotFoundException{
+    public static String getReloaderFile(){
         try{
             FileInputStream fileStream = new FileInputStream("configuration.txt");
             ObjectInputStream input = new ObjectInputStream(fileStream);
             return (String) input.readObject();
         }catch (FileNotFoundException ex) {
             return "UserDefined.txt";
+        }catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return "UserDefined.txt";
     }
     
     /**
@@ -37,12 +41,13 @@ public class Configurator {
      * @throws FileNotFoundException
      * @throws IOException 
      */
-    public static void updateReloaderFile(String filePath) throws FileNotFoundException, IOException{
+    public static void updateReloaderFile(String filePath){
         try{
             FileOutputStream file = new FileOutputStream("configuration.txt");
             ObjectOutputStream output = new ObjectOutputStream(file);
             output.writeObject(filePath);
-        }catch (FileNotFoundException ex) {
+        }catch (FileNotFoundException ex){
+        }catch (IOException ex) {
 
         }
     }

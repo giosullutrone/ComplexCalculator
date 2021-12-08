@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package complexcalculator;
 
 
@@ -11,6 +6,8 @@ import AlertMessage.AlertFactory;
 import AlertMessage.OperationException;
 import AlertMessage.SyntaxException;
 import Parser.DictFunction;
+import static complexcalculator.Configurator.getReloaderFile;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,13 +28,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
-/**
- *
- * 
- */
 public class OperationManager {
     /**
      * method to manualy create a pop-up for the operation manage
@@ -54,9 +49,7 @@ public class OperationManager {
         
         //Updating the ListView
         opList.getItems().clear();
-        for (String key :operations.keySet()){
-            opList.getItems().add(key);
-        }
+        opList.getItems().addAll(operations.keySet());
                  
         //creating the text interfaces
         TextArea opArea= new TextArea();
@@ -77,6 +70,7 @@ public class OperationManager {
         
         //Creating a context menu
         ContextMenu contextMenu = new ContextMenu();
+        
         //Creating the menu Items for the context menu
         MenuItem saveMenu = new MenuItem("SAVE");
         MenuItem realoadMenu = new MenuItem("RELOAD");
@@ -107,7 +101,6 @@ public class OperationManager {
                 try{
                     opArea.setText(operations.get(selectedItem));
                 } catch (OperationException e) {
-                    
                 }
             }
         });
@@ -119,7 +112,7 @@ public class OperationManager {
                 opArea.setEditable(false);
                 saveOp.setDisable(true);
                 String selectedItem = opList.getSelectionModel().getSelectedItem();
-                //allet cancellazzione sei sicuro?
+                //alert delete
                 AlertConfirmation alert = new AlertConfirmation("Delete Confirm","Do you want to delete "+ selectedItem + "?");
                 if(alert.state()== ButtonType.OK){  
                     operations.removeCascade(selectedItem);
@@ -127,9 +120,7 @@ public class OperationManager {
                 }
                 //Update the list deleting the operations
                 opList.getItems().clear();
-                for (String key :operations.keySet()){
-                    opList.getItems().add(key);
-                }
+                opList.getItems().addAll(operations.keySet());
             } 
         });
         
@@ -154,9 +145,7 @@ public class OperationManager {
                     AlertFactory.handle(putException);
                 }
                 opList.getItems().clear();
-                    for (String key :operations.keySet()){
-                opList.getItems().add(key);
-                }
+                opList.getItems().addAll(operations.keySet());
                 opArea.setText("");
                 saveOp.setDisable(true);
                 
@@ -174,13 +163,12 @@ public class OperationManager {
                     AlertFactory.handle(putException);
                 }
                 opList.getItems().clear();
-                    for (String key :operations.keySet()){
-                opList.getItems().add(key);
+                opList.getItems().addAll(operations.keySet());
                 newOpArea.setText("");
                 nameOpField.setText("");
-        }
             }
-         });
+            
+        });
         
         //Save on a file the operation list
         saveMenu.setOnAction(new EventHandler<ActionEvent>(){
@@ -203,17 +191,13 @@ public class OperationManager {
                 //LOGIC BEHIND THE RELOAD FROM FILE
                 operations.fromFile("UserDefined.txt");
                 opList.getItems().clear();
-                    for (String key :operations.keySet()){
-                opList.getItems().add(key);
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                opList.getItems().addAll(operations.keySet());
                 
+            } catch (IOException |ClassNotFoundException ex) {
+                Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);   
             }
-         });
+            }
+        });
         
         //Clear the dict
         clearMenu.setOnAction(new EventHandler<ActionEvent>(){
@@ -222,6 +206,15 @@ public class OperationManager {
                 //LOGIC BEHIND THE DICT CLEAR
                 operations.clear();
                 opList.getItems().clear();
+            }
+        });
+        
+        //create a pop up of comfirmation of the exit
+        window.setOnCloseRequest(new EventHandler<WindowEvent>(){
+            @Override
+            public void handle(WindowEvent event) {
+                //LOGIC BEHIND THE POP-UP CLOSING
+                System.out.println("chiuditi");
             }
         });
         
@@ -277,4 +270,13 @@ public class OperationManager {
         window.showAndWait();
         return operations;
     }
+
+    private static String fileChooserManager(){
+        String filePath = "UserDefined.txt";
+        FileChooser fc = new FileChooser();
+        fc.setInitialDirectory(new File(getReloaderFile()));
+        File selectedFile = fc.showOpenDialog(null);
+        
+        return selectedFile.getAbsolutePath();
+        }
 }
