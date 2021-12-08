@@ -30,6 +30,7 @@ public class DictFunction {
      * Method used to insert a value into the specified key.
      * @param key name of the function.
      * @param value single string of multiple operations associated with the key.
+     * @throws SyntaxException if key already exists or is a token
      */
     public void put(String key, String value) {
         value = value.trim().replaceAll("\\s+", " ");
@@ -37,6 +38,12 @@ public class DictFunction {
         this.replace(key, value);
     }
     
+    /**
+     * Method used to modify the value of a specified key.
+     * @param key name of the function.
+     * @param value single string of multiple operations associated with the key.
+     * @throws SyntaxException if value is not valid or there is a recursion
+     */
     public void replace(String key, String value) {
         value = value.trim().replaceAll("\\s+", " ");
         if(!Validator.isValid(value, this.keySet()) || value.contains(key)) throw new SyntaxException("Invalid set of operations");
