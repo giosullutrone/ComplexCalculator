@@ -2,6 +2,7 @@ package complexcalculator;
 
 import Parser.DictFunction;
 import java.io.EOFException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -16,17 +17,16 @@ public class Configurator {
     /**
      * Read from the configuration file the name of the name of the file to execute the reload
      * 
-     * @return String -> the name of the filePath to reload
-     * @throws FileNotFoundException
-     * @throws IOException
-     * @throws ClassNotFoundException 
+     * @return String -> the name of the filePath to reload 
      */
     public static String getReloaderFile(){
         try{
             FileInputStream fileStream = new FileInputStream("configuration.txt");
             ObjectInputStream input = new ObjectInputStream(fileStream);
-            return (String) input.readObject();
+            String file = (String) input.readObject();
+            return file;
         }catch (FileNotFoundException ex) {
+            File f = new File("configuration.txt");
             return "UserDefined.txt";
         }catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
@@ -37,9 +37,7 @@ public class Configurator {
     /**
      * Update the configuration file inserting in it the filepath 
      * 
-     * @param filePath
-     * @throws FileNotFoundException
-     * @throws IOException 
+     * @param filePath 
      */
     public static void updateReloaderFile(String filePath){
         try{

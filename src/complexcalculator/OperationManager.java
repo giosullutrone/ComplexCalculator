@@ -1,12 +1,9 @@
 package complexcalculator;
 
 
-import AlertMessage.AlertConfirmation;
-import AlertMessage.AlertFactory;
-import AlertMessage.OperationException;
-import AlertMessage.SyntaxException;
+import AlertMessage.*;
 import Parser.DictFunction;
-import static complexcalculator.Configurator.getReloaderFile;
+import static complexcalculator.Configurator.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -29,6 +26,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -138,9 +136,8 @@ public class OperationManager {
         public void handle(ActionEvent e)
             {
                 opArea.setEditable(false);
-                //LOGIC BEHIND THE SAVE
                 try {
-                    operations.put(opList.getSelectionModel().getSelectedItem(),opArea.getText());
+                    operations.replace(opList.getSelectionModel().getSelectedItem(),opArea.getText());
                 } catch(SyntaxException putException) {
                     AlertFactory.handle(putException);
                 }
@@ -176,7 +173,9 @@ public class OperationManager {
             {
             try {
                 //LOGIC BEHIND THE SAVE ON FILE
-                operations.toFile(fileChooserManager());
+                String filePath=fileChooserManager();
+                operations.toFile(filePath);
+                updateReloaderFile(filePath);
             } catch (IOException ex) {
                 Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -214,7 +213,18 @@ public class OperationManager {
             @Override
             public void handle(WindowEvent event) {
                 //LOGIC BEHIND THE POP-UP CLOSING
-                System.out.println("chiuditi");
+                AlertConfirmation alert = new AlertConfirmation("Save Reminder","Do you want to exit without saving?");
+                if(alert.state()== ButtonType.OK){
+                    try {
+                    //LOGIC BEHIND THE SAVE ON FILE
+                    String filePath=fileChooserManager();
+                    operations.toFile(filePath);
+                    updateReloaderFile(filePath);
+                    } catch (IOException ex) {
+                    Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);
+                    } 
+                }
+                window.close();
             }
         });
         
@@ -275,8 +285,13 @@ public class OperationManager {
         String filePath = "UserDefined.txt";
         FileChooser fc = new FileChooser();
         fc.setInitialFileName(getReloaderFile());
+        fc.getExtensionFilters().addAll(new ExtensionFilter("Text File","*txt"));
         File selectedFile = fc.showOpenDialog(null);
-        filePath = selectedFile.getAbsolutePath();  
+        try{
+            filePath = selectedFile.getAbsolutePath();  
+        }catch(NullPointerException ex){
+            filePath = "UserDefined.txt";
+        }
         return filePath;
         }
 }
