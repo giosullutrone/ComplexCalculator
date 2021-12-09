@@ -2,6 +2,7 @@ package complexcalculator;
 
 
 import AlertMessage.*;
+import Complex.Complex;
 import Parser.DictFunction;
 import static complexcalculator.Configurator.*;
 import java.io.File;
@@ -13,7 +14,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -23,8 +23,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Modality;
@@ -40,7 +39,6 @@ public class OperationManager {
      * @return 
      */
     public static DictFunction display(DictFunction operations){
-    
         //Generating pices of the interface
         Stage window = new Stage();
         ListView<String> opList = new ListView();
@@ -48,13 +46,16 @@ public class OperationManager {
         //Updating the ListView
         opList.getItems().clear();
         opList.getItems().addAll(operations.keySet());
-                 
+        opList.setEditable(true);
+        
         //creating the text interfaces
         TextArea opArea= new TextArea();
         TextArea newOpArea = new TextArea();
         TextField nameOpField = new TextField();
+        TextField renameOpField = new TextField();
         
         //Creating the buttons
+        Button renameOp = new Button("RENAME");
         Button deleteOp = new Button("DELETE");
         Button modifyOp = new Button ("MODIFY");
         Button saveOp = new Button("SAVE");
@@ -77,20 +78,21 @@ public class OperationManager {
         
         opArea.setWrapText(true);
         newOpArea.setWrapText(true);
-        
+
         //Setting hint text
-        nameOpField.setPromptText("Name");
+        renameOpField.setPromptText("select to rename");
+        nameOpField.setPromptText("Insert a name");
         newOpArea.setPromptText("Insert here the list of operation of the new custom operation usong space as separator");
         opArea.setPromptText("Select an existing user defined operation to see the corresponding list of operations");
         
         //Styling 
+        nameOpField.setStyle("-fx-background-radius: 10;");
         window.setTitle("Custom Operation Manager");
         window.getIcons().add(
             new Image(
                 ComplexCalculator.class.getResourceAsStream( "512Logo.png" )));
         
-        //application logic
-        
+        //APPLICATION LOGIC
         //selection of the custom operation
         opList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -98,9 +100,30 @@ public class OperationManager {
                 String selectedItem = opList.getSelectionModel().getSelectedItem();
                 try{
                     opArea.setText(operations.get(selectedItem));
+                    renameOpField.setText(selectedItem);
                 } catch (OperationException e) {
                 }
             }
+        });
+        
+        
+        renameOp.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                String selectedItem = opList.getSelectionModel().getSelectedItem();
+                String renamedItem = renameOpField.getText();
+                try{
+                    operations.renameCascade(selectedItem, renamedItem);
+                }catch(OperationException ex){
+                     AlertFactory.handle(ex);
+                }
+                //Update the list
+                opList.getItems().clear();
+                opList.getItems().addAll(operations.keySet());
+
+            }
+            
+            
         });
         
         //deleting of the selected operations
@@ -213,7 +236,7 @@ public class OperationManager {
             @Override
             public void handle(WindowEvent event) {
                 //LOGIC BEHIND THE POP-UP CLOSING
-                AlertConfirmation alert = new AlertConfirmation("Save Reminder","Do you want to exit without saving?");
+                AlertConfirmation alert = new AlertConfirmation("Save Reminder","Do you want to save before exit?");
                 if(alert.state()== ButtonType.OK){
                     try {
                     //LOGIC BEHIND THE SAVE ON FILE
@@ -229,52 +252,89 @@ public class OperationManager {
         });
         
         //window managment
-        
         opArea.setEditable(false);
         opList.setEditable(false);
-        
         window.initModality(Modality.APPLICATION_MODAL); 
         
         //Adding the context menu to the list view
         opList.setContextMenu(contextMenu);
         
-        VBox mainBox = new VBox(10);
-        mainBox.setStyle("-fx-background-color:#282a36");
-        mainBox.setPadding(new Insets(20, 20 , 20 , 20));
+        //SETTING DIMENSION OF THE ELEMENTS
         
-        //TOP PART OF THE INTERFACE
-        HBox topBox = new HBox(10);
-        topBox.setMinSize(200, 200);
+        //LIST
+        opList.setPrefSize(0, 0);
         
-        //creating the little VBOX for delete
-        VBox delBox = new VBox(10);
-        opList.setMinSize(150, 200);
-        delBox.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        deleteOp.setMaxWidth(Double.MAX_VALUE);
-        modifyOp.setMaxWidth(Double.MAX_VALUE);
-        saveOp.setMaxWidth(Double.MAX_VALUE);
-        delBox.getChildren().addAll(opArea, deleteOp,modifyOp,saveOp);
+        //OP_AREA & OP_BUTTONS
+        renameOp.setPrefSize(60,25);
+        renameOpField.setPrefSize(200,26);
+        deleteOp.setPrefSize(260, 25);
+        modifyOp.setPrefSize(260, 25);
+        saveOp.setPrefSize(260, 25);
+        opArea.setMaxWidth(260);
         
-        //adding elements to the top hbox
-        topBox.getChildren().addAll(opList, delBox);
+        //NEW_OP_AREA
+        newOpArea.setPrefSize(292, 69);
         
-        //BOTTOM PART OF THE INTERFACE
-        HBox bottomBox = new HBox(10);
+        //NAME_FIELD
+        nameOpField.setPrefSize(170, 33);
         
-        //creating the little VBOX for add
-        VBox addBox = new VBox(10);
-        addBox.getChildren().addAll(nameOpField, addOp);
+        //ADD_BUTTON
+        addOp.setPrefSize(170, 25);
         
-        //adding elements to the bottom hbox
-        bottomBox.getChildren().addAll(newOpArea, addBox);
-        newOpArea.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-        addBox.setMinSize(100, 100);
-        addOp.setMaxWidth(Double.MAX_VALUE);
+        //MAIN_PANE
+        AnchorPane main = new AnchorPane();
+        main.setStyle("-fx-background-color:#282a36");
         
-        //adding the top and the bottom part to the vbox
-        mainBox.getChildren().addAll(topBox, bottomBox);
+        //adding things to the main pane
+        main.getChildren().addAll(opList,deleteOp, modifyOp, saveOp, newOpArea,nameOpField, addOp, opArea, renameOp, renameOpField);
         
-        Scene scene = new Scene(mainBox, 500, 350);
+        //Setting all the anchors
+        
+        //LIST
+        AnchorPane.setTopAnchor(opList, 15.0);
+        AnchorPane.setLeftAnchor(opList, 15.0);
+        AnchorPane.setBottomAnchor(opList, 110.0);
+        AnchorPane.setRightAnchor(opList, 285.0);
+        
+        //RENAME_BUTTON
+        AnchorPane.setTopAnchor(renameOp, 15.0);
+        AnchorPane.setRightAnchor(renameOp, 15.0);
+        
+        //RENAME_FIELD
+        AnchorPane.setTopAnchor(renameOpField, 15.0);
+        AnchorPane.setRightAnchor(renameOpField, 75.0);
+        
+        //DELETE_BUTTON
+        AnchorPane.setBottomAnchor(deleteOp, 185.0);
+        AnchorPane.setRightAnchor(deleteOp, 15.0);
+        
+        //MODIFY_BUTTON
+        AnchorPane.setBottomAnchor(modifyOp, 150.0);
+        AnchorPane.setRightAnchor(modifyOp, 15.0);
+        
+        //SAVE_BUTTON
+        AnchorPane.setBottomAnchor(saveOp, 115.0);
+        AnchorPane.setRightAnchor(saveOp, 15.0);
+        
+        //NEW_OP_AREA
+        AnchorPane.setLeftAnchor(newOpArea, 15.0);
+        AnchorPane.setBottomAnchor(newOpArea, 30.0);
+        AnchorPane.setRightAnchor(newOpArea, 195.0);
+        
+        //NAME_OP_FIELD
+        AnchorPane.setBottomAnchor(nameOpField, 65.0);
+        AnchorPane.setRightAnchor(nameOpField, 15.0);
+        
+        //ADD_BUTTON
+        AnchorPane.setBottomAnchor(addOp, 30.0);
+        AnchorPane.setRightAnchor(addOp, 15.0);
+        
+        //OP_AREA   
+        AnchorPane.setTopAnchor(opArea, 55.0);
+        AnchorPane.setBottomAnchor(opArea, 220.0);
+        AnchorPane.setRightAnchor(opArea, 15.0);
+        
+        Scene scene = new Scene(main, 500, 400);
         scene.getStylesheets().add(OperationManager.class.getResource("Style.css").toExternalForm());
         window.setScene(scene);
         window.showAndWait();
@@ -282,16 +342,14 @@ public class OperationManager {
     }
 
     private static String fileChooserManager(){
-        String filePath = "UserDefined.txt";
         FileChooser fc = new FileChooser();
         fc.setInitialFileName(getReloaderFile());
         fc.getExtensionFilters().addAll(new ExtensionFilter("Text File","*txt"));
         File selectedFile = fc.showOpenDialog(null);
         try{
-            filePath = selectedFile.getAbsolutePath();  
+            return selectedFile.getAbsolutePath();  
         }catch(NullPointerException ex){
-            filePath = "UserDefined.txt";
         }
-        return filePath;
+        return null;
         }
 }

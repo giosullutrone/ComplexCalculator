@@ -37,8 +37,8 @@
       </AnchorPane>
       <AnchorPane fx:id="varPane" layoutX="20.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="309.0" style="-fx-background-color: #282A36;" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="70.0">
          <children>
-            <ListView fx:id="listViewVars" layoutX="205.0" layoutY="19.0" prefHeight="341.0" prefWidth="150.0" stylesheets="@Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="19.0" />
-            <AnchorPane layoutX="161.0" prefHeight="19.0" prefWidth="150.0" style="-fx-background-color: #6272A4; -fx-background-radius: 10;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ListView fx:id="listViewVars" layoutX="205.0" layoutY="19.0" prefHeight="341.0" prefWidth="148.0" stylesheets="@Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="19.0" />
+            <AnchorPane layoutX="161.0" prefHeight="19.0" prefWidth="148.0" style="-fx-background-color: #6272A4; -fx-background-radius: 10;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <StackPane layoutX="-6.0" prefHeight="19.0" prefWidth="95.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>

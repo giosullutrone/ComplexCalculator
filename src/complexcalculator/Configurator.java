@@ -27,11 +27,10 @@ public class Configurator {
             return file;
         }catch (FileNotFoundException ex) {
             File f = new File("configuration.txt");
-            return "UserDefined.txt";
         }catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "UserDefined.txt";
+        return null;
     }
     
     /**
@@ -60,10 +59,10 @@ public class Configurator {
         try {
             String filePath = getReloaderFile();
             dictFun.fromFile(filePath);
-        } catch (EOFException | FileNotFoundException ex) {
+        } catch (EOFException | FileNotFoundException |NullPointerException ex) {
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return dictFun;
-    }
+        }
 }
