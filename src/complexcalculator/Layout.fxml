@@ -8,23 +8,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="300.0" style="-fx-background-color: #282A36;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="complexcalculator.LayoutController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: #282A36;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="complexcalculator.LayoutController">
    <children>
-      <TextField fx:id="textField" layoutX="20.0" layoutY="27.0" onKeyPressed="#textEnterPressed" prefHeight="25.0" prefWidth="145.0" stylesheets="@Style.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="27.0" />
-      <ListView fx:id="listView" layoutX="20.0" layoutY="95.0" prefHeight="275.0" prefWidth="200.0" stylesheets="@Style.css" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="95.0" />
-      <Button layoutX="165.0" layoutY="27.0" mnemonicParsing="false" onAction="#enterPressed" prefHeight="25.0" prefWidth="55.0" stylesheets="@Style.css" text="ENTER" textFill="#f8f8f2" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="27.0">
+      <TextField fx:id="textField" layoutX="20.0" layoutY="27.0" onKeyPressed="#textEnterPressed" prefHeight="25.0" prefWidth="190.0" stylesheets="@Style.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="91.0" AnchorPane.topAnchor="20.0" />
+      <ListView fx:id="listView" layoutX="20.0" layoutY="95.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="331.0" prefWidth="250.0" stylesheets="@Style.css" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="89.0" />
+      <Button layoutX="203.0" layoutY="20.0" mnemonicParsing="false" onAction="#enterPressed" prefHeight="25.0" prefWidth="70.0" stylesheets="@Style.css" text="ENTER" textFill="#f8f8f2" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font name="Calibri" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="212.0" layoutY="18.0" mnemonicParsing="false" onAction="#helpRequest" style="-fx-background-radius: 15; -fx-background-color: #ffb86c;" text="?" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="18.0">
+      <Button layoutX="272.0" layoutY="11.0" mnemonicParsing="false" onAction="#helpRequest" style="-fx-background-radius: 15; -fx-background-color: #ffb86c;" text="?" AnchorPane.rightAnchor="12.5" AnchorPane.topAnchor="11.0">
          <font>
             <Font size="9.0" />
          </font>
       </Button>
-      <AnchorPane layoutX="20.0" layoutY="76.0" prefHeight="19.0" prefWidth="200.0" style="-fx-background-color: #6272A4; -fx-background-radius: 10;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="76.0">
+      <AnchorPane layoutX="20.0" layoutY="76.0" prefHeight="19.0" prefWidth="250.0" style="-fx-background-color: #6272A4; -fx-background-radius: 10;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="70.0">
          <children>
-            <StackPane prefHeight="25.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <StackPane prefHeight="20.0" prefWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Text boundsType="VISUAL" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="STACK">
                      <font>
@@ -35,5 +35,36 @@
             </StackPane>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="varPane" layoutX="20.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="309.0" style="-fx-background-color: #282A36;" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="70.0">
+         <children>
+            <ListView fx:id="listViewVars" layoutX="205.0" layoutY="19.0" prefHeight="341.0" prefWidth="150.0" stylesheets="@Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="19.0" />
+            <AnchorPane layoutX="161.0" prefHeight="19.0" prefWidth="150.0" style="-fx-background-color: #6272A4; -fx-background-radius: 10;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <StackPane layoutX="-6.0" prefHeight="19.0" prefWidth="95.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Text boundsType="VISUAL" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="VARS">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </StackPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="19.0" prefWidth="156.0" style="-fx-background-color: #6272A4; -fx-background-radius: 10;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <StackPane prefHeight="20.0" prefWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Text boundsType="VISUAL" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="STACK">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </StackPane>
+               </children>
+            </AnchorPane>
+            <ListView fx:id="listViewDup" layoutX="5.0" layoutY="19.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="339.0" prefWidth="156.0" stylesheets="@Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="19.0" />
+         </children></AnchorPane>
    </children>
 </AnchorPane>

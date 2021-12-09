@@ -20,8 +20,8 @@ public class ParserFactory {
      * @param dict Dictionary of user defined operations
      */
     
-    public ParserFactory(StackNumber s, DictFunction dict) {
-        this.dictVar = new DictVar();
+    public ParserFactory(StackNumber s, DictFunction dict, DictVar dictVar) {
+        this.dictVar = dictVar;
         this.dictFunction = dict;
         this.stackNumber = s;
         this.stackOperator = new StackOperator(s);
