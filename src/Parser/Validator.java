@@ -1,6 +1,8 @@
 package Parser;
 
 import AlertMessage.SyntaxException;
+import complexcalculator.StackNumber;
+import complexcalculator.StackOperator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;

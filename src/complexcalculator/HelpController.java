@@ -39,7 +39,7 @@ public class HelpController implements Initializable {
                 "Operation | Addition", "Operation | Subtraction", "Operation | Multiplication", "Operation | Division", "Operation | Invert Sign", "Operation | Square Root", "Operation | Conjugate",
                 "Stack operation | Clear", "Stack operation | Swap", "Stack operation | Dup", "Stack operation | Drop", "Stack operation | Over",
                 "Variables | Save", "Variables | Push", "Variables | Addition", "Variables | Subtraction",
-                "Stack Variables | Save", "Stack Variables | Restore",
+                "Stack Variables | Show", "Stack Variables | Save", "Stack Variables | Restore",
                 "Trascendental Functions | Modulus/Magnitude", "Trascendental Functions | Argument/Phase", "Trascendental Functions | Natural Logarithm", "Trascendental Functions | Exponential", "Trascendental Functions | Power", "Trascendental Functions | Sine", "Trascendental Functions | Cosine", "Trascendental Functions | Tangent", "Trascendental Functions | Arc sine", "Trascendental Functions | Arc cosine", "Trascendental Functions | Arc tangent");
         
         operationList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -136,6 +136,10 @@ public class HelpController implements Initializable {
                         break;
                         
                     // stack variables
+                    case "Stack Variables | Show":
+                        textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "vars" + "\n" + "\n"+ 
+                                         "Description:" + "\t" +"function used to show variables with numbers saved");
+                        break;
                     case "Stack Variables | Save":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "save" + "\n" + "\n"+ 
                                          "Description:" + "\t" +"function used to save a copy of all the 26 variables on a variable stack (distinct from the stack used for the operands by the operations)");
