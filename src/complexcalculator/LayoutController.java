@@ -51,8 +51,8 @@ public class LayoutController implements Initializable {
     * Method called on the start of the interface and initialize the stack of number,
     * the stack of operator and the parser
     *
-    * @param url
-    * @param rb
+    * @param url the url used to resolve relative paths for the root object, or null if the location is not known
+    * @param rb the resource used to localize the root object, or null if the root object was not localized
     *
     */
     @Override
