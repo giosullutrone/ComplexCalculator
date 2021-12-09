@@ -4,7 +4,7 @@ import javafx.scene.control.Alert;
 
 public class AlertMessage {
     /**
-     * An object that generates an Aler of type error
+     * An object that generates an Alert of type error
      * @param headerMessage string representing the Alert's header
      * @param errorMessage string representing the Alert's content
      */
