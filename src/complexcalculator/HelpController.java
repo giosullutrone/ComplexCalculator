@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package complexcalculator;
 
 import java.net.URL;
@@ -13,8 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
 
 
 public class HelpController implements Initializable {
@@ -38,7 +31,7 @@ public class HelpController implements Initializable {
                 "User defined operation",
                 "Operation | Addition", "Operation | Subtraction", "Operation | Multiplication", "Operation | Division", "Operation | Invert Sign", "Operation | Square Root", "Operation | Conjugate",
                 "Stack operation | Clear", "Stack operation | Swap", "Stack operation | Dup", "Stack operation | Drop", "Stack operation | Over",
-                "Variables | Save", "Variables | Push", "Variables | Addition", "Variables | Subtraction",
+                "Variables | Save", "Variables | Push", "Variables | Addition", "Variables | Subtraction", "Variables | Delete", "Variables | Delete all", 
                 "Stack Variables | Show", "Stack Variables | Save", "Stack Variables | Restore",
                 "Trascendental Functions | Modulus/Magnitude", "Trascendental Functions | Argument/Phase", "Trascendental Functions | Natural Logarithm", "Trascendental Functions | Exponential", "Trascendental Functions | Power", "Trascendental Functions | Sine", "Trascendental Functions | Cosine", "Trascendental Functions | Tangent", "Trascendental Functions | Arc sine", "Trascendental Functions | Arc cosine", "Trascendental Functions | Arc tangent");
         
@@ -133,6 +126,14 @@ public class HelpController implements Initializable {
                     case "Variables | Subtraction":
                         textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "-x" + "\n" + "\n"+ 
                                          "Description:" + "\t" +"function used to take the top element from the stack and subtracts it from the value of the variable \"x\"");
+                        break;
+                    case "Variables | Delete":
+                        textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "!x" + "\n" + "\n"+ 
+                                         "Description:" + "\t" + "function used to delete the value of the variable \"x\"");
+                        break;
+                    case "Variables | Delete all":
+                        textArea.setText("Syntax:" + "\t" + "\t"+ "\t" + "clc" + "\n" + "\n"+ 
+                                         "Description:" + "\t" +"function used to delete the value of all variables ");
                         break;
                         
                     // stack variables
