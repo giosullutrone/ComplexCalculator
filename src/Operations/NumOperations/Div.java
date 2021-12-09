@@ -1,10 +1,7 @@
 package Operations.NumOperations;
 
 import AlertMessage.OperationException;
-import AlertMessage.AlertFactory;
 import Complex.Complex;
-import javafx.scene.control.Alert;
-import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Div implements Operation2{
    /**
@@ -15,7 +12,6 @@ public class Div implements Operation2{
      */
     @Override
     public Complex execute(Complex a, Complex b){
-        //TODO: not insert 0+0j after alert
         if(b.getReal() == 0 && b.getImg() == 0){
             throw new OperationException("Division by 0");
         }
