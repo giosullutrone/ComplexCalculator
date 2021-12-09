@@ -13,7 +13,8 @@ public class DictToken {
     private static final List<String> dict = 
             Arrays.asList("+", "-", "*", "/", "sqrt", "+-", "conj",
                             "mod", "arg", "exp", "log", "pow", "sin", "cos", "tan", "asin", "acos", "atan",
-                                "clear", "drop", "dup", "over", "swap");
+                                "clear", "drop", "dup", "over", "swap", 
+                                    "clc");
     
     /**
      * Method used to check if the dict contains an operation
@@ -21,7 +22,7 @@ public class DictToken {
      * @return true if dict contains the operation, false if it doesn't
      */
     public static boolean contains(String check){
-        return (dict.contains(check) || Pattern.compile("\\s+([<>+-][a-z])\\s+").matcher(check).find());
+        return (dict.contains(check) || Pattern.compile("\\s+([!<>+-][a-z])\\s+").matcher(check).find());
     }
 
     /**
