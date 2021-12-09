@@ -45,7 +45,7 @@ public class AutoCompleter {
         autoCompletionPopup.setMaxWidth(textField.getWidth());
         completeDict.clear();
         completeDict.addAll(DictToken.getCompleteDict(dictFun));
-        completeDict.addAll(Arrays.asList("new","vars"));
+        completeDict.addAll(Arrays.asList("new","vars", "save", "restore"));
     }
     
     public void clear(){

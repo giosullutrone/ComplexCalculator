@@ -49,7 +49,7 @@ public class ParserVar implements Parser{
         }
         
         // pattern: both one of [<>+-] and a letter from a to z [a-z]
-        String p = "([<>+-][a-z])";
+        String p = "([!<>+-][a-z])";
         
         pattern = Pattern.compile(p);
         matcher = pattern.matcher(s);
@@ -80,10 +80,17 @@ public class ParserVar implements Parser{
                     if (this.stackNumber.isEmpty()) throw new OperationException("Could not update the variable, stack is empty.");
                     this.varDict.sub(letter, this.stackNumber.pop());
                     return;
+                case "!":
+                    this.varDict.delete(letter);
+                    return;
+                
             }
         }
         
         switch(s) {
+            case "clc":
+                this.varDict.deleteAll();
+                return;
             case "save":
                 this.varDict.save();
                 return;

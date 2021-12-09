@@ -74,7 +74,24 @@ public class DictVar {
         if (this.dict.get(key)==null) throw new OperationException("Could not update variable, no value has been assigned to the variable");
         this.dict.put(key, new Sub().execute(this.dict.get(key), value));
     }
-    
+
+    /**
+     * Method used to delete the value associated with the key.
+     * @param key
+    */
+    public void delete(String key) {
+        this.dict.put(key, null);
+    }
+
+    /**
+     * Method used to delete the value of all associated with the key.
+     */
+    public void deleteAll() {
+        for(String key: this.dict.keySet()){
+            this.dict.put(key, null);
+        }
+    }
+
     /**
      * Method used to save the current variable dict.
      */
