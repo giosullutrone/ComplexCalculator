@@ -343,8 +343,6 @@ public class OperationManager {
 
     private static String fileChooserManager(){
         FileChooser fc = new FileChooser();
-        fc.setInitialFileName(getReloaderFile());
-        fc.getExtensionFilters().addAll(new ExtensionFilter("Text File","*txt"));
         File selectedFile = fc.showOpenDialog(null);
         try{
             return selectedFile.getAbsolutePath();  
