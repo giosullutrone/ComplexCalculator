@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 import Parser.DictFunction;
+import java.util.Arrays;
 import java.util.Comparator;
 import javafx.scene.control.TextField;
 
@@ -44,10 +45,11 @@ public class AutoCompleter {
         autoCompletionPopup.setMaxWidth(textField.getWidth());
         completeDict.clear();
         completeDict.addAll(DictToken.getCompleteDict(dictFun));
+        completeDict.addAll(Arrays.asList("new","vars"));
     }
     
     public void clear(){
         completeDict.clear();
     }
-    
+    //
 }

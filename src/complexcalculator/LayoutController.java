@@ -124,37 +124,37 @@ public class LayoutController implements Initializable {
     */
     private void enterHandler(){
         //parse new for the generation of a user definied operation
-        if("new".equals(textField.getText().toLowerCase())){
-            //resest the textFileld
-            textField.setText(""); 
-            dictFun = OperationManager.display(dictFun);
-        }else{
-        //switch to variables view
-            if("vars".equals(textField.getText().toLowerCase())){
+        switch(textField.getText().toLowerCase()){
+            case "new":
+                //resest the textFileld
+                textField.setText(""); 
+                dictFun = OperationManager.display(dictFun);
+                break;
+            case "vars":
+                //switch to variables view
                 if(varPane.getHeight()>0){
                     hideVars();
                 }else{
                     updateVarList();
                     showVars();
                 }
+                break;
+            default:
+                //Parse the content of the string while catching and 
+                //handling possible RuntimeExceptions through the AlertFactory class.
+                try {
+                    parser_chained.parse(textField.getText());
+                    updateVarList();
+                } catch(SyntaxException e) {
+                    AlertFactory.handle(e);
+                } catch (OperationException e) {
+                    AlertFactory.handle(e);
+                }
+                break;
         }
-        else{
-        //Parse the content of the string while catching and 
-        //handling possible RuntimeExceptions through the AlertFactory class.
-            try {
-                parser_chained.parse(textField.getText());
-                updateVarList();
-            } catch(SyntaxException e) {
-                AlertFactory.handle(e);
-            } catch (OperationException e) {
-                AlertFactory.handle(e);
-            }
-        }}
-       
-        //resest the textFileld
-        textField.setText(""); 
-        
-        //Deleting the current rows and replacing with the new
+        //reset the textFileld
+        textField.setText("");
+        //Deleting the current rows and replacing it with the newest
         listView.getItems().clear();   
         listView.getItems().addAll(stackNum.getStack());
         listViewDup.getItems().clear(); 
@@ -197,24 +197,21 @@ public class LayoutController implements Initializable {
      * Hides the Anchor pane with vars to show the standard stack only
      */
     private void hideVars(){
-        AnchorPane.setTopAnchor(varPane, 99999.0);
-        AnchorPane.setLeftAnchor(varPane, 99999.0);
-        AnchorPane.setBottomAnchor(varPane, 99999.0);
-        AnchorPane.setRightAnchor(varPane, 99999.0);
+        AnchorPane.setTopAnchor(varPane, Double.MAX_VALUE);
+        AnchorPane.setLeftAnchor(varPane, Double.MAX_VALUE);
+        AnchorPane.setBottomAnchor(varPane, Double.MAX_VALUE);
+        AnchorPane.setRightAnchor(varPane, Double.MAX_VALUE);
     }
     
     /**
      * Updates the var list tacking only rhe populated elements of the VarDict
      */
     private void updateVarList(){
-        String s;
         listViewVars.getItems().clear();
         for (char c = 'a'; c <= 'z'; c++) {
-            s = ""+ c;
             try{
-                listViewVars.getItems().add(s+" -> "+dictVars.get(s).toString());
-            }catch(OperationException ex){
-            }
+                listViewVars.getItems().add(Character.toString(c)+" -> "+dictVars.get(Character.toString(c)).toString());
+            }catch(OperationException ex){}
         }
     }
 }

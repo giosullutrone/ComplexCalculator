@@ -16,6 +16,7 @@ public class ParserFunctionTest {
         // Var initialization
         StackNumber stackNumber, stackNumberParser;
         DictFunction dictFunction;
+        DictVar dictVar;
         ParserFunction instance;
         Parser chain;
         String s;
@@ -25,7 +26,8 @@ public class ParserFunctionTest {
         stackNumber = new StackNumber();
         stackNumberParser = new StackNumber();
         dictFunction = new DictFunction();
-        chain = new ParserFactory(stackNumberParser, dictFunction).chain();
+        dictVar = new DictVar();
+        chain = new ParserFactory(stackNumberParser, dictFunction, dictVar).chain();
         instance = new ParserFunction(chain, dictFunction);
         s = "custom1";
         dictFunction.put("custom1", "10+10j");
@@ -33,13 +35,12 @@ public class ParserFunctionTest {
         stackNumber.add(new Complex(10, 10));
         instance.parse(s);
         assertEquals(stackNumber, stackNumberParser);
-        
         // Case: dictFunction = {"custom1": "custom2", "custom2": "10+10j"}
         //                  s = "custom1"
         stackNumber = new StackNumber();
         stackNumberParser = new StackNumber();
         dictFunction = new DictFunction();
-        chain = new ParserFactory(stackNumberParser, dictFunction).chain();
+        chain = new ParserFactory(stackNumberParser, dictFunction, dictVar).chain();
         instance = new ParserFunction(chain, dictFunction);
         s = "custom1";
         dictFunction.put("custom2", "10+10j");

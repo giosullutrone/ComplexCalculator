@@ -1,17 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AlertMessage;
 
 import java.util.Optional;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 
 public class AlertConfirmation {
     /**
-     * An object that generates an Aler of type Confirmation
+     * An object that generates an Alert of type Confirmation
      * @param headerMessage string representing the Alert's header
      * @param confirmationMessage string representing the Alert's content
      */
@@ -21,6 +17,22 @@ public class AlertConfirmation {
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText(headerMessage);
         alert.setContentText(confirmationMessage);
+    }
+
+    /** An object that generates an Alert of type Confirmation on a File
+     * @param headerMessage string representing the Alert's header
+     * @param confirmationMessage string representing the Alert's content
+     * @param nameFile string representing the file name
+    */
+    public AlertConfirmation(String headerMessage, String confirmationMessage, String nameFile) {
+        alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText(headerMessage);
+        alert.setContentText(confirmationMessage + nameFile + '?');
+        ButtonType buttonTypeSave = new ButtonType("Save");
+        ButtonType buttonTypeNotSave = new ButtonType("Not Save");
+        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(buttonTypeSave, buttonTypeNotSave, buttonTypeCancel);
     }
     
     /**

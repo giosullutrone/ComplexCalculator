@@ -1,7 +1,5 @@
 package Complex;
 
-import AlertMessage.AlertMessage;
-
 /**
  * Implementation of a complex number in Java.
  */
@@ -14,17 +12,28 @@ public class Complex {
         this.img = img;
     }
     
-
+/**
+     * Method used to take the value of the real component of the complex number
+     * @return the value of the real part of the complex number
+*/
     public double getReal() {
         return real;
     }
+
+/**
+     * Method used to take the value of the imaginary component of the complex number
+     * @return the value of the imaginary part of the complex number
+*/
 
     public double getImg() {
         return img;
     }
     
     
-
+/**
+     * Method to provide a hash code of the object
+     * @return integer representing the hash code
+*/
     @Override
     public int hashCode() {
         int hash = 5;
@@ -33,6 +42,11 @@ public class Complex {
         return hash;
     }
 
+/**
+     * Method used to perform equal comparison between two objects
+     * @param obj object to compare
+     * @return boolean representing the result of comparing two objects
+*/
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -48,10 +62,7 @@ public class Complex {
         if (Double.doubleToLongBits(this.real) != Double.doubleToLongBits(other.real)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.img) != Double.doubleToLongBits(other.img)) {
-            return false;
-        }
-        return true;
+        return Double.doubleToLongBits(this.img) == Double.doubleToLongBits(other.img);
     }
     
     /**
