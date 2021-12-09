@@ -15,7 +15,7 @@ public class Div implements Operation2{
         if(b.getReal() == 0 && b.getImg() == 0){
             throw new OperationException("Division by 0");
         }
-        double den=Math.pow(new Mod().execute(b).getReal(),2);
+        double den = Math.pow(new Mod().execute(b).getReal(),2);
         return new Complex((a.getReal()*b.getReal()+a.getImg()*b.getImg())/den,(a.getImg()*b.getReal()-a.getReal()*b.getImg())/den);
     }
     

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Operations.NumOperations;
 
 import Complex.Complex;
@@ -18,25 +13,10 @@ public class Asin implements Operation1{
     public Complex execute(Complex a) {
         //asin(z)  =  -i * log(i*z + sqrt(1 - z*z);
         Complex result;
-	double tempRe, tempIm;
-        
-        tempRe =  1.0 - ( (a.getReal()*a.getReal()) - (a.getImg()*a.getImg()) );
-	tempIm =  0.0 - ( (a.getReal()*a.getImg()) + (a.getImg()*a.getReal()) );
 
-	result =  new Complex(tempRe, tempIm);
-	result = new Sqrt().execute(result);
-	
-	tempRe = -a.getImg();
-	tempIm =  a.getReal();
-	
-        result = new Complex(result.getReal() + tempRe, result.getImg() + tempIm );
-	
-	tempRe = Math.log(new Mod().execute(result).getReal());
-	tempIm = new Arg().execute(result).getReal();
-	
-        result = new Complex(tempIm, -tempRe);
-	
+        result = new Sqrt().execute(new Complex(1.0 - (new Mul().execute(a, a).getReal()), 0.0 - (new Mul().execute(a, a).getImg())));
+        result = new Complex(result.getReal() - a.getImg(), result.getImg() + a.getReal());
+	result = new Complex(new Arg().execute(result).getReal(), - Math.log(new Mod().execute(result).getReal()));
 	return result;
     }
-    
 }
