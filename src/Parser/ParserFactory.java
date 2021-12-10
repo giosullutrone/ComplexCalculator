@@ -5,7 +5,7 @@ import complexcalculator.StackNumber;
 import complexcalculator.StackOperator;
 
 /**
- * Class that create a Chain of Parser
+ * Class that creates a Chain of Parsers
  */
 public class ParserFactory {
     
@@ -17,12 +17,12 @@ public class ParserFactory {
     /**
      * Constructor of ParserFactory class
      * @param s StackNumber of elements inserted by the user
-     * @param dict Dictionary of user defined operations
-     */
-    
-    public ParserFactory(StackNumber s, DictFunction dict, DictVar dictVar) {
+     * @param dictFunction Dictionary of user defined operations
+     * @param dictVar Dictionary of vars
+     */    
+    public ParserFactory(StackNumber s, DictFunction dictFunction, DictVar dictVar) {
         this.dictVar = dictVar;
-        this.dictFunction = dict;
+        this.dictFunction = dictFunction;
         this.stackNumber = s;
         this.stackOperator = new StackOperator(s);
     }
