@@ -13,13 +13,13 @@ public class ParserFactory {
     private final StackNumber stackNumber;
     private final DictFunction dictFunction;
     private final DictVar dictVar;
-            
+
     /**
      * Constructor of ParserFactory class
      * @param s StackNumber of elements inserted by the user
      * @param dictFunction Dictionary of user defined operations
      * @param dictVar Dictionary of vars
-     */    
+     */
     public ParserFactory(StackNumber s, DictFunction dictFunction, DictVar dictVar) {
         this.dictVar = dictVar;
         this.dictFunction = dictFunction;
