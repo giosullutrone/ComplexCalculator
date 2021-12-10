@@ -36,26 +36,26 @@ public class ParserSplitterTest {
         // Case: s = "+" -> {"+"}
         instance = new ParserSplitter(dummyParser);
         instance.parse("+");
-        assertTrue(dummyParser.equals(Arrays.asList(new String[] {"+"})));
+        assertTrue(dummyParser.equals(Arrays.asList("+")));
         
         // Case: s = "  +    " -> {"+"}
         instance = new ParserSplitter(dummyParser);
         instance.parse("  +    ");
-        assertTrue(dummyParser.equals(Arrays.asList(new String[] {"+"})));
+        assertTrue(dummyParser.equals(Arrays.asList("+")));
         
         // Case: s = "  +  -  " -> {"+", "-"}
         instance = new ParserSplitter(dummyParser);
         instance.parse("  +  -  ");
-        assertTrue(dummyParser.equals(Arrays.asList(new String[] {"+", "-"})));
+        assertTrue(dummyParser.equals(Arrays.asList("+", "-")));
         
         // Case: s = " " -> {}
         instance = new ParserSplitter(dummyParser);
         instance.parse(" ");
-        assertTrue(dummyParser.equals(Arrays.asList(new String[] {})));
+        assertTrue(dummyParser.equals(Arrays.asList()));
         
         // Case: s = "10+10j" -> {"10+10j"}
         instance = new ParserSplitter(dummyParser);
         instance.parse("10+10j");
-        assertTrue(dummyParser.equals(Arrays.asList(new String[] {"10+10j"})));
+        assertTrue(dummyParser.equals(Arrays.asList("10+10j")));
     }
 }
