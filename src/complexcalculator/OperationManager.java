@@ -134,6 +134,7 @@ public class OperationManager {
                 saveOp.setDisable(true);
                 String selectedItem = opList.getSelectionModel().getSelectedItem();
                 //alert delete
+            if(selectedItem != null){
                 AlertConfirmation alert = new AlertConfirmation("Delete Confirm","Do you want to delete "+ selectedItem + "?");
                 if(alert.state()== ButtonType.OK){  
                     operations.removeCascade(selectedItem);
@@ -143,6 +144,7 @@ public class OperationManager {
                 opList.getItems().clear();
                 opList.getItems().addAll(operations.keySet());
             } 
+            }
         });
         
         //Enable modify of the op area 
@@ -232,12 +234,13 @@ public class OperationManager {
         });
         
         //create a pop up of comfirmation of the exit
+        //TO DO: verify if file is modified
         window.setOnCloseRequest(new EventHandler<WindowEvent>(){
             @Override
             public void handle(WindowEvent event) {
                 //LOGIC BEHIND THE POP-UP CLOSING
-                AlertConfirmation alert = new AlertConfirmation("Save Reminder","Do you want to save before exit?");
-                if(alert.state()== ButtonType.OK){
+                AlertConfirmation alert = new AlertConfirmation("Save Reminder","Do you want to save before exit?", 2);
+                if(alert.state() == alert.buttonTypeSave){
                     try {
                     //LOGIC BEHIND THE SAVE ON FILE
                     String filePath=fileChooserManager();
