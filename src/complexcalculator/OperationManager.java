@@ -15,6 +15,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
@@ -137,6 +139,7 @@ public class OperationManager {
                 if(alert.state()== ButtonType.OK){  
                     operations.removeCascade(selectedItem);
                     opArea.setText("");
+                    renameOpField.setText("");
                 }
                 //Update the list deleting the operations
                 opList.getItems().clear();
@@ -196,11 +199,12 @@ public class OperationManager {
             {
             try {
                 //LOGIC BEHIND THE SAVE ON FILE
-                String filePath=fileChooserManager();
+                String filePath=fileChooserManager(false);
                 operations.toFile(filePath);
                 updateReloaderFile(filePath);
             } catch (IOException ex) {
                 Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NullPointerException ex){
             }
             }
          });
@@ -211,7 +215,7 @@ public class OperationManager {
             {
             try {
                 //LOGIC BEHIND THE RELOAD FROM FILE
-                operations.fromFile(fileChooserManager());
+                operations.fromFile(fileChooserManager(true));
                 opList.getItems().clear();
                 opList.getItems().addAll(operations.keySet());
                 
@@ -238,17 +242,24 @@ public class OperationManager {
             public void handle(WindowEvent event) {
                 //LOGIC BEHIND THE POP-UP CLOSING
                 AlertConfirmation alert = new AlertConfirmation("Save Reminder","Do you want to save before exit?", 2);
-                if(alert.state() == alert.buttonTypeSave){
-                    try {
-                    //LOGIC BEHIND THE SAVE ON FILE
-                    String filePath=fileChooserManager();
-                    operations.toFile(filePath);
-                    updateReloaderFile(filePath);
-                    } catch (IOException ex) {
-                    Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);
-                    } 
+                ButtonType state =alert.state();
+                if(state == alert.buttonTypeCancel){
+                    event.consume();
                 }
-                window.close();
+                else
+                    if(state == alert.buttonTypeSave){
+                        try {
+                            String filePath=fileChooserManager(false);
+                            operations.toFile(filePath);
+                            updateReloaderFile(filePath);
+                        } catch (IOException ex) {
+                            Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);
+                        } 
+                        window.close();
+                    }
+                    if(state == alert.buttonTypeNotSave){
+                        window.close();
+                    }
             }
         });
         
@@ -342,9 +353,20 @@ public class OperationManager {
         return operations;
     }
 
-    private static String fileChooserManager(){
+    /**
+     * Opens a pop up for the user to make him select or create a file
+     * 
+     * @param mode false for file creatore true for file chooser
+     * 
+     * @return (String) the path of the selected file or null if fails
+     */
+    private static String fileChooserManager(boolean mode){
         FileChooser fc = new FileChooser();
-        File selectedFile = fc.showOpenDialog(null);
+        File selectedFile;
+        if(mode)
+            selectedFile = fc.showOpenDialog(null);
+        else
+            selectedFile = fc.showSaveDialog(null);
         try{
             return selectedFile.getAbsolutePath();  
         }catch(NullPointerException ex){

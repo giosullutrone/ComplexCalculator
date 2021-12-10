@@ -45,4 +45,5 @@ public class AlertConfirmation {
         Optional<ButtonType> result = alert.showAndWait();
         return result.get();
     }
+    
 }
