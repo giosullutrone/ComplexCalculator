@@ -6,6 +6,8 @@ import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 
 public class AlertConfirmation {
+
+    public ButtonType buttonTypeSave, buttonTypeNotSave, buttonTypeCancel;
     /**
      * An object that generates an Alert of type Confirmation
      * @param headerMessage string representing the Alert's header
@@ -22,16 +24,16 @@ public class AlertConfirmation {
     /** An object that generates an Alert of type Confirmation on a File
      * @param headerMessage string representing the Alert's header
      * @param confirmationMessage string representing the Alert's content
-     * @param nameFile string representing the file name
+     * @param a
     */
-    public AlertConfirmation(String headerMessage, String confirmationMessage, String nameFile) {
+    public AlertConfirmation(String headerMessage, String confirmationMessage, int a) {
         alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText(headerMessage);
-        alert.setContentText(confirmationMessage + nameFile + '?');
-        ButtonType buttonTypeSave = new ButtonType("Save");
-        ButtonType buttonTypeNotSave = new ButtonType("Not Save");
-        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+        alert.setContentText(confirmationMessage);
+        buttonTypeSave = new ButtonType("Save");
+        buttonTypeNotSave = new ButtonType("Not Save");
+        buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(buttonTypeSave, buttonTypeNotSave, buttonTypeCancel);
     }
     
