@@ -34,7 +34,7 @@ public class DictFunction {
      */
     public void put(String key, String value) {
         value = value.trim().replaceAll("\\s+", " ");
-        if(!DictToken.getCompleteDict(this).contains(key)) throw new SyntaxException("Function already exists");
+        if(DictToken.getCompleteDict(this).contains(key)) throw new SyntaxException("Function already exists");
         this.replace(key, value);
     }
     
