@@ -2,7 +2,6 @@ package complexcalculator;
 
 
 import AlertMessage.*;
-import Complex.Complex;
 import Parser.DictFunction;
 import static complexcalculator.Configurator.*;
 import java.io.File;
@@ -25,7 +24,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
