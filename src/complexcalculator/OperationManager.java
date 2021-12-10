@@ -6,6 +6,8 @@ import Parser.DictFunction;
 import static complexcalculator.Configurator.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
@@ -15,8 +17,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
@@ -30,7 +30,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+
 public class OperationManager {
+    
+    
     /**
      * method to manualy create a pop-up for the operation manage
      * requires the operation dict
@@ -42,6 +45,7 @@ public class OperationManager {
         //Generating pices of the interface
         Stage window = new Stage();
         ListView<String> opList = new ListView();
+        List<Integer> flag = new ArrayList<Integer>();
         
         //Updating the ListView
         opList.getItems().clear();
@@ -62,6 +66,7 @@ public class OperationManager {
         Button addOp = new Button("ADD");
         
         //Binding of the buttons
+        renameOp.disableProperty().bind(Bindings.createBooleanBinding( () -> (renameOpField.getText().isEmpty()), renameOpField.textProperty()));
         deleteOp.disableProperty().bind(Bindings.createBooleanBinding( () -> (opArea.getText().isEmpty()), opArea.textProperty()));
         modifyOp.disableProperty().bind(Bindings.createBooleanBinding( () -> (opArea.getText().isEmpty()), opArea.textProperty()));
         addOp.disableProperty().bind(Bindings.createBooleanBinding( () -> (newOpArea.getText().isEmpty() || nameOpField.getText().isEmpty()), newOpArea.textProperty(), nameOpField.textProperty()));
@@ -101,6 +106,7 @@ public class OperationManager {
                 try{
                     opArea.setText(operations.get(selectedItem));
                     renameOpField.setText(selectedItem);
+                    renameOpField.setEditable(true);
                 } catch (OperationException e) {
                 }
             }
@@ -112,6 +118,7 @@ public class OperationManager {
             public void handle(ActionEvent event) {
                 String selectedItem = opList.getSelectionModel().getSelectedItem();
                 String renamedItem = renameOpField.getText();
+                renameOpField.setEditable(false);
                 try{
                     operations.renameCascade(selectedItem, renamedItem);
                 }catch(OperationException ex){
@@ -120,10 +127,8 @@ public class OperationManager {
                 //Update the list
                 opList.getItems().clear();
                 opList.getItems().addAll(operations.keySet());
-
-            }
-            
-            
+                flag.add(1);
+            }    
         });
         
         //deleting of the selected operations
@@ -140,10 +145,12 @@ public class OperationManager {
                     operations.removeCascade(selectedItem);
                     opArea.setText("");
                     renameOpField.setText("");
+                    renameOpField.setEditable(false);
                 }
                 //Update the list deleting the operations
                 opList.getItems().clear();
                 opList.getItems().addAll(operations.keySet());
+                flag.add(1);
             } 
             }
         });
@@ -171,7 +178,8 @@ public class OperationManager {
                 opList.getItems().addAll(operations.keySet());
                 opArea.setText("");
                 saveOp.setDisable(true);
-                
+                renameOpField.setEditable(false);
+                flag.add(1);
             }
          });
         
@@ -182,13 +190,20 @@ public class OperationManager {
                 //LOGIC BEHIND THE ADD
                 try {
                 operations.put(nameOpField.getText(), newOpArea.getText());
+                newOpArea.setText("");
+                nameOpField.setText("");
+                renameOpField.setText("");
+                opArea.setText("");
+                flag.add(1);
                 } catch(SyntaxException putException) {
                     AlertFactory.handle(putException);
                 }
                 opList.getItems().clear();
                 opList.getItems().addAll(operations.keySet());
-                newOpArea.setText("");
-                nameOpField.setText("");
+
+                
+                
+                
             }
             
         });
@@ -221,6 +236,8 @@ public class OperationManager {
                 
             } catch (IOException |ClassNotFoundException ex) {
                 Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);   
+            } catch (NullPointerException ex){
+                
             }
             }
         });
@@ -241,27 +258,31 @@ public class OperationManager {
             @Override
             public void handle(WindowEvent event) {
                 //LOGIC BEHIND THE POP-UP CLOSING
-                AlertConfirmation alert = new AlertConfirmation("Save Reminder","Do you want to save before exit?", 2);
-                ButtonType state =alert.state();
-                if(state == alert.buttonTypeCancel){
-                    event.consume();
-                }
-                else
-                    if(state == alert.buttonTypeSave){
-                        try {
-                            String filePath=fileChooserManager(false);
-                            operations.toFile(filePath);
-                            updateReloaderFile(filePath);
-                        } catch (IOException ex) {
-                            Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);
-                        } 
-                        window.close();
+                if(!flag.isEmpty())
+                {
+                    AlertConfirmation alert = new AlertConfirmation("Save Reminder","Do you want to save before exit?", 2);
+                    ButtonType state =alert.state();
+                    if(state == alert.buttonTypeCancel){
+                        event.consume();
                     }
-                    if(state == alert.buttonTypeNotSave){
+                    else
+                        if(state == alert.buttonTypeSave){
+                            try {
+                                String filePath=fileChooserManager(false);
+                                operations.toFile(filePath);
+                                updateReloaderFile(filePath);
+                            } catch (IOException ex) {
+                                Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);
+                            } 
+                            window.close();
+                        }
+                        if(state == alert.buttonTypeNotSave){
                         window.close();
-                    }
-            }
-        });
+                        }
+                }else
+                    window.close();  
+            }   
+            });
         
         //window managment
         opArea.setEditable(false);
@@ -362,6 +383,7 @@ public class OperationManager {
      */
     private static String fileChooserManager(boolean mode){
         FileChooser fc = new FileChooser();
+        fc.setInitialDirectory(new File("./"));
         File selectedFile;
         if(mode)
             selectedFile = fc.showOpenDialog(null);
