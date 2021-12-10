@@ -36,6 +36,7 @@ public class ParserFactory {
         ParserNumOperation numOperation = new ParserNumOperation(stackOperator, complex);
         ParserStackOperation stackOperation = new ParserStackOperation(stackOperator, numOperation);
         ParserVar var = new ParserVar(stackNumber, dictVar, stackOperation);
-        return new ParserFunction(var, dictFunction);
+        ParserSplitter parserSplitter = new ParserSplitter(var);
+        return new ParserFunction(parserSplitter, dictFunction);
     }
 }

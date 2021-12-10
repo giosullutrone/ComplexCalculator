@@ -1,7 +1,5 @@
 package Parser;
 
-import Complex.Complex;
-import complexcalculator.StackNumber;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -14,53 +12,61 @@ public class ParserFunctionTest {
         // Feedback
         System.out.println("Testing: ParserFunction.parse");
         // Var initialization
-        StackNumber stackNumber, stackNumberParser;
         DictFunction dictFunction;
-        DictVar dictVar;
         ParserFunction instance;
-        Parser chain;
-        String s;
+        
+        ParserSplitterInterface dummyParser = new ParserSplitterInterface() {
+            private String captured = "";
+            
+            @Override
+            public void parse(String operations) {
+                this.captured = operations;
+            }
+
+            @Override
+            public boolean equals(Object o) {
+                return this.captured.equals(o);
+            }
+        };
         
         // Case: dictFunction = {"custom1": "10+10j"}
-        //                  s = "custom1"
-        stackNumber = new StackNumber();
-        stackNumberParser = new StackNumber();
+        //                  s = "custom1" -> "10+10j"
         dictFunction = new DictFunction();
-        dictVar = new DictVar();
-        chain = new ParserFactory(stackNumberParser, dictFunction, dictVar).chain();
-        instance = new ParserFunction(chain, dictFunction);
-        s = "custom1";
+        instance = new ParserFunction(dummyParser, dictFunction);
         dictFunction.put("custom1", "10+10j");
+        instance.parse("custom1");
+        assertTrue(dummyParser.equals("10+10j"));
         
-        stackNumber.add(new Complex(10, 10));
-        instance.parse(s);
-        assertEquals(stackNumber, stackNumberParser);
-        // Case: dictFunction = {"custom1": "custom2", "custom2": "10+10j"}
-        //                  s = "custom1"
-        stackNumber = new StackNumber();
-        stackNumberParser = new StackNumber();
+        // Case: dictFunction = {"custom1": "10+10j"}
+        //                  s = "custom" -> "custom"
         dictFunction = new DictFunction();
-        chain = new ParserFactory(stackNumberParser, dictFunction, dictVar).chain();
-        instance = new ParserFunction(chain, dictFunction);
-        s = "custom1";
-        dictFunction.put("custom2", "10+10j");
-        dictFunction.put("custom1", "custom2");
+        instance = new ParserFunction(dummyParser, dictFunction);
+        dictFunction.put("custom1", "10+10j");
+        instance.parse("custom");
+        assertTrue(dummyParser.equals("custom"));
         
-        stackNumber.add(new Complex(10, 10));
-        instance.parse(s);
-        assertEquals(stackNumber, stackNumberParser);
+        // Case: dictFunction = {"custom": "10+10j"}
+        //                  s = "custom1" -> "custom1"
+        dictFunction = new DictFunction();
+        instance = new ParserFunction(dummyParser, dictFunction);
+        dictFunction.put("custom", "10+10j");
+        instance.parse("custom1");
+        assertTrue(dummyParser.equals("custom1"));
+        
+        // Case: dictFunction = {"custom1": "custom2", "custom2": "10-10j"}
+        //                  s = "custom1" -> "10-10j"
+        dictFunction = new DictFunction();
+        instance = new ParserFunction(dummyParser, dictFunction);
+        dictFunction.put("custom2", "10-10j");
+        dictFunction.put("custom1", "custom2");
+        instance.parse("custom1");
+        assertTrue(dummyParser.equals("10-10j"));
         
         // Case: dictFunction = {}
-        //                  s = "custom1"
-        stackNumber = new StackNumber();
+        //                  s = "custom1" -> "custom1"
         dictFunction = new DictFunction();
-        instance = new ParserFunction(null, dictFunction);
-        s = "custom1";
-        
-        try {
-            stackNumber.add(new Complex(10, 10));
-            instance.parse(s);
-            assertTrue(false);
-        } catch (NullPointerException e) {}
+        instance = new ParserFunction(dummyParser, dictFunction);
+        instance.parse("custom1");
+        assertTrue(dummyParser.equals("custom1"));
     }
 }
