@@ -17,19 +17,34 @@ public class AutoCompleter {
     private LinkedList<String> completeDict;
     private DictFunction dictFun;
     private TextField textField;
+    String last;
     
     public AutoCompleter(DictFunction dictFun, TextField textField) {
         
         this.dictFun=dictFun;
         this.textField=textField;
-        completeDict = DictToken.getCompleteDict(dictFun);
+        completeDict = DictToken.getDict(dictFun);
         
         stringAutoCompletionBinding = TextFields.bindAutoCompletion(textField, provider -> {
-            return completeDict.stream().filter(elem
-                    -> {
-                return elem.toLowerCase().contains(provider.getUserText().toLowerCase());
-            }).sorted(Comparator.comparingInt(String::length)).collect(Collectors.toList());
+            last = provider.getUserText();
+            
+            return completeDict.stream().filter(elem -> {
+                String[] ss = provider.getUserText().toLowerCase().split(" ");
+                return elem.toLowerCase().contains(ss[ss.length-1]);
+            }).sorted(new Comparator<String>() {
+                @Override
+                public int compare(String t, String t1) {
+                    return t.indexOf(last) - t1.indexOf(last);
+                }
+            }).collect(Collectors.toList());
         });
+        
+        stringAutoCompletionBinding.setOnAutoCompleted(value -> {
+            String[] ss = Arrays.copyOfRange(last.split(" "), 0, last.split(" ").length-1);
+            textField.setText(String.join(" ", ss) + " " + value.getCompletion()); 
+            textField.end();
+        });
+        
         stringAutoCompletionBinding.setVisibleRowCount(2);
         autoCompletionPopup = stringAutoCompletionBinding.getAutoCompletionPopup();
         autoCompletionPopup.setAutoFix(true);
@@ -45,7 +60,6 @@ public class AutoCompleter {
         autoCompletionPopup.setMaxWidth(textField.getWidth());
         completeDict.clear();
         completeDict.addAll(DictToken.getCompleteDict(dictFun));
-        completeDict.addAll(Arrays.asList("new","vars", "save", "restore"));
     }
     
     public void clear(){

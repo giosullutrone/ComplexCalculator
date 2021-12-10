@@ -29,10 +29,19 @@ public class DictToken {
      * @param dictFunction
      * @return 
      */
-    public static LinkedList<String> getCompleteDict(DictFunction dictFunction){
+    public static LinkedList<String> getDict(DictFunction dictFunction){
         LinkedList<String> completeDict = new LinkedList<>(dict);
         completeDict.addAll(dictFunction.keySet());
         return completeDict;
     }
-    
+
+    /**
+     * @param dictFunction
+     * @return 
+     */
+    public static LinkedList<String> getCompleteDict(DictFunction dictFunction){
+        LinkedList<String> completeDict = getDict(dictFunction);
+        completeDict.addAll(Arrays.asList("new","vars", "save", "restore"));
+        return completeDict;
+    }
 }

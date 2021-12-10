@@ -72,8 +72,8 @@ public class DictFunction {
     /**
      * Method used to rename a function while handling all cascading changes.
      * @param key function to rename.
-     * @throw OperationException if dict does not contain the key.
      * @param keyRenamed function's new name.
+     * @throw OperationException if dict does not contain the key.
      */
     public void renameCascade(String key, String keyRenamed) {
         // Check if key is inside dict
@@ -91,7 +91,7 @@ public class DictFunction {
             Pattern pattern = Pattern.compile(p);
             Matcher matcher = pattern.matcher(this.dict.get(k));
             
-            this.dict.put(k, matcher.replaceAll(keyRenamed));
+            this.dict.replace(k, matcher.replaceAll(keyRenamed));
         }
     }
     

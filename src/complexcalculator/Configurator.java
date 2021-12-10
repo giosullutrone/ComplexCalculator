@@ -21,12 +21,12 @@ public class Configurator {
      */
     public static String getReloaderFile(){
         try{
-            FileInputStream fileStream = new FileInputStream("configuration.txt");
+            FileInputStream fileStream = new FileInputStream("./configuration.txt");
             ObjectInputStream input = new ObjectInputStream(fileStream);
             String file = (String) input.readObject();
             return file;
         }catch (FileNotFoundException ex) {
-            File f = new File("configuration.txt");
+            File f = new File("./configuration.txt");
         }catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -40,7 +40,7 @@ public class Configurator {
      */
     public static void updateReloaderFile(String filePath){
         try{
-            FileOutputStream file = new FileOutputStream("configuration.txt");
+            FileOutputStream file = new FileOutputStream("./configuration.txt");
             ObjectOutputStream output = new ObjectOutputStream(file);
             output.writeObject(filePath);
         }catch (FileNotFoundException ex){
