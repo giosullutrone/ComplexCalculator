@@ -23,9 +23,8 @@ public class ParserOperationsTest {
         
         // Var initialization
         StackNumber stackNumber = new StackNumber(), parseStackNumber = new StackNumber();
-        ParserFactory factoryIstance = new ParserFactory(parseStackNumber, new DictFunction(), new DictVar()); 
         StackOperator stackOperator= new StackOperator(stackNumber);
-        Parser parser = factoryIstance.chain();
+        Parser parser = ParserFactory.chain(parseStackNumber, new DictFunction(), new DictVar());
         Operation0 op0;
         Operation1 op1;
         Operation2 op2;

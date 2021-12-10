@@ -78,8 +78,7 @@ public class LayoutController implements Initializable {
         hideVars();
 
         //Initialize the ParserFactory
-        ParserFactory par= new ParserFactory(stackNum, dictFun, dictVars);
-        parser_chained = par.chain();
+        parser_chained = ParserFactory.chain(stackNum, dictFun, dictVars);
         
         //Initialize the AutoComplete Function
         autoCompleter = new AutoCompleter(dictFun, textField);
