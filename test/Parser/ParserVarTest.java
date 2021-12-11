@@ -1,5 +1,6 @@
 package Parser;
 
+import AlertMessage.OperationException;
 import AlertMessage.SyntaxException;
 import Complex.Complex;
 import complexcalculator.StackNumber;
@@ -111,6 +112,26 @@ public class ParserVarTest {
             instance.parse("<aa");
             assertTrue(false);
         } catch (SyntaxException e) {}
+
+        // Case: !a
+        stackNumber = new StackNumber();
+        dictVar = new DictVar();
+        instance = new ParserVar(stackNumber, dictVar, null);
+        stackOperator = new StackOperator(stackNumber);
+        num = new Complex(10, 10);
+        stackOperator.execute(num);
+        instance.parse(">a");
+        stackOperator.execute(num);
+        instance.parse("!a");
+        try {
+            dictVar.get("a");
+            assertTrue(false);
+        } catch (OperationException e) {}
+        try {
+            instance.parse("!aa");
+            instance.parse("a!");
+            assertTrue(false);
+        } catch (SyntaxException e) {}
         
         // Case: Save - Restore
         stackNumber = new StackNumber();
@@ -127,5 +148,22 @@ public class ParserVarTest {
         assertEquals(dictVar.get("a"), numOverwrite);
         instance.parse("restore");
         assertEquals(dictVar.get("a"), num);
+
+        // Case: clc
+        stackNumber = new StackNumber();
+        dictVar = new DictVar();
+        instance = new ParserVar(stackNumber, dictVar, null);
+        stackOperator = new StackOperator(stackNumber);
+        num = new Complex(10, 10);
+        stackOperator.execute(num);
+        instance.parse(">a");
+        stackOperator.execute(num);
+        instance.parse(">b");
+        instance.parse("clc");
+        try {
+            dictVar.get("a");
+            dictVar.get("b");
+            assertTrue(false);
+        } catch (OperationException e) {}
     }
 }
