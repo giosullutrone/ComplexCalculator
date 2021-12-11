@@ -1,7 +1,5 @@
 package Parser;
 
-import AlertMessage.OperationException;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -9,7 +7,10 @@ import java.util.List;
 
 public class DictHelp {
     public static HashMap<String, String> dict = new HashMap<>();
-
+    
+    /**
+    * Method used to create user manual
+    */
     public static void getHelp(){
         //User defined operation
                 dict.put("User defined operation", "Syntax:\t\tnew\n\n" + 
@@ -90,14 +91,22 @@ public class DictHelp {
                                          "Description:\tfunction that does the exponential of a complex number");
     }
 
+    /**
+     * Method used to get a list of all keys.
+     * @return LinkedList of all keys.
+     */
     public static List<String> keyList() {
         List<String> s = new LinkedList<>(DictHelp.dict.keySet());
         Collections.sort(s);
         return s;
     }
 
+    /**
+     * Method used to get a value from the specified key.
+     * @param key name of the function.
+     * @return String value associated with the key.
+     */
     public static String values(String key) {
-        if (!DictHelp.dict.containsKey(key)) throw new OperationException("Could not get function, function does not exist.");
         return DictHelp.dict.get(key);
     }
 }
