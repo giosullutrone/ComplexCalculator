@@ -35,7 +35,7 @@ public class AtanTest {
         stackOperator.execute(new Complex(9, 5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(1.49, 0.05).toString(), stackNumber.peekFirst().toString());
+        assertEquals(new Complex(1.485907, 0.046865).toString(), stackNumber.peekFirst().toString());
     }
     
 }

@@ -35,7 +35,7 @@ public class CosTest {
         stackOperator.execute(new Complex(9, 5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(-67.61, -30.58).toString(), stackNumber.peekFirst().toString());
+        assertEquals(new Complex(-67.614929, -30.580514).toString(), stackNumber.peekFirst().toString());
     }
     
 }

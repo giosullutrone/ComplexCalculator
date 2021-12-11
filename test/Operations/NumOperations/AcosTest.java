@@ -27,7 +27,7 @@ public class AcosTest {
         Acos instance;
         StackNumber stackNumber;
         StackOperator stackOperator;
-        
+
         // Case: Stack with 1 elements
         instance = new Acos();
         stackNumber = new StackNumber();
@@ -35,7 +35,7 @@ public class AcosTest {
         stackOperator.execute(new Complex(9, 5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(0.51, -3.02).toString(), stackNumber.peekFirst().toString());
+        assertEquals(new Complex(0.509108, -3.023624).toString(), stackNumber.peekFirst().toString());
     }
     
 }

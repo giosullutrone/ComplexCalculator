@@ -35,7 +35,7 @@ public class LogTest {
         stackOperator.execute(new Complex(9, 5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(2.33, 0.51).toString(), stackNumber.peekFirst().toString());
+        assertEquals(new Complex(2.331719, 0.507098).toString(), stackNumber.peekFirst().toString());
     }
     
 }

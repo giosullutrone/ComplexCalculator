@@ -35,7 +35,7 @@ public class SinTest {
         stackOperator.execute(new Complex(9, 5));
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
-        assertEquals(new Complex(30.58, -67.61).toString(), stackNumber.peekFirst().toString());
+        assertEquals(new Complex(30.583291, -67.608790).toString(), stackNumber.peekFirst().toString());
     }
     
 }
