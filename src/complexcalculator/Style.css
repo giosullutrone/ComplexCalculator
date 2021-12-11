@@ -57,9 +57,12 @@
 }
 
 .button{
-     -fx-background-color: #BD93F9;
-     -fx-text-fill: #F8F8F2;
-     -fx-font-family: "Calibri";
-     -fx-font-size: 12;
-     
+    -fx-background-color: #BD93F9;
+    -fx-text-fill: #F8F8F2;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 12;    
+}
+
+.button:hover{ 
+    -fx-cursor:hand;
 }
