@@ -41,9 +41,9 @@ public class LayoutController implements Initializable {
     
     private DictFunction dictFun;
     private AutoCompleter autoCompleter;
-    StackNumber stackNum;
-    Parser parser_chained;
-    DictVar dictVars;
+    private StackNumber stackNum;
+    private Parser parser_chained;
+    private DictVar dictVars;
     
     
     
@@ -81,7 +81,7 @@ public class LayoutController implements Initializable {
         parser_chained = ParserFactory.chain(stackNum, dictFun, dictVars);
         
         //Initialize the AutoComplete Function
-        autoCompleter = new AutoCompleter(dictFun, textField);
+        autoCompleter = new AutoCompleter(dictFun, dictVars, textField, stackNum);
 
     }
     
@@ -108,7 +108,6 @@ public class LayoutController implements Initializable {
     @FXML
     private void textEnterPressed(KeyEvent event) {
         if(event.getText().contains("\r")){
-            autoCompleter.clear();
             enterHandler();         
         } else {
             autoCompleter.update();
@@ -122,6 +121,7 @@ public class LayoutController implements Initializable {
     *
     */
     private void enterHandler(){
+        autoCompleter.clear();
         //parse new for the generation of a user definied operation
         switch(textField.getText().toLowerCase()){
             case "new":

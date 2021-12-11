@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 import Parser.DictFunction;
+import Parser.DictVar;
 import java.util.Arrays;
-import java.util.Comparator;
 import javafx.scene.control.TextField;
 
 public class AutoCompleter {
@@ -17,13 +17,17 @@ public class AutoCompleter {
     private LinkedList<String> completeDict;
     private DictFunction dictFun;
     private TextField textField;
+    private DictVar dictVars;
+    private StackNumber stackNumber;
     String last;
     
-    public AutoCompleter(DictFunction dictFun, TextField textField) {
+    public AutoCompleter(DictFunction dictFun, DictVar dictVars ,TextField textField, StackNumber stackNumber) {
         
         this.dictFun=dictFun;
         this.textField=textField;
-        completeDict = DictToken.getDict(dictFun);
+        this.dictVars = dictVars;
+        this.stackNumber = stackNumber;
+        completeDict = DictToken.getCompleteDict(dictFun);
         
         stringAutoCompletionBinding = TextFields.bindAutoCompletion(textField, provider -> {
             last = provider.getUserText();
@@ -31,12 +35,7 @@ public class AutoCompleter {
             return completeDict.stream().filter(elem -> {
                 String[] ss = provider.getUserText().toLowerCase().split(" ");
                 return elem.toLowerCase().contains(ss[ss.length-1]);
-            }).sorted(new Comparator<String>() {
-                @Override
-                public int compare(String t, String t1) {
-                    return t.indexOf(last) - t1.indexOf(last);
-                }
-            }).collect(Collectors.toList());
+            }).sorted((String t, String t1) -> t.indexOf(last) - t1.indexOf(last)).collect(Collectors.toList());
         });
         
         stringAutoCompletionBinding.setOnAutoCompleted(value -> {
@@ -58,8 +57,22 @@ public class AutoCompleter {
     public void update(){
         autoCompletionPopup.setMinWidth(textField.getWidth());
         autoCompletionPopup.setMaxWidth(textField.getWidth());
-        completeDict.clear();
-        completeDict.addAll(DictToken.getCompleteDict(dictFun));
+        if(completeDict.isEmpty()){
+            completeDict.addAll(DictToken.getCompleteDict(dictFun));
+            if(!dictVars.getkeyList().isEmpty()){
+                Arrays.asList('!', '<','>', '+', '-').forEach(token -> {
+                    dictVars.getkeyList().forEach(letter -> {
+                        if(!stackNumber.isEmpty() && !dictVars.isNull(letter) && Arrays.asList('+', '-').contains(token))
+                            completeDict.add(""+token+letter);                            
+                        else if(!dictVars.isNull(letter) && !Arrays.asList('+','-','>').contains(token))
+                            completeDict.add(""+token+letter);
+                        else if(token=='>' && !stackNumber.isEmpty())
+                            completeDict.add(""+token+letter);
+                });
+            });
+            }
+        }
+            
     }
     
     public void clear(){

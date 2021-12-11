@@ -5,6 +5,8 @@ import Complex.Complex;
 import Operations.NumOperations.Add;
 import Operations.NumOperations.Sub;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Class that provides methods used to execute specific operations on a provided 
@@ -30,8 +32,8 @@ public class DictVar {
     /**
      * Method used to insert a value into the specified key.
      * @param key
-     * @throw OperationException if key is outside the accepted range of [a-z].
      * @param value
+     * @throw OperationException if key is outside the accepted range of [a-z].
      */
     public void put(String key, Complex value) {
         if (!this.dict.containsKey(key)) throw new OperationException("Could not save variable, variable not in the accepted range");
@@ -49,6 +51,15 @@ public class DictVar {
         if (!this.dict.containsKey(key)) throw new OperationException("Could not load variable, variable not in the accepted range");
         if (this.dict.get(key)==null) throw new OperationException("Could not load variable, no value has been assigned to the variable");
         return this.dict.get(key);
+    }
+    
+    /**
+     * Method used to verify the value from the specified key.
+     * @param key
+     * @return boolean true if value is null
+     */
+    public boolean isNull(String key) {
+        return this.dict.get(key)==null;
     }
     
     /**
@@ -80,18 +91,26 @@ public class DictVar {
      * @param key
     */
     public void delete(String key) {
-        this.dict.put(key, null);
+        this.put(key, null);
     }
 
     /**
-     * Method used to delete the value of all associated with the key.
+     * Method used to delete the value of all keys.
      */
     public void deleteAll() {
-        for(String key: this.dict.keySet()){
-            this.dict.put(key, null);
-        }
+        this.dict.keySet().forEach(key -> {
+            this.delete(key);
+        });
     }
-
+    
+    /**
+     * Method used to get a List of all keys.
+     * @return LinkedList of all keys.
+     */
+    public List<String> getkeyList(){
+        return new LinkedList<>(this.dict.keySet());
+    }
+    
     /**
      * Method used to save the current variable dict.
      */

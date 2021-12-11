@@ -62,7 +62,7 @@ public class DictFunction {
     }
     
     /**
-     * Method used to get a set of all keys.
+     * Method used to get a list of all keys.
      * @return LinkedList of all keys.
      */
     public List<String> keySet() {

@@ -18,7 +18,7 @@ public class ParserSplitterTest {
         ParserSplitter instance;
         
         Parser dummyParser = new Parser() {
-            private List<String> captured = new LinkedList<String>();
+            private final List<String> captured = new LinkedList<>();
             
             @Override
             public void parse(String operations) {
