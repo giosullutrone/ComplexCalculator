@@ -4,7 +4,6 @@ package complexcalculator;
 import AlertMessage.*;
 import Parser.DictFunction;
 import static complexcalculator.Configurator.*;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +24,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -45,7 +43,7 @@ public class OperationManager {
         //Generating pices of the interface
         Stage window = new Stage();
         ListView<String> opList = new ListView();
-        List<Integer> flag = new ArrayList<Integer>();
+        List<Integer> flag = new ArrayList<>();
         
         //Updating the ListView
         opList.getItems().clear();
@@ -133,6 +131,7 @@ public class OperationManager {
         
         //deleting of the selected operations
         deleteOp.setOnAction(new EventHandler<ActionEvent>(){
+         @Override
          public void handle(ActionEvent e)
             {
                 opArea.setEditable(false);
@@ -157,6 +156,7 @@ public class OperationManager {
         
         //Enable modify of the op area 
         modifyOp.setOnAction(new EventHandler<ActionEvent>(){
+         @Override
         public void handle(ActionEvent e)
             {
                 opArea.setEditable(true);
@@ -166,6 +166,7 @@ public class OperationManager {
         
         //Saves the modified operation
         saveOp.setOnAction(new EventHandler<ActionEvent>(){
+         @Override
         public void handle(ActionEvent e)
             {
                 opArea.setEditable(false);
@@ -185,6 +186,7 @@ public class OperationManager {
         
         //Add a new operation
         addOp.setOnAction(new EventHandler<ActionEvent>(){
+         @Override
         public void handle(ActionEvent e)
             {
                 //LOGIC BEHIND THE ADD
@@ -206,6 +208,7 @@ public class OperationManager {
         
         //Save on a file the operation list
         saveMenu.setOnAction(new EventHandler<ActionEvent>(){
+         @Override
         public void handle(ActionEvent e)
             {
             try {
@@ -224,6 +227,7 @@ public class OperationManager {
         
         //Reload form a file the operation list
         realoadMenu.setOnAction(new EventHandler<ActionEvent>(){
+         @Override
         public void handle(ActionEvent e)
             {
             try {
@@ -241,6 +245,7 @@ public class OperationManager {
         
         //Clear the dict
         clearMenu.setOnAction(new EventHandler<ActionEvent>(){
+         @Override
         public void handle(ActionEvent e)
             {
                 //LOGIC BEHIND THE DICT CLEAR
