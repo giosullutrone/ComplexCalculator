@@ -76,7 +76,7 @@ public class Complex {
     @Override
     public String toString() {
         // Set this to change decimal places
-        int precision = 2;
+        int precision = 3;
         
         double multiplier = Math.pow(10.0, precision);
         return "" + Math.round(real*multiplier)/multiplier + ((img >= 0.0) ? "+": "") + Math.round(img*multiplier)/multiplier + "j";
