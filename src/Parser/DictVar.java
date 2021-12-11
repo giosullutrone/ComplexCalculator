@@ -84,7 +84,7 @@ public class DictVar {
     }
 
     /**
-     * Method used to delete the value of all associated with the key.
+     * Method used to delete the value of all keys.
      */
     public void deleteAll() {
         for(String key: this.dict.keySet()){
