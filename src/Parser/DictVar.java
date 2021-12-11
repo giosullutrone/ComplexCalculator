@@ -32,8 +32,8 @@ public class DictVar {
     /**
      * Method used to insert a value into the specified key.
      * @param key
-     * @throw OperationException if key is outside the accepted range of [a-z].
      * @param value
+     * @throw OperationException if key is outside the accepted range of [a-z].
      */
     public void put(String key, Complex value) {
         if (!this.dict.containsKey(key)) throw new OperationException("Could not save variable, variable not in the accepted range");
@@ -91,15 +91,15 @@ public class DictVar {
      * @param key
     */
     public void delete(String key) {
-        this.dict.put(key, null);
+        this.put(key, null);
     }
 
     /**
-     * Method used to delete the value of all associated with the key.
+     * Method used to delete the value of all keys.
      */
     public void deleteAll() {
         this.dict.keySet().forEach(key -> {
-            this.dict.put(key, null);
+            this.delete(key);
         });
     }
     

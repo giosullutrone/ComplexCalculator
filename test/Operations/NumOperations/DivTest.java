@@ -5,7 +5,7 @@
  */
 package Operations.NumOperations;
 
-import Operations.NumOperations.Div;
+import AlertMessage.OperationException;
 import Complex.Complex;
 import complexcalculator.StackNumber;
 import complexcalculator.StackOperator;
@@ -35,6 +35,12 @@ public class DivTest {
         stackOperator.execute(instance);
         assertEquals(1, stackNumber.size());
         assertEquals(new Complex(0.25, -0.75).toString(), stackNumber.peekFirst().toString());
+        try {
+            stackOperator.execute(new Complex(0, 0));
+            stackOperator.execute(new Complex(10, -5));
+            stackOperator.execute(instance);
+            assertTrue(false);
+        } catch (OperationException e) {}
     }
     
 }
