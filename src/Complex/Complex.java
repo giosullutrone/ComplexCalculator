@@ -4,36 +4,39 @@ package Complex;
  * Implementation of a complex number in Java.
  */
 public class Complex {
-    private double real;
-    private double img;
+    private final double real;
+    private final double img;
     
+    /**
+     * Constructor for the Complex class
+     * @param real double of the real part
+     * @param img double of the imaginary part
+     */
     public Complex(double real, double img) {
         this.real = real;
         this.img = img;
     }
     
-/**
+    /**
      * Method used to take the value of the real component of the complex number
      * @return the value of the real part of the complex number
-*/
+    */
     public double getReal() {
         return real;
     }
 
-/**
+    /**
      * Method used to take the value of the imaginary component of the complex number
      * @return the value of the imaginary part of the complex number
-*/
-
+    */
     public double getImg() {
         return img;
     }
     
-    
-/**
+    /**
      * Method to provide a hash code of the object
      * @return integer representing the hash code
-*/
+    */
     @Override
     public int hashCode() {
         int hash = 5;
@@ -42,11 +45,11 @@ public class Complex {
         return hash;
     }
 
-/**
+    /**
      * Method used to perform equal comparison between two objects
      * @param obj object to compare
      * @return boolean representing the result of comparing two objects
-*/
+    */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -72,6 +75,10 @@ public class Complex {
      */
     @Override
     public String toString() {
-        return "" + Math.round(real*100.0)/100.0 + ((img >= 0.0) ? "+": "") + Math.round(img*100.0)/100.0 + "j";
+        // Set this to change decimal places
+        int precision = 2;
+        
+        double multiplier = Math.pow(10.0, precision);
+        return "" + Math.round(real*multiplier)/multiplier + ((img >= 0.0) ? "+": "") + Math.round(img*multiplier)/multiplier + "j";
     }
 }

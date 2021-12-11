@@ -6,13 +6,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class StackNumberTest {
+    /**
+     * Test of getStack method without an integer provided, of class StackNumber.
+     */
     @Test
     public void testGetStack() {
         // Feedback
         System.out.println("Testing: StackNumber.getStack");
         // Var initialization
         StackNumber instance;
-        StackOperator stackOperator;
         List<String> lString;
         
         // Case: Stack with 0 elements -> 0 elements shown
@@ -21,9 +23,8 @@ public class StackNumberTest {
         
         // Case: Stack with 2 elements -> 2 elements shown
         instance = new StackNumber();
-        stackOperator = new StackOperator(instance);
-        stackOperator.execute(new Complex(10, 10));
-        stackOperator.execute(new Complex(10, -10));
+        instance.addFirst(new Complex(10, 10));
+        instance.addFirst(new Complex(10, -10));
         lString = instance.getStack();
         
         assertEquals(2, lString.size());        
@@ -32,9 +33,8 @@ public class StackNumberTest {
         
         // Case: Stack with 20 elements -> top 20 element shown
         instance = new StackNumber();
-        stackOperator = new StackOperator(instance);
         for (int i=0; i<20; i++) {
-            stackOperator.execute(new Complex(10, i));
+            instance.addFirst(new Complex(10, i));
         }        
         lString = instance.getStack();
         
@@ -44,15 +44,14 @@ public class StackNumberTest {
     }
 
     /**
-     * Test of getStack method, of class StackNumber.
+     * Test of getStack method with an integer provided, of class StackNumber.
      */
     @Test
     public void testGetStack_int() {
         // Feedback
-        System.out.println("Testing: StackNumber.getStack of int");
+        System.out.println("Testing: StackNumber.getStack with int provided");
         // Var initialization
         StackNumber instance;
-        StackOperator stackOperator;
         List<String> lString;
         
         // Case: Stack with 0 elements -> 0 elements shown
@@ -61,9 +60,8 @@ public class StackNumberTest {
         
         // Case: Stack with 2 elements -> 2 elements shown
         instance = new StackNumber();
-        stackOperator = new StackOperator(instance);
-        stackOperator.execute(new Complex(10, 10));
-        stackOperator.execute(new Complex(10, -10));
+        instance.addFirst(new Complex(10, 10));
+        instance.addFirst(new Complex(10, -10));
         lString = instance.getStack(12);
         
         assertEquals(2, lString.size());        
@@ -72,9 +70,8 @@ public class StackNumberTest {
         
         // Case: Stack with 20 elements -> top 12 element shown
         instance = new StackNumber();
-        stackOperator = new StackOperator(instance);
         for (int i=0; i<20; i++) {
-            stackOperator.execute(new Complex(10, i));
+            instance.addFirst(new Complex(10, i));
         }        
         lString = instance.getStack(12);
         

@@ -26,5 +26,17 @@ public class ComplexTest {
         expResult = "-10.0+10.0j";
         result = instance.toString();
         assertEquals(expResult, result);
+        
+        // Case: zero real, positive img
+        instance = new Complex(0, 10);
+        expResult = "0.0+10.0j";
+        result = instance.toString();
+        assertEquals(expResult, result);
+        
+        // Case: positive real, zero img
+        instance = new Complex(10, 0);
+        expResult = "10.0+0.0j";
+        result = instance.toString();
+        assertEquals(expResult, result);
     }
 }

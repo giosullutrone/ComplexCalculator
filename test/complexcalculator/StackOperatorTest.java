@@ -10,6 +10,10 @@ import static org.junit.Assert.*;
 public class StackOperatorTest {
     /**
      * Test of execute method, of class StackOperator.
+     * 
+     * This test uses a StackNumber since its actions are strictly related to it.
+     * In case of an error, please make sure that StackNumber passes its tests ù
+     * before testing this class.
      */
     @Test
     public void testExecute_Complex() {
@@ -38,6 +42,10 @@ public class StackOperatorTest {
 
     /**
      * Test of execute method, of class StackOperator.
+     * 
+     * This test uses a StackNumber since its actions are strictly related to it.
+     * In case of an error, please make sure that StackNumber passes its tests ù
+     * before testing this class.
      */
     @Test
     public void testExecute_Operation0() {
@@ -58,6 +66,10 @@ public class StackOperatorTest {
 
     /**
      * Test of execute method, of class StackOperator.
+     * 
+     * This test uses a StackNumber since its actions are strictly related to it.
+     * In case of an error, please make sure that StackNumber passes its tests ù
+     * before testing this class.
      */
     @Test
     public void testExecute_Operation1() {
@@ -82,6 +94,10 @@ public class StackOperatorTest {
 
     /**
      * Test of execute method, of class StackOperator.
+     * 
+     * This test uses a StackNumber since its actions are strictly related to it.
+     * In case of an error, please make sure that StackNumber passes its tests ù
+     * before testing this class.
      */
     @Test
     public void testExecute_Operation2() {

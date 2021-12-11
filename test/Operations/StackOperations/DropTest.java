@@ -1,6 +1,5 @@
 package Operations.StackOperations;
 
-import Operations.StackOperations.Drop;
 import Complex.Complex;
 import complexcalculator.StackNumber;
 import complexcalculator.StackOperator;
@@ -10,6 +9,11 @@ import static org.junit.Assert.*;
 public class DropTest {
     /**
      * Test of execute method, of class Clear.
+     * 
+     * This test uses both a StackNumber and a StackOperator since its actions
+     * are strictly related to them.
+     * In case of an error, please make sure that StackOperator and StackNumber
+     * pass their tests before testing this class.
      */
     @Test
     public void testExecute() {

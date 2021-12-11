@@ -41,7 +41,7 @@ public class AutoCompleter {
         
         stringAutoCompletionBinding.setOnAutoCompleted(value -> {
             String[] ss = Arrays.copyOfRange(last.split(" "), 0, last.split(" ").length-1);
-            textField.setText(String.join(" ", ss) + " " + value.getCompletion()); 
+            textField.setText(String.join(" ", ss) + ((ss.length==0) ? "": " ") + value.getCompletion()); 
             textField.end();
         });
         
