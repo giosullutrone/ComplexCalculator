@@ -1,7 +1,10 @@
 package AlertMessage;
 
+import complexcalculator.ComplexCalculator;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 public class AlertMessage {
     /**
@@ -14,6 +17,8 @@ public class AlertMessage {
         
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.getStylesheets().add(getClass().getResource("Style.css").toExternalForm());
+        Stage stage = (Stage) dialogPane.getScene().getWindow();
+        stage.getIcons().add(new Image(ComplexCalculator.class.getResourceAsStream( "512Logo.png")));
         
         alert.setTitle("Error Dialog");
         alert.setHeaderText(headerMessage);

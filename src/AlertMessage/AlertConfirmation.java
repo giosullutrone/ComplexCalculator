@@ -1,10 +1,13 @@
 package AlertMessage;
 
+import complexcalculator.ComplexCalculator;
 import java.util.Optional;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 public class AlertConfirmation {
 
@@ -20,6 +23,8 @@ public class AlertConfirmation {
         
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.getStylesheets().add(getClass().getResource("Style.css").toExternalForm());
+        Stage stage = (Stage) dialogPane.getScene().getWindow();
+        stage.getIcons().add(new Image(ComplexCalculator.class.getResourceAsStream( "512Logo.png")));
         
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText(headerMessage);
@@ -36,6 +41,8 @@ public class AlertConfirmation {
 
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.getStylesheets().add(getClass().getResource("Style.css").toExternalForm());
+        Stage stage = (Stage) dialogPane.getScene().getWindow();
+        stage.getIcons().add(new Image(ComplexCalculator.class.getResourceAsStream( "512Logo.png")));
         
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText(headerMessage);
