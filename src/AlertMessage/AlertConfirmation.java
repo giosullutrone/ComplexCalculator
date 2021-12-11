@@ -4,6 +4,7 @@ import java.util.Optional;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 
 public class AlertConfirmation {
 
@@ -16,6 +17,10 @@ public class AlertConfirmation {
     Alert alert;
     public AlertConfirmation(String headerMessage, String confirmationMessage) {
         alert = new Alert(Alert.AlertType.CONFIRMATION);
+        
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getResource("Style.css").toExternalForm());
+        
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText(headerMessage);
         alert.setContentText(confirmationMessage);
@@ -28,6 +33,10 @@ public class AlertConfirmation {
     */
     public AlertConfirmation(String headerMessage, String confirmationMessage, int a) {
         alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getResource("Style.css").toExternalForm());
+        
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText(headerMessage);
         alert.setContentText(confirmationMessage);
