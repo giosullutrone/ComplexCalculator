@@ -1,5 +1,6 @@
 package complexcalculator;
 
+import AlertMessage.OperationException;
 import Parser.DictFunction;
 import java.io.EOFException;
 import java.io.File;
@@ -11,6 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.stage.FileChooser;
 
 public class Configurator {
     
@@ -24,6 +26,7 @@ public class Configurator {
             FileInputStream fileStream = new FileInputStream("./configuration.txt");
             ObjectInputStream input = new ObjectInputStream(fileStream);
             String file = (String) input.readObject();
+            input.close();
             return file;
         }catch (FileNotFoundException ex) {
             File f = new File("./configuration.txt");
@@ -43,6 +46,7 @@ public class Configurator {
             FileOutputStream file = new FileOutputStream("./configuration.txt");
             ObjectOutputStream output = new ObjectOutputStream(file);
             output.writeObject(filePath);
+            output.close();
         }catch (FileNotFoundException ex){
         }catch (IOException ex) {
 
@@ -64,5 +68,31 @@ public class Configurator {
             Logger.getLogger(LayoutController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return dictFun;
+    }
+    
+    /**
+    * Opens a pop up for the user to make him select or create a file
+    * 
+    * @param mode false for file creatore true for file chooser
+    * 
+    * @return (String) the path of the selected file or null if fails
+    */
+    public static String fileChooserManager(boolean mode){
+        FileChooser fc = new FileChooser();
+        fc.setInitialDirectory(new File("./"));
+        File selectedFile;
+        if(mode)
+            selectedFile = fc.showOpenDialog(null);
+        else
+            selectedFile = fc.showSaveDialog(null);
+        try{
+            String path = selectedFile.getAbsolutePath();
+            if(path.contains("configuration.txt")) {
+                throw new OperationException("Protected File");
+            }
+            else return path;       
+        }catch(NullPointerException ex){
         }
+        return null;
+    }
 }

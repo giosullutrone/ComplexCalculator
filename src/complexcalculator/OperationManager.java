@@ -199,11 +199,7 @@ public class OperationManager {
                     AlertFactory.handle(putException);
                 }
                 opList.getItems().clear();
-                opList.getItems().addAll(operations.keySet());
-
-                
-                
-                
+                opList.getItems().addAll(operations.keySet());  
             }
             
         });
@@ -220,6 +216,8 @@ public class OperationManager {
             } catch (IOException ex) {
                 Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);
             } catch (NullPointerException ex){
+            } catch (OperationException ex){
+                     AlertFactory.handle(ex);
             }
             }
          });
@@ -235,9 +233,8 @@ public class OperationManager {
                 opList.getItems().addAll(operations.keySet());
                 
             } catch (IOException |ClassNotFoundException ex) {
-                Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);   
-            } catch (NullPointerException ex){
-                
+               new AlertMessage("Operation error","An error occurred while reading the file");
+            } catch (NullPointerException ex){ 
             }
             }
         });
@@ -258,9 +255,10 @@ public class OperationManager {
             @Override
             public void handle(WindowEvent event) {
                 //LOGIC BEHIND THE POP-UP CLOSING
+                boolean eye= false;
                 if(!flag.isEmpty())
                 {
-                    AlertConfirmation alert = new AlertConfirmation("Save Reminder","Do you want to save before exit?", 2);
+                    AlertConfirmation alert = new AlertConfirmation("Save Reminder","Do you want to save on file before exit?", 2);
                     ButtonType state =alert.state();
                     if(state == alert.buttonTypeCancel){
                         event.consume();
@@ -273,11 +271,20 @@ public class OperationManager {
                                 updateReloaderFile(filePath);
                             } catch (IOException ex) {
                                 Logger.getLogger(OperationManager.class.getName()).log(Level.SEVERE, null, ex);
-                            } 
-                            window.close();
+                            } catch (OperationException ex){
+                                AlertFactory.handle(ex);
+                                event.consume();
+                                eye = true;
+                            } catch (NullPointerException ex){
+                                event.consume();
+                                eye = true;
+                            }
+                        
+                            if(!eye)
+                                window.close();
                         }
                         if(state == alert.buttonTypeNotSave){
-                        window.close();
+                            window.close();
                         }
                 }else
                     window.close();  
@@ -374,25 +381,4 @@ public class OperationManager {
         return operations;
     }
 
-    /**
-     * Opens a pop up for the user to make him select or create a file
-     * 
-     * @param mode false for file creatore true for file chooser
-     * 
-     * @return (String) the path of the selected file or null if fails
-     */
-    private static String fileChooserManager(boolean mode){
-        FileChooser fc = new FileChooser();
-        fc.setInitialDirectory(new File("./"));
-        File selectedFile;
-        if(mode)
-            selectedFile = fc.showOpenDialog(null);
-        else
-            selectedFile = fc.showSaveDialog(null);
-        try{
-            return selectedFile.getAbsolutePath();  
-        }catch(NullPointerException ex){
-        }
-        return null;
-        }
 }

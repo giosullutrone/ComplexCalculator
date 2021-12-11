@@ -158,7 +158,7 @@ public class LayoutController implements Initializable {
         listView.getItems().addAll(stackNum.getStack());
         listViewDup.getItems().clear(); 
         listViewDup.getItems().addAll(stackNum.getStack());
-        
+             
     }
 
     /**
