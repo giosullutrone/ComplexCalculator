@@ -33,7 +33,9 @@ public class DictFunction {
      * @throws SyntaxException if key already exists or is a token
      */
     public void put(String key, String value) {
+        key = key.trim();
         value = value.trim().replaceAll("\\s+", " ");
+        if(key.contains(" ")) throw new SyntaxException("Function cannot contain spaces");
         if(DictToken.getCompleteDict(this).contains(key)) throw new SyntaxException("Function already exists");
         this.replace(key, value);
     }
