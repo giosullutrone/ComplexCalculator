@@ -5,6 +5,8 @@ import Complex.Complex;
 import Operations.NumOperations.Add;
 import Operations.NumOperations.Sub;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Class that provides methods used to execute specific operations on a provided 
@@ -52,6 +54,15 @@ public class DictVar {
     }
     
     /**
+     * Method used to verify the value from the specified key.
+     * @param key
+     * @return boolean true if value is null
+     */
+    public boolean isNull(String key) {
+        return this.dict.get(key)==null;
+    }
+    
+    /**
      * Method used to insert the result of the addition between value and the old
      * value associated with the key inside the same key.
      * @param key
@@ -87,11 +98,19 @@ public class DictVar {
      * Method used to delete the value of all associated with the key.
      */
     public void deleteAll() {
-        for(String key: this.dict.keySet()){
+        this.dict.keySet().forEach(key -> {
             this.dict.put(key, null);
-        }
+        });
     }
-
+    
+    /**
+     * Method used to get a List of all keys.
+     * @return LinkedList of all keys.
+     */
+    public List<String> getkeyList(){
+        return new LinkedList<>(this.dict.keySet());
+    }
+    
     /**
      * Method used to save the current variable dict.
      */

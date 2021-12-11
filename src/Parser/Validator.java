@@ -1,11 +1,8 @@
 package Parser;
 
 import AlertMessage.SyntaxException;
-import complexcalculator.StackNumber;
-import complexcalculator.StackOperator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.regex.Pattern;
 /**
  * Class that provide a method to isValid a user defined operation
  */
