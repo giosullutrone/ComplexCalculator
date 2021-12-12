@@ -64,7 +64,7 @@ public class OperationManager {
         Button addOp = new Button("ADD");
         
         //Binding of the buttons
-        renameOp.disableProperty().bind(Bindings.createBooleanBinding( () -> (renameOpField.getText().isEmpty()), renameOpField.textProperty()));
+        renameOp.disableProperty().bind(Bindings.createBooleanBinding( () -> (renameOpField.getText().isEmpty() || !saveOp.isDisabled()), renameOpField.textProperty() , saveOp.disabledProperty()));
         deleteOp.disableProperty().bind(Bindings.createBooleanBinding( () -> (opArea.getText().isEmpty()), opArea.textProperty()));
         modifyOp.disableProperty().bind(Bindings.createBooleanBinding( () -> (opArea.getText().isEmpty()), opArea.textProperty()));
         addOp.disableProperty().bind(Bindings.createBooleanBinding( () -> (newOpArea.getText().isEmpty() || nameOpField.getText().isEmpty()), newOpArea.textProperty(), nameOpField.textProperty()));
@@ -83,7 +83,7 @@ public class OperationManager {
         newOpArea.setWrapText(true);
 
         //Setting hint text
-        renameOpField.setPromptText("select to rename");
+        renameOpField.setPromptText("Select to rename");
         nameOpField.setPromptText("Insert a name");
         newOpArea.setPromptText("Insert here the list of operation of the new custom operation usong space as separator");
         opArea.setPromptText("Select an existing user defined operation to see the corresponding list of operations");
@@ -119,6 +119,8 @@ public class OperationManager {
                 renameOpField.setEditable(false);
                 try{
                     operations.renameCascade(selectedItem, renamedItem);
+                    renameOpField.setText("");
+                    opArea.setText("");
                 }catch(OperationException ex){
                      AlertFactory.handle(ex);
                 }
@@ -178,6 +180,7 @@ public class OperationManager {
                 opList.getItems().clear();
                 opList.getItems().addAll(operations.keyList());
                 opArea.setText("");
+                renameOpField.setText("");
                 saveOp.setDisable(true);
                 renameOpField.setEditable(false);
                 flag.add(1);
