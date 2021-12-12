@@ -60,7 +60,7 @@ public class DictHelp {
                                          "Description:\tfunction used to delete the value of all variables ");
         //Stack variables
                 dict.put("Stack Variables | Show", "Syntax:\t\t" + "vars" + "\n\n" + 
-                                         "Description:\tfunction used to show variables with numbers saved");
+                                         "Description:\tfunction used to show variables with numbers saved and return to the standard view");
                 dict.put("Stack Variables | Save", "Syntax:\t\t" + "save" + "\n\n" + 
                                          "Description:\tfunction used to save a copy of all the 26 variables on a variable stack (distinct from the stack used for the operands by the operations)");
                 dict.put("Stack Variables | Restore", "Syntax:\t\t" + "restore" + "\n\n" + 

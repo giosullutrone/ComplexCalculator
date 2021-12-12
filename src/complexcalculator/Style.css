@@ -1,8 +1,8 @@
+/********** ListView Styling ***********/
 .list-view {
     -fx-background-color: #44475A;
     -fx-background-radius: 10;
     -fx-text-fill: #F8F8F2;
-    
 }
 
 .list-view .list-cell:filled{
@@ -24,6 +24,7 @@
     
 }
 
+/********** TextArea Styling ***********/
 .text-area {
     -fx-text-fill: #F8F8F2;
     -fx-control-inner-background: #44475a;
@@ -47,6 +48,7 @@
     
 }
 
+/********** TextField Styling ***********/
 .text-field {
     -fx-background-color: #44475A;
     -fx-text-fill: #F8F8F2;
@@ -56,6 +58,7 @@
     
 }
 
+/********** Button Styling ***********/
 .button{
     -fx-background-color: #BD93F9;
     -fx-text-fill: #F8F8F2;
@@ -65,4 +68,29 @@
 
 .button:hover{ 
     -fx-cursor:hand;
+}
+
+/********** Menu Styling ***********/
+.context-menu {
+    -fx-background-color:#44475A;
+    -fx-background-insets: 0;
+
+}
+
+.menu-item {
+    -fx-background-radius: 5px;
+}
+.menu-item:hover, .menu-item:focused {
+    -fx-background-color: #ffb86c;
+}
+.menu-item > .graphic-container {
+    -fx-padding: 0em 0.333em 0em 0em;
+}
+
+.menu-item >.label {
+    -fx-background-color:transparent;
+    -fx-text-fill: #F8F8F2;
+    -fx-effect: null;
+    -fx-font-size: 12px;
+    -fx-font-family: 'Calibri';
 }
