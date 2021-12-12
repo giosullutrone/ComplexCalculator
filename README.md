@@ -35,7 +35,8 @@ Group:
 * Sullutrone Giovanni  0622701751    g.sullutrone2@studenti.unisa.it
 * Tirino Francesca     0622701745    f.tirino@studenti.unisa.it
 
-## [Complex Calculator User Manual](https://docs.google.com/document/d/19uNhm9RoL4kME_TQpy2Rl4Jv-JaT40Rn/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
+## How to use:
+[Complex Calculator User Manual](https://docs.google.com/document/d/19uNhm9RoL4kME_TQpy2Rl4Jv-JaT40Rn/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
 
 ## License
 
