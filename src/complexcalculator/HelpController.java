@@ -28,8 +28,6 @@ public class HelpController implements Initializable {
     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        DictHelp.getHelp();
-
         operationList.getItems().addAll(DictHelp.keyList());
         
         operationList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {

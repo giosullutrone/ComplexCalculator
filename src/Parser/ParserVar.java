@@ -59,11 +59,11 @@ public class ParserVar implements Parser{
             String match = matcher.group();
             
             if (s.length() > 2) {
-                throw new SyntaxException("");
+                throw new SyntaxException("Variable not in the accepted range");
             }
 
             String operation = match.substring(0, 1);
-            String letter = match.substring(1, 2);
+            String letter = match.substring(1, match.length());
             
             switch(operation) {
                 case "<":
