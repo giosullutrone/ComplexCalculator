@@ -52,6 +52,6 @@ public class Validator {
      * @return boolean corresponding to the result of the test.
      */
     private static boolean isValidVariables(String variableOperation){
-       return Pattern.compile("\\s[!<>+-][a-z]\\s").matcher(variableOperation).find();
+       return Pattern.compile("\\s[!<>+-][a-zA-Z]\\s").matcher(variableOperation).find();
     }
 }
