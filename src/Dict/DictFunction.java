@@ -39,6 +39,7 @@ public class DictFunction {
         if(key.contains(" ")) throw new SyntaxException("Function's name cannot contain spaces");
         if(DictToken.getCompleteDict(this).contains(key)) throw new SyntaxException("Function already exists");
         if(Pattern.compile("[^a-zA-Z]").matcher(key).find()) throw new SyntaxException("Function's name cannot contain anything other than letters");
+        if(key.length() < 2) throw new SyntaxException("Function's name cannot be shorter than 2 characters");
         
         this.replace(key, value);
     }
