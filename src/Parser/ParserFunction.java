@@ -28,7 +28,7 @@ public class ParserFunction implements Parser {
      */
     @Override
     public void parse(String s) {
-        s = s.trim().toLowerCase();
+        s = s.trim();
         
         boolean replaced;
         do {

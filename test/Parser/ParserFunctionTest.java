@@ -29,44 +29,44 @@ public class ParserFunctionTest {
             }
         };
         
-        // Case: dictFunction = {"custom1": "10+10j"}
-        //                  s = "custom1" -> "10+10j"
+        // Case: dictFunction = {"customOne": "10+10j"}
+        //                  s = "customOne" -> "10+10j"
         dictFunction = new DictFunction();
         instance = new ParserFunction(dummyParser, dictFunction);
-        dictFunction.put("custom1", "10+10j");
-        instance.parse("custom1");
+        dictFunction.put("customOne", "10+10j");
+        instance.parse("customOne");
         assertTrue(dummyParser.equals("10+10j"));
         
-        // Case: dictFunction = {"custom1": "10+10j"}
+        // Case: dictFunction = {"customOne": "10+10j"}
         //                  s = "custom" -> "custom"
         dictFunction = new DictFunction();
         instance = new ParserFunction(dummyParser, dictFunction);
-        dictFunction.put("custom1", "10+10j");
+        dictFunction.put("customOne", "10+10j");
         instance.parse("custom");
         assertTrue(dummyParser.equals("custom"));
         
         // Case: dictFunction = {"custom": "10+10j"}
-        //                  s = "custom1" -> "custom1"
+        //                  s = "customOne" -> "customOne"
         dictFunction = new DictFunction();
         instance = new ParserFunction(dummyParser, dictFunction);
         dictFunction.put("custom", "10+10j");
-        instance.parse("custom1");
-        assertTrue(dummyParser.equals("custom1"));
+        instance.parse("customOne");
+        assertTrue(dummyParser.equals("customOne"));
         
-        // Case: dictFunction = {"custom1": "custom2", "custom2": "10-10j"}
-        //                  s = "custom1" -> "10-10j"
+        // Case: dictFunction = {"customOne": "customTwo", "customTwo": "10-10j"}
+        //                  s = "customOne" -> "10-10j"
         dictFunction = new DictFunction();
         instance = new ParserFunction(dummyParser, dictFunction);
-        dictFunction.put("custom2", "10-10j");
-        dictFunction.put("custom1", "custom2");
-        instance.parse("custom1");
+        dictFunction.put("customTwo", "10-10j");
+        dictFunction.put("customOne", "customTwo");
+        instance.parse("customOne");
         assertTrue(dummyParser.equals("10-10j"));
         
         // Case: dictFunction = {}
-        //                  s = "custom1" -> "custom1"
+        //                  s = "customOne" -> "customOne"
         dictFunction = new DictFunction();
         instance = new ParserFunction(dummyParser, dictFunction);
-        instance.parse("custom1");
-        assertTrue(dummyParser.equals("custom1"));
+        instance.parse("customOne");
+        assertTrue(dummyParser.equals("customOne"));
     }
 }

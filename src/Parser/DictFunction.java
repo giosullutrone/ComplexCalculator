@@ -35,8 +35,10 @@ public class DictFunction {
     public void put(String key, String value) {
         key = key.trim();
         value = value.trim().replaceAll("\\s+", " ");
-        if(key.contains(" ")) throw new SyntaxException("Function cannot contain spaces");
+        if(key.contains(" ")) throw new SyntaxException("Function's name cannot contain spaces");
         if(DictToken.getCompleteDict(this).contains(key)) throw new SyntaxException("Function already exists");
+        if(Pattern.compile("[^a-zA-Z]").matcher(key).find()) throw new SyntaxException("Function's name cannot contain anything other than letters");
+        
         this.replace(key, value);
     }
     
