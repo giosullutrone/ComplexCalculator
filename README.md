@@ -19,6 +19,8 @@
 * [Updated Product Backlog](https://docs.google.com/document/d/1XH5y3ruDmVTqY40q26d-nlylMoLSPdJd/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
 * [3rd Sprint Planning and Backlog](https://docs.google.com/document/d/1voDJfYKZ0SY0VEG2MBP-Yw9EXn0fxuW0/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
 * [Technical debts and Refactoring](https://docs.google.com/document/d/1p-_lmLBcL9uepEt5kouBox6EpyY2763W/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
+* [3rd Sprint Review and Retrospective](https://docs.google.com/document/d/16ZAoBlY3xgpGgn5sTonfpnV8DDM7X9em/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
+* [Final Project Burndown Chart](https://docs.google.com/document/d/1ThTApNRzcLBd1ElBJnBjsD0_lpGHEpgH/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
 -----------
 * [Architecture](https://docs.google.com/document/d/1DKkFdYTtGL8mH3Sqncl1SMpMzEJ7387P/edit?usp=sharing&ouid=107747058640881401233&rtpof=true&sd=true)
 
