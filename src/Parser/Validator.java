@@ -4,6 +4,7 @@ import Dict.DictToken;
 import AlertMessage.SyntaxException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Pattern;
 /**
  * Class that provide a method to isValid a user defined operation
  */
@@ -19,7 +20,11 @@ public class Validator {
         if(function.replaceAll(" +", "").isEmpty()) return false;
         LinkedList<String> operations = Splitter.split(function);
 
-        return operations.stream().allMatch(operation -> (dictFunction.contains(operation) || DictToken.contains(operation) || Validator.isValidComplex(operation)));
+        return operations.stream().allMatch(operation 
+                -> (dictFunction.contains(operation) || 
+                        DictToken.contains(operation) || 
+                        Validator.isValidComplex(operation) ||
+                        Validator.isValidVariables(" "+operation+" ")));
     }
     
     /**
@@ -40,5 +45,11 @@ public class Validator {
         // Else return true because the operation was successfull
         return true;
     }
+    
+    private static boolean isValidVariables(String variableOperation){
+       return Pattern.compile("\\s[!<>+-][a-z]\\s").matcher(variableOperation).find();
+    }
 }
+
+
 
