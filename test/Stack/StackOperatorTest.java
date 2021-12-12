@@ -12,7 +12,7 @@ public class StackOperatorTest {
      * Test of execute method, of class StackOperator.
      * 
      * This test uses a StackNumber since its actions are strictly related to it.
-     * In case of an error, please make sure that StackNumber passes its tests ù
+     * In case of an error, please make sure that StackNumber passes its tests 
      * before testing this class.
      */
     @Test
@@ -44,7 +44,7 @@ public class StackOperatorTest {
      * Test of execute method, of class StackOperator.
      * 
      * This test uses a StackNumber since its actions are strictly related to it.
-     * In case of an error, please make sure that StackNumber passes its tests ù
+     * In case of an error, please make sure that StackNumber passes its tests 
      * before testing this class.
      */
     @Test
@@ -68,7 +68,7 @@ public class StackOperatorTest {
      * Test of execute method, of class StackOperator.
      * 
      * This test uses a StackNumber since its actions are strictly related to it.
-     * In case of an error, please make sure that StackNumber passes its tests ù
+     * In case of an error, please make sure that StackNumber passes its tests 
      * before testing this class.
      */
     @Test
@@ -96,7 +96,7 @@ public class StackOperatorTest {
      * Test of execute method, of class StackOperator.
      * 
      * This test uses a StackNumber since its actions are strictly related to it.
-     * In case of an error, please make sure that StackNumber passes its tests ù
+     * In case of an error, please make sure that StackNumber passes its tests 
      * before testing this class.
      */
     @Test

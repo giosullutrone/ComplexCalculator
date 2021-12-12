@@ -46,10 +46,12 @@ public class Validator {
         return true;
     }
     
+    /**
+     * Private method used to check whether a string is a valid Variable operation.
+     * @param variableOperation string to check.
+     * @return boolean corresponding to the result of the test.
+     */
     private static boolean isValidVariables(String variableOperation){
        return Pattern.compile("\\s[!<>+-][a-z]\\s").matcher(variableOperation).find();
     }
 }
-
-
-
