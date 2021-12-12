@@ -11,7 +11,7 @@ public class DictHelp {
     /**
     * Method used to create user manual
     */
-    public static void getHelp(){
+    private static void getHelp(){
         //User defined operation
                 dict.put("User defined operation", "Syntax:\t\tnew\n\n" + 
                                           "Description:\tfunction used to view a pop up that allows you to define a new operation by specifying a name and a sequence of operations. The definition may contain other defined operations. " +
@@ -96,6 +96,8 @@ public class DictHelp {
      * @return LinkedList of all keys.
      */
     public static List<String> keyList() {
+        if (dict.isEmpty()) DictHelp.getHelp();
+        
         List<String> s = new LinkedList<>(DictHelp.dict.keySet());
         Collections.sort(s);
         return s;
