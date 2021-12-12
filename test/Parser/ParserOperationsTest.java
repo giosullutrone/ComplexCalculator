@@ -7,16 +7,11 @@ import Dict.DictVar;
 import Operations.NumOperations.*;
 import Operations.StackOperations.*;
 import Complex.Complex;
-import complexcalculator.*;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class ParserOperationsTest {
-    
-    public ParserOperationsTest() {
-    }
-    
+public class ParserOperationsTest {    
     /**
      * @param operationObj
      * @param operationString
