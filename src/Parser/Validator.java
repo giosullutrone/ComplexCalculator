@@ -45,9 +45,10 @@ public class Validator {
         // Else return true because the operation was successfull
         return true;
     }
+    
     /**
      * Private method used to check whether a string is a valid Variable operation.
-     * @param variableOperation
+     * @param variableOperation string to check.
      * @return boolean corresponding to the result of the test.
      */
     private static boolean isValidVariables(String variableOperation){
