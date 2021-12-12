@@ -22,7 +22,7 @@ public class DictToken {
      * @return true if dict contains the operation, false if it doesn't
      */
     public static boolean contains(String check){
-        return (dict.contains(check) || Pattern.compile("\\s+([!<>+-][a-z])\\s+").matcher(check).find());
+        return (dict.contains(check) || Arrays.asList("save", "restore").contains(check) || Pattern.compile("\\s+([!<>+-][a-z])\\s+").matcher(check).find());
     }
 
     /**
@@ -41,7 +41,7 @@ public class DictToken {
      */
     public static LinkedList<String> getCompleteDict(DictFunction dictFunction){
         LinkedList<String> completeDict = getDict(dictFunction);
-        completeDict.addAll(Arrays.asList("new","vars", "save", "restore"));
+        completeDict.addAll(Arrays.asList("new", "vars", "save", "restore"));
         return completeDict;
     }
 }
