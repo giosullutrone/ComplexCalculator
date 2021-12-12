@@ -28,6 +28,17 @@ public class DictFunction {
     }
     
     /**
+     * Method used to check if function's name is valid.
+     * @param key name to check.
+     * @throws SyntaxException if not valid.
+     */
+    private void isKeyValid(String key) {
+        if(key.contains(" ")) throw new SyntaxException("Function's name cannot contain spaces");
+        if(Pattern.compile("[^a-zA-Z]").matcher(key).find()) throw new SyntaxException("Function's name cannot contain anything other than letters");
+        if(key.length() < 2) throw new SyntaxException("Function's name cannot be shorter than 2 characters");
+    }
+    
+    /**
      * Method used to insert a value into the specified key.
      * @param key name of the function.
      * @param value single string of multiple operations associated with the key.
@@ -36,10 +47,8 @@ public class DictFunction {
     public void put(String key, String value) {
         key = key.trim();
         value = value.trim().replaceAll("\\s+", " ");
-        if(key.contains(" ")) throw new SyntaxException("Function's name cannot contain spaces");
         if(DictToken.getCompleteDict(this).contains(key)) throw new SyntaxException("Function already exists");
-        if(Pattern.compile("[^a-zA-Z]").matcher(key).find()) throw new SyntaxException("Function's name cannot contain anything other than letters");
-        if(key.length() < 2) throw new SyntaxException("Function's name cannot be shorter than 2 characters");
+        isKeyValid(key);
         
         this.replace(key, value);
     }
@@ -83,7 +92,8 @@ public class DictFunction {
      */
     public void renameCascade(String key, String keyRenamed) {
         // Check if key is inside dict
-        if (!this.dict.containsKey(key)) throw new OperationException("Could not rename the given function, function does not exist."); 
+        if (!this.dict.containsKey(key)) throw new OperationException("Could not rename the given function, function does not exist.");
+        isKeyValid(keyRenamed);
         
         // Rename function
         String v = this.dict.get(key);

@@ -33,7 +33,7 @@ public class OperationManager {
     
     
     /**
-     * method to manualy create a pop-up for the operation manage
+     * method to manually create a pop-up for the operation manage
      * requires the operation dict
      * 
      * @param operations
@@ -84,8 +84,8 @@ public class OperationManager {
 
         //Setting hint text
         renameOpField.setPromptText("Select to rename");
-        nameOpField.setPromptText("Insert a name");
-        newOpArea.setPromptText("Insert here the list of operation of the new custom operation usong space as separator");
+        nameOpField.setPromptText("Insert name here");
+        newOpArea.setPromptText("Insert here the list of operations or numbers using space as separator");
         opArea.setPromptText("Select an existing user defined operation to see the corresponding list of operations");
         
         //Styling 
@@ -122,6 +122,8 @@ public class OperationManager {
                     renameOpField.setText("");
                     opArea.setText("");
                 }catch(OperationException ex){
+                     AlertFactory.handle(ex);
+                }catch(SyntaxException ex){
                      AlertFactory.handle(ex);
                 }
                 //Update the list

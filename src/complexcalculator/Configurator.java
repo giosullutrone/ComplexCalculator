@@ -73,7 +73,7 @@ public class Configurator {
     /**
     * Opens a pop up for the user to make him select or create a file
     * 
-    * @param mode false for file creatore true for file chooser
+    * @param mode false for file creator true for file chooser
     * 
     * @return (String) the path of the selected file or null if fails
     */

@@ -204,7 +204,7 @@ public class LayoutController implements Initializable {
     }
     
     /**
-     * Updates the var list tacking only rhe populated elements of the VarDict
+     * Updates the var list tacking only the populated elements of the VarDict
      */
     private void updateVarList(){
         listViewVars.getItems().clear();
