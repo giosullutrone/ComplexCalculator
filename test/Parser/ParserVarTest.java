@@ -10,6 +10,75 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ParserVarTest {
+    private void assertWithoutException(String toParse, String toGet) {
+        // Var initialization
+        ParserVar instance;
+        DictVar dictVar;
+        StackNumber stackNumber;
+        StackOperator stackOperator;
+        Complex num;
+        
+        // Execution
+        stackNumber = new StackNumber();
+        dictVar = new DictVar();
+        instance = new ParserVar(stackNumber, dictVar, null);
+        stackOperator = new StackOperator(stackNumber);
+        num = new Complex(10, 10);
+        stackOperator.execute(num);
+        instance.parse(toParse);
+        assertEquals(dictVar.get(toGet), num);
+    }
+    
+    private void assertWithException(String toParse, String toGet) {
+        // Var initialization
+        ParserVar instance;
+        DictVar dictVar;
+        StackNumber stackNumber;
+        StackOperator stackOperator;
+        Complex num;
+        
+        // Execution
+        stackNumber = new StackNumber();
+        dictVar = new DictVar();
+        instance = new ParserVar(stackNumber, dictVar, null);
+        stackOperator = new StackOperator(stackNumber);
+        num = new Complex(10, 10);
+        stackOperator.execute(num);
+        try {
+            instance.parse(toParse);
+            assertEquals(dictVar.get(toGet), num);
+            assertTrue(false);
+        } catch (RuntimeException e) {}
+    }
+    
+    private void assertPeek(String toParseFirst, String toParseSecond) {
+        // Var initialization
+        ParserVar instance;
+        DictVar dictVar;
+        StackNumber stackNumber;
+        StackOperator stackOperator;
+        Complex num;
+        
+        // Execution
+        stackNumber = new StackNumber();
+        dictVar = new DictVar();
+        stackOperator = new StackOperator(stackNumber);
+        instance = new ParserVar(stackNumber, dictVar, new ParserComplex(stackOperator));
+        num = new Complex(10, 10);
+        stackOperator.execute(num);
+        instance.parse(toParseFirst);
+        instance.parse(toParseSecond);
+        assertEquals(stackNumber.peekFirst(), num);
+    }
+
+    /**
+     * Test of parse method, of class ParserVar.
+     * 
+     * This test uses a StackNumber and StackOperator since its actions are 
+     * strictly related to it.
+     * In case of an error, please make sure that StackNumber passes its tests 
+     * before testing this class.
+     */
     @Test
     public void testParse() {
         // Feedback
@@ -22,97 +91,19 @@ public class ParserVarTest {
         Complex num;
         
         // Case: >[a-z]
-        stackNumber = new StackNumber();
-        dictVar = new DictVar();
-        instance = new ParserVar(stackNumber, dictVar, null);
-        stackOperator = new StackOperator(stackNumber);
-        num = new Complex(10, 10);
-        stackOperator.execute(num);
-        instance.parse(">a");
-        assertEquals(dictVar.get("a"), num);
-        
+        assertWithoutException(">a", "a");        
         // Case: >[A-Z]
-        stackNumber = new StackNumber();
-        dictVar = new DictVar();
-        instance = new ParserVar(stackNumber, dictVar, null);
-        stackOperator = new StackOperator(stackNumber);
-        num = new Complex(10, 10);
-        stackOperator.execute(num);
-        instance.parse(">A");
-        assertEquals(dictVar.get("a"), num);
-        
+        assertWithoutException(">A", "a");        
         // Case: >[^a-z]
-        stackNumber = new StackNumber();
-        dictVar = new DictVar();
-        instance = new ParserVar(stackNumber, dictVar, null);
-        stackOperator = new StackOperator(stackNumber);
-        num = new Complex(10, 10);
-        stackOperator.execute(num);
-        try {
-            instance.parse(">1");
-            assertEquals(dictVar.get("1"), num);
-            assertTrue(false);
-        } catch (NullPointerException e) {}
- 
+        assertWithException(">1", "1"); 
         // Case: >[aa-zz]
-        stackNumber = new StackNumber();
-        dictVar = new DictVar();
-        instance = new ParserVar(stackNumber, dictVar, null);
-        stackOperator = new StackOperator(stackNumber);
-        num = new Complex(10, 10);
-        stackOperator.execute(num);
-        try {
-            instance.parse(">aa");
-            assertEquals(dictVar.get("aa"), null);
-            assertTrue(false);
-        } catch (SyntaxException e) {}
-        
+        assertWithException(">aa", "aa");        
         // Case: >>[a-z]
-        stackNumber = new StackNumber();
-        dictVar = new DictVar();
-        instance = new ParserVar(stackNumber, dictVar, null);
-        stackOperator = new StackOperator(stackNumber);
-        num = new Complex(10, 10);
-        stackOperator.execute(num);
-        try {
-            instance.parse(">>a");
-            assertTrue(false);
-        } catch (SyntaxException e) {}
-        
+        assertWithException(">>a", "a");        
         // Case: <[a-z]
-        stackNumber = new StackNumber();
-        dictVar = new DictVar();
-        stackOperator = new StackOperator(stackNumber);
-        instance = new ParserVar(stackNumber, dictVar, new ParserComplex(stackOperator));
-        num = new Complex(10, 10);
-        stackOperator.execute(num);
-        instance.parse(">a");
-        instance.parse("<a");
-        assertEquals(stackNumber.peekFirst(), num);
-        
+        assertPeek(">a", "<a");        
         // Case: <[A-Z]
-        stackNumber = new StackNumber();
-        dictVar = new DictVar();
-        stackOperator = new StackOperator(stackNumber);
-        instance = new ParserVar(stackNumber, dictVar, new ParserComplex(stackOperator));
-        num = new Complex(10, 10);
-        stackOperator.execute(num);
-        instance.parse(">A");
-        instance.parse("<A");
-        assertEquals(stackNumber.peekFirst(), num);
-        
-        // Case: <[aa-zz]
-        stackNumber = new StackNumber();
-        dictVar = new DictVar();
-        stackOperator = new StackOperator(stackNumber);
-        instance = new ParserVar(stackNumber, dictVar, null);
-        num = new Complex(10, 10);
-        stackOperator.execute(num);
-        try {
-            instance.parse(">aa");
-            instance.parse("<aa");
-            assertTrue(false);
-        } catch (SyntaxException e) {}
+        assertPeek(">A", "<A");
 
         // Case: !a
         stackNumber = new StackNumber();
