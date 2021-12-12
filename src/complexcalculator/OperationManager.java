@@ -249,8 +249,14 @@ public class OperationManager {
         public void handle(ActionEvent e)
             {
                 //LOGIC BEHIND THE DICT CLEAR
-                operations.clear();
-                opList.getItems().clear();
+                 AlertConfirmation alert = new AlertConfirmation("Clear Confirm","Do you want to clear all operations ?");
+                if(alert.state()== ButtonType.OK){  
+                    operations.clear();
+                    opList.getItems().clear();
+                    opArea.setText("");
+                    renameOpField.setText("");
+                    renameOpField.setEditable(false);
+                }
             }
         });
         
