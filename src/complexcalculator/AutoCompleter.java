@@ -1,13 +1,14 @@
 package complexcalculator;
 
-import Parser.DictToken;
+import Stack.StackNumber;
+import Dict.DictToken;
 import impl.org.controlsfx.skin.AutoCompletePopup;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
-import Parser.DictFunction;
-import Parser.DictVar;
+import Dict.DictFunction;
+import Dict.DictVar;
 import java.util.Arrays;
 import javafx.scene.control.TextField;
 

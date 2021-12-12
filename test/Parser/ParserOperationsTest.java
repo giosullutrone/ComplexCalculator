@@ -1,5 +1,9 @@
 package Parser;
 
+import Stack.StackOperator;
+import Stack.StackNumber;
+import Dict.DictFunction;
+import Dict.DictVar;
 import Operations.NumOperations.*;
 import Operations.StackOperations.*;
 import Complex.Complex;

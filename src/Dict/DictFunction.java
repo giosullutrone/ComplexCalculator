@@ -1,7 +1,8 @@
-package Parser;
+package Dict;
 
 import AlertMessage.OperationException;
 import AlertMessage.SyntaxException;
+import Parser.Validator;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -50,7 +51,7 @@ public class DictFunction {
      */
     public void replace(String key, String value) {
         value = value.trim().replaceAll("\\s+", " ");
-        if(!Validator.isValid(value, this.keySet()) || value.contains(key)) throw new SyntaxException("Invalid set of operations");
+        if(!Validator.isValid(value, this.keyList()) || value.contains(key)) throw new SyntaxException("Invalid set of operations");
         this.dict.put(key, value);
     }
     
@@ -69,7 +70,7 @@ public class DictFunction {
      * Method used to get a list of all keys.
      * @return LinkedList of all keys.
      */
-    public List<String> keySet() {
+    public List<String> keyList() {
         return new LinkedList<>(this.dict.keySet());
     }
     

@@ -1,8 +1,10 @@
 package Parser;
 
 
-import complexcalculator.StackNumber;
-import complexcalculator.StackOperator;
+import Dict.DictFunction;
+import Dict.DictVar;
+import Stack.StackNumber;
+import Stack.StackOperator;
 
 /**
  * Class that creates a Chain of Parsers

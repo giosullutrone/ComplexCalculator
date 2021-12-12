@@ -1,4 +1,4 @@
-package Parser;
+package Dict;
 
 import AlertMessage.OperationException;
 import AlertMessage.SyntaxException;
@@ -229,7 +229,7 @@ public class DictFunctionTest {
         try {
             instance.toFile("test.txt");
             instanceFromFile.fromFile("test.txt");
-            assertEquals(instance.keySet(), instanceFromFile.keySet());
+            assertEquals(instance.keyList(), instanceFromFile.keyList());
         } catch(IOException | ClassNotFoundException e) {
             assertTrue(false);
         } finally {

@@ -1,4 +1,4 @@
-package Parser;
+package Dict;
 
 import AlertMessage.OperationException;
 import Complex.Complex;

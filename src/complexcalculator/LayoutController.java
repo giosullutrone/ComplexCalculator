@@ -1,10 +1,11 @@
 package complexcalculator;
 
+import Stack.StackNumber;
 import AlertMessage.AlertFactory;
 import AlertMessage.OperationException;
 import AlertMessage.SyntaxException;
-import Parser.DictFunction;
-import Parser.DictVar;
+import Dict.DictFunction;
+import Dict.DictVar;
 import Parser.Parser;
 import Parser.ParserFactory;
 import static complexcalculator.Configurator.startConfiguration;

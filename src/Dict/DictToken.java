@@ -1,4 +1,4 @@
-package Parser;
+package Dict;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -31,7 +31,7 @@ public class DictToken {
      */
     public static LinkedList<String> getDict(DictFunction dictFunction){
         LinkedList<String> completeDict = new LinkedList<>(dict);
-        completeDict.addAll(dictFunction.keySet());
+        completeDict.addAll(dictFunction.keyList());
         return completeDict;
     }
 

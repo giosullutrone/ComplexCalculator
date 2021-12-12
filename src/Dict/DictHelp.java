@@ -1,4 +1,4 @@
-package Parser;
+package Dict;
 
 import java.util.Collections;
 import java.util.HashMap;

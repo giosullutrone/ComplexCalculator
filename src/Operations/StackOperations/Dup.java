@@ -1,7 +1,7 @@
 package Operations.StackOperations;
 
 import Complex.Complex;
-import complexcalculator.StackNumber;
+import Stack.StackNumber;
 
 public class Dup implements Operation0{
     /**

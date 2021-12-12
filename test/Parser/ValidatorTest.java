@@ -1,5 +1,6 @@
 package Parser;
 
+import Dict.DictFunction;
 import java.util.Arrays;
 import java.util.LinkedList;
 import org.junit.Test;
@@ -34,7 +35,7 @@ public class ValidatorTest {
         dict.put("Test", "+ + +");
         //Testing cases
         testList.forEach(node -> {
-            assertEquals(node.testReturn, Validator.isValid(node.toValidate, dict.keySet()));
+            assertEquals(node.testReturn, Validator.isValid(node.toValidate, dict.keyList()));
         });
         //Feedback
         System.out.println("Test Ended");

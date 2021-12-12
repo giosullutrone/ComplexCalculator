@@ -1,6 +1,6 @@
 package Operations.StackOperations;
 
-import complexcalculator.StackNumber;
+import Stack.StackNumber;
 
 public class Clear implements Operation0{
     /**

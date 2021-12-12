@@ -1,7 +1,7 @@
 package Parser;
 
 import Operations.NumOperations.*;
-import complexcalculator.StackOperator;
+import Stack.StackOperator;
 
 /**
  * Class that converts user's input into methods used to execute specific operations 

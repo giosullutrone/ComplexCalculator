@@ -1,6 +1,6 @@
 package Operations.StackOperations;
 
-import complexcalculator.StackNumber;
+import Stack.StackNumber;
 
 /**
  * An operation with no defined inputs, but with direct access to the stackNumber 

@@ -2,7 +2,7 @@ package complexcalculator;
 
 
 import AlertMessage.*;
-import Parser.DictFunction;
+import Dict.DictFunction;
 import static complexcalculator.Configurator.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ public class OperationManager {
         
         //Updating the ListView
         opList.getItems().clear();
-        opList.getItems().addAll(operations.keySet());
+        opList.getItems().addAll(operations.keyList());
         opList.setEditable(true);
         
         //creating the text interfaces
@@ -124,7 +124,7 @@ public class OperationManager {
                 }
                 //Update the list
                 opList.getItems().clear();
-                opList.getItems().addAll(operations.keySet());
+                opList.getItems().addAll(operations.keyList());
                 flag.add(1);
             }    
         });
@@ -148,7 +148,7 @@ public class OperationManager {
                 }
                 //Update the list deleting the operations
                 opList.getItems().clear();
-                opList.getItems().addAll(operations.keySet());
+                opList.getItems().addAll(operations.keyList());
                 flag.add(1);
             } 
             }
@@ -176,7 +176,7 @@ public class OperationManager {
                     AlertFactory.handle(putException);
                 }
                 opList.getItems().clear();
-                opList.getItems().addAll(operations.keySet());
+                opList.getItems().addAll(operations.keyList());
                 opArea.setText("");
                 saveOp.setDisable(true);
                 renameOpField.setEditable(false);
@@ -201,7 +201,7 @@ public class OperationManager {
                     AlertFactory.handle(putException);
                 }
                 opList.getItems().clear();
-                opList.getItems().addAll(operations.keySet());  
+                opList.getItems().addAll(operations.keyList());  
             }
             
         });
@@ -234,7 +234,7 @@ public class OperationManager {
                 //LOGIC BEHIND THE RELOAD FROM FILE
                 operations.fromFile(fileChooserManager(true));
                 opList.getItems().clear();
-                opList.getItems().addAll(operations.keySet());
+                opList.getItems().addAll(operations.keyList());
                 
             } catch (IOException |ClassNotFoundException ex) {
                new AlertMessage("Operation error","An error occurred while reading the file");

@@ -7,8 +7,8 @@ package Operations.NumOperations;
 
 import AlertMessage.OperationException;
 import Complex.Complex;
-import complexcalculator.StackNumber;
-import complexcalculator.StackOperator;
+import Stack.StackNumber;
+import Stack.StackOperator;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

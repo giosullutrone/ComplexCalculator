@@ -1,6 +1,7 @@
 
 package Parser;
 
+import Dict.DictFunction;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,7 +36,7 @@ public class ParserFunction implements Parser {
             // Set replaced to false so that if no match are found the loop will stop
             replaced = false;
             // For every key in the dict (or in other words for each function's name)
-            for (String key : this.dictFunction.keySet()) {
+            for (String key : this.dictFunction.keyList()) {
                 // The pattern to replace must be exact word (substring not accepted)
                 String p = "\\b" + key + "\\b";
 

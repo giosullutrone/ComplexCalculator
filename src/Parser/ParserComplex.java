@@ -2,7 +2,7 @@ package Parser;
 
 import AlertMessage.SyntaxException;
 import Complex.Complex;
-import complexcalculator.StackOperator;
+import Stack.StackOperator;
 
 /**
  * Class that converts user's input into a Complex object

@@ -1,8 +1,9 @@
 package Parser;
 
+import Dict.DictVar;
 import AlertMessage.OperationException;
 import AlertMessage.SyntaxException;
-import complexcalculator.StackNumber;
+import Stack.StackNumber;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

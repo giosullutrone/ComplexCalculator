@@ -1,6 +1,6 @@
 package complexcalculator;
 
-import Parser.DictHelp;
+import Dict.DictHelp;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;

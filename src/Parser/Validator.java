@@ -1,5 +1,6 @@
 package Parser;
 
+import Dict.DictToken;
 import AlertMessage.SyntaxException;
 import java.util.LinkedList;
 import java.util.List;

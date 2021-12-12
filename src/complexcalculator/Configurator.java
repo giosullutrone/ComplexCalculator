@@ -1,7 +1,7 @@
 package complexcalculator;
 
 import AlertMessage.OperationException;
-import Parser.DictFunction;
+import Dict.DictFunction;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
