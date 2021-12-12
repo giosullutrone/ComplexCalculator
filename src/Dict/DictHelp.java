@@ -33,6 +33,8 @@ public class DictHelp {
                                           "Description:\tfunction that does the square root of a complex number");
                 dict.put("Operation | Conjugate", "Syntax:\t\t" + "conj" + "\n\n" + 
                                          "Description:\tfunction that does the conjugate of a complex number");
+                dict.put("In-Line functions",
+                                         "The user can perform in the main interface multiple operations in a single line simplifying and making faster the more complex calcs. The in-line function works as the user defined operations so for using them it is mandatory to leave a space between the operations (or numbers) After that to run them just press enter as a standard single operation.");
         //Stack operation
                 dict.put("Stack operation | Clear", "Syntax:\t\t" + "clear" + "\n\n" + 
                                          "Description:\tfunction used to clear the provided Stack");
