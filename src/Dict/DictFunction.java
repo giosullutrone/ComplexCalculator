@@ -61,7 +61,7 @@ public class DictFunction {
      */
     public void replace(String key, String value) {
         value = value.trim().replaceAll("\\s+", " ");
-        if(!Validator.isValid(value, this.keyList()) || value.contains(key)) throw new SyntaxException("Invalid set of operations");
+        if(!Validator.isValid(value, this.keyList()) || (" "+value+" ").contains(" "+ key +" ")) throw new SyntaxException("Invalid set of operations");
         this.dict.put(key, value);
     }
     
